@@ -1,3 +1,6 @@
 [submodule "Assets/Plugins/OBNI3D"]
 	path = Assets/Plugins/OBNI3D
 	url = https://github.com/alexbourgeois/OBNI3D
+[submodule "Assets/Plugins/Klak"]
+	path = Assets/Plugins/Klak
+	url = https://github.com/barbelot/klak

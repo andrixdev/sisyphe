@@ -31,9 +31,10 @@ public class Instantiator : MonoBehaviour
     public float playerRadius;
     public AnimationCurve playerRadiusEffect;
 
-    [Header("Material")]
+    [Header("Rendering")]
     public Material material;
     public UnityEngine.Rendering.ShadowCastingMode shadowCastingMode;
+    public Camera renderCamera;
 
     [Header("Debug")]
     public bool reinitialize = false;
@@ -82,7 +83,7 @@ public class Instantiator : MonoBehaviour
         //Draw
         for (int i = 0; i < _subMatrices.Length; i++) {
             if(meshes[i] != null)
-                Graphics.DrawMeshInstanced(meshes[i], 0, material, _subMatrices[i].ToArray(), _subMatrices[i].Count, null, shadowCastingMode);
+                Graphics.DrawMeshInstanced(meshes[i], 0, material, _subMatrices[i].ToArray(), _subMatrices[i].Count, null, shadowCastingMode, true, 0, renderCamera);
         }
     }
 
