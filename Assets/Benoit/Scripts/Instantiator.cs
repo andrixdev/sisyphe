@@ -13,7 +13,6 @@ public class Instantiator : MonoBehaviour
     public int randomSeed;
 
     [Header("Instantiation")]
-    public Vector3 areaOrigin;
     public bool centerOnOrigin = false;
     public Vector3 areaSize;
     public Vector3Int areaSubdivisions;
@@ -32,9 +31,10 @@ public class Instantiator : MonoBehaviour
     public float playerRadius;
     public AnimationCurve playerRadiusEffect;
 
-    [Header("Material")]
+    [Header("Rendering")]
     public Material material;
     public UnityEngine.Rendering.ShadowCastingMode shadowCastingMode;
+    public Camera renderCamera;
 
     [Header("Debug")]
     public bool reinitialize = false;
@@ -83,7 +83,7 @@ public class Instantiator : MonoBehaviour
         //Draw
         for (int i = 0; i < _subMatrices.Length; i++) {
             if(meshes[i] != null)
-                Graphics.DrawMeshInstanced(meshes[i], 0, material, _subMatrices[i].ToArray(), _subMatrices[i].Count, null, shadowCastingMode);
+                Graphics.DrawMeshInstanced(meshes[i], 0, material, _subMatrices[i].ToArray(), _subMatrices[i].Count, null, shadowCastingMode, true, 0, renderCamera);
         }
     }
 
@@ -156,9 +156,9 @@ public class Instantiator : MonoBehaviour
             for(int j=0; j< areaSubdivisions.y; j++) {
                 for(int k=0; k< areaSubdivisions.z; k++) {
 
-                    _instancePosition.x = i * areaSize.x / areaSubdivisions.x + areaOrigin.x;
-                    _instancePosition.y = j * areaSize.y / areaSubdivisions.y + areaOrigin.y;
-                    _instancePosition.z = k * areaSize.z / areaSubdivisions.z + areaOrigin.z;
+                    _instancePosition.x = i * areaSize.x / areaSubdivisions.x + transform.position.x;
+                    _instancePosition.y = j * areaSize.y / areaSubdivisions.y + transform.position.y;
+                    _instancePosition.z = k * areaSize.z / areaSubdivisions.z + transform.position.z;
 
                     _instancePosition.x -= centerOnOrigin ? areaSize.x * 0.5f : 0;
                     _instancePosition.y -= centerOnOrigin ? areaSize.y * 0.5f : 0;
