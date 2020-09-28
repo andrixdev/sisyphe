@@ -10,10 +10,10 @@ Material:
   m_Name: Pillars
   m_Shader: {fileID: -6465566751694194690, guid: 57a2e8774709ce24ca6a4feee73f3e37,
     type: 3}
-  m_ShaderKeywords: _DOUBLESIDED_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
@@ -27,11 +27,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - ColorTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 6428842d828d5f341be5564b01dd0c12, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 29336fae27dfda546af7c6ae569e961e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -123,12 +123,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Metallic: 0.343
-    - NormalScale: 300
-    - NormalStrength: 5
-    - RimIntensity: 0.2
-    - RimPower: 20
-    - Smoothness: 0.402
+    - Metallic: 0
+    - NormalScale: 1
+    - NormalStrength: 6.24
+    - RimIntensity: 0.3
+    - RimPower: 1.99
+    - Smoothness: 0.29
+    - TriplanarBlend: 1
+    - TriplanarTile: 0.66
+    - Vector1_F4E1AA46: 1
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -144,8 +147,8 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
-    - _CullMode: 0
-    - _CullModeForward: 0
+    - _CullMode: 2
+    - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -171,7 +174,7 @@ Material:
     - _DistortionSrcBlend: 1
     - _DistortionVectorBias: -1
     - _DistortionVectorScale: 2
-    - _DoubleSidedEnable: 1
+    - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _EmissiveColorMode: 1
@@ -253,8 +256,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - RimColor: {r: 0.972549, g: 0.7831957, b: 0.6901961, a: 0}
-    - Tint: {r: 1, g: 1, b: 1, a: 0}
+    - RimColor: {r: 1, g: 1, b: 1, a: 0}
+    - Tint: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
