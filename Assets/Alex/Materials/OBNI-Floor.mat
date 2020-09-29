@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OBNI-Floor
-  m_Shader: {fileID: -6465566751694194690, guid: af815812494ff38498604f96c790692e,
+  m_Shader: {fileID: -6465566751694194690, guid: 42b9d5774c3750949986470711860440,
     type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
@@ -136,8 +136,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_5FAA81BC: 0.51
+    - Vector1_66F9274A: 1
     - Vector1_8FD3FE67: 0.63
-    - Vector1_9FB23581: 1.1
+    - Vector1_9FB23581: 2.44
+    - Vector1_AA3437B6: 3.36
     - Vector1_ABF21922: 3.8
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -272,7 +274,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_B6879FF1: {r: 0.9607843, g: 0.06805556, b: 0.048039228, a: 1}
+    - Color_B6879FF1: {r: 0.9607843, g: 0.07534807, b: 0.047058813, a: 1}
     - Color_C850EFA2: {r: 0, g: 0, b: 0, a: 1}
     - Vector2_259D894E: {r: 20, g: 20, b: 0, a: 0}
     - Vector2_BC837418: {r: 80, g: 80, b: 0, a: 0}

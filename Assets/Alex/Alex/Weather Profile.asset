@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Value: 2
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.17277746, g: 0.06885, b: 0.27, a: 1}
+    m_Value: {r: 0.13238972, g: 0.056120005, b: 0.305, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
