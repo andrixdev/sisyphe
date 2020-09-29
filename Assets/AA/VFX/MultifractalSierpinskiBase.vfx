@@ -345,25 +345,25 @@ VisualEffectResource:
       tmp_ba * tmp_ba;\n\t\t\t    float tmp_bc = tmp_bb[2];\n\t\t\t    float tmp_bd
       = tmp_bb[1];\n\t\t\t    float tmp_be = tmp_bc + tmp_bd;\n\t\t\t    float tmp_bf
       = tmp_bb[0];\n\t\t\t    float tmp_bg = tmp_be + tmp_bf;\n\t\t\t    float tmp_bi
-      = pow(tmp_bg, (float)0.5);\n\t\t\t    float tmp_bk = tmp_bi * (float)0.0178244337;\n\t\t\t   
-      float tmp_bl = log2(tmp_bk);\n\t\t\t    float tmp_bm = (float)4.0999999 * tmp_bl;\n\t\t\t   
-      float tmp_bo = max(tmp_bm, (float)-10);\n\t\t\t    float tmp_bq = min(tmp_bo,
-      (float)10);\n\t\t\t    float tmp_br = tmp_bq - (float)-10;\n\t\t\t    float
-      tmp_bt = tmp_br / (float)20;\n\t\t\t    float tmp_bv = tmp_bt * (float)0.129999995;\n\t\t\t   
-      float tmp_bw = (float)0.439999998 + tmp_bv;\n\t\t\t    float3 tmp_bx = float3(tmp_bw,
-      tmp_bw, tmp_bw);\n\t\t\t    float tmp_by = Rand(attributes.seed);\n\t\t\t   
-      float tmp_ca = tmp_by * (float)4;\n\t\t\t    float tmp_cb = floor(tmp_ca);\n\t\t\t   
-      int tmp_cc = (int)tmp_cb;\n\t\t\t    float tmp_cd = (float)tmp_cc;\n\t\t\t   
-      bool tmp_cf = tmp_cd == (float)0;\n\t\t\t    bool tmp_ci = tmp_cd == (float)1;\n\t\t\t   
-      bool tmp_cl = tmp_cd == (float)2;\n\t\t\t    bool tmp_co = tmp_cd == (float)3;\n\t\t\t   
-      float3 tmp_cq = tmp_co ? float3(0, -1, 0.707106769) : float3(0, 1, 0.707106769);\n\t\t\t   
-      float3 tmp_cr = tmp_cl ? float3(0, 1, 0.707106769) : tmp_cq;\n\t\t\t    float3
-      tmp_cs = tmp_ci ? float3(-1, 0, -0.707106769) : tmp_cr;\n\t\t\t    float3 tmp_ct
-      = tmp_cf ? float3(1, 0, -0.707106769) : tmp_cs;\n\t\t\t    float3 tmp_cv =
-      tmp_ct * float3(37.5, 37.5, 37.5);\n\t\t\t    float3 tmp_cw = tmp_cv - attributes.position;\n\t\t\t   
-      float3 tmp_cx = tmp_bx * tmp_cw;\n\t\t\t    float3 tmp_cy = attributes.position
-      + tmp_cx;\n\t\t\t    float3 tmp_cz = tmp_cy * uniform_b;\n\t\t\t    SetAttribute_CAC29747(
-      /*inout */attributes.position, tmp_cz);\n\t\t\t}\n\t\t\tAge( /*inout */attributes.age,
+      = pow(tmp_bg, (float)0.5);\n\t\t\t    float tmp_bk = tmp_bi * (float)0.0213443767;\n\t\t\t   
+      float tmp_bl = log2(tmp_bk);\n\t\t\t    float tmp_bm = (float)10 * tmp_bl;\n\t\t\t   
+      float tmp_bo = max(tmp_bm, (float)-10);\n\t\t\t    float tmp_bp = min(tmp_bo,
+      (float)10);\n\t\t\t    float tmp_bq = tmp_bp - (float)-10;\n\t\t\t    float
+      tmp_bs = tmp_bq / (float)20;\n\t\t\t    float tmp_bu = tmp_bs * (float)0.099999994;\n\t\t\t   
+      float tmp_bv = (float)0.469999999 + tmp_bu;\n\t\t\t    float3 tmp_bw = float3(tmp_bv,
+      tmp_bv, tmp_bv);\n\t\t\t    float tmp_bx = Rand(attributes.seed);\n\t\t\t   
+      float tmp_bz = tmp_bx * (float)4;\n\t\t\t    float tmp_ca = floor(tmp_bz);\n\t\t\t   
+      int tmp_cb = (int)tmp_ca;\n\t\t\t    float tmp_cc = (float)tmp_cb;\n\t\t\t   
+      bool tmp_ce = tmp_cc == (float)0;\n\t\t\t    bool tmp_ch = tmp_cc == (float)1;\n\t\t\t   
+      bool tmp_ck = tmp_cc == (float)2;\n\t\t\t    bool tmp_cn = tmp_cc == (float)3;\n\t\t\t   
+      float3 tmp_cp = tmp_cn ? float3(0, -1, 0.707106769) : float3(0, 1, 0.707106769);\n\t\t\t   
+      float3 tmp_cq = tmp_ck ? float3(0, 1, 0.707106769) : tmp_cp;\n\t\t\t    float3
+      tmp_cr = tmp_ch ? float3(-1, 0, -0.707106769) : tmp_cq;\n\t\t\t    float3 tmp_cs
+      = tmp_ce ? float3(1, 0, -0.707106769) : tmp_cr;\n\t\t\t    float3 tmp_cu =
+      tmp_cs * float3(37.5, 37.5, 37.5);\n\t\t\t    float3 tmp_cv = tmp_cu - attributes.position;\n\t\t\t   
+      float3 tmp_cw = tmp_bw * tmp_cv;\n\t\t\t    float3 tmp_cx = attributes.position
+      + tmp_cw;\n\t\t\t    float3 tmp_cy = tmp_cx * uniform_b;\n\t\t\t    SetAttribute_CAC29747(
+      /*inout */attributes.position, tmp_cy);\n\t\t\t}\n\t\t\tAge( /*inout */attributes.age,
       deltaTime_b);\n\t\t\tReap(attributes.age, attributes.lifetime,  /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif
       (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index * 0x8
       + 0x0) << 2,asuint(attributes.position));\n\t\t\t\tattributeBuffer.Store((index
@@ -394,26 +394,25 @@ VisualEffectResource:
       * tmp_ba;\n\t\t    float tmp_bc = tmp_bb[2];\n\t\t    float tmp_bd = tmp_bb[1];\n\t\t   
       float tmp_be = tmp_bc + tmp_bd;\n\t\t    float tmp_bf = tmp_bb[0];\n\t\t   
       float tmp_bg = tmp_be + tmp_bf;\n\t\t    float tmp_bi = pow(tmp_bg, (float)0.5);\n\t\t   
-      float tmp_bk = tmp_bi * (float)0.0178244337;\n\t\t    float tmp_bl = log2(tmp_bk);\n\t\t   
-      float tmp_bm = (float)4.0999999 * tmp_bl;\n\t\t    float tmp_bo = max(tmp_bm,
-      (float)-10);\n\t\t    float tmp_bq = min(tmp_bo, (float)10);\n\t\t    float
-      tmp_br = tmp_bq - (float)-10;\n\t\t    float tmp_bt = tmp_br / (float)20;\n\t\t   
-      float tmp_bv = tmp_bt * (float)0.129999995;\n\t\t    float tmp_bw = (float)0.439999998
-      + tmp_bv;\n\t\t    float3 tmp_bx = float3(tmp_bw, tmp_bw, tmp_bw);\n\t\t   
-      float tmp_by = Rand(attributes.seed);\n\t\t    float tmp_ca = tmp_by * (float)4;\n\t\t   
-      float tmp_cb = floor(tmp_ca);\n\t\t    int tmp_cc = (int)tmp_cb;\n\t\t    float
-      tmp_cd = (float)tmp_cc;\n\t\t    bool tmp_cf = tmp_cd == (float)0;\n\t\t   
-      bool tmp_ci = tmp_cd == (float)1;\n\t\t    bool tmp_cl = tmp_cd == (float)2;\n\t\t   
-      bool tmp_co = tmp_cd == (float)3;\n\t\t    float3 tmp_cq = tmp_co ? float3(0,
-      -1, 0.707106769) : float3(0, 1, 0.707106769);\n\t\t    float3 tmp_cr = tmp_cl
-      ? float3(0, 1, 0.707106769) : tmp_cq;\n\t\t    float3 tmp_cs = tmp_ci ? float3(-1,
-      0, -0.707106769) : tmp_cr;\n\t\t    float3 tmp_ct = tmp_cf ? float3(1, 0, -0.707106769)
-      : tmp_cs;\n\t\t    float3 tmp_cv = tmp_ct * float3(37.5, 37.5, 37.5);\n\t\t   
-      float3 tmp_cw = tmp_cv - attributes.position;\n\t\t    float3 tmp_cx = tmp_bx
-      * tmp_cw;\n\t\t    float3 tmp_cy = attributes.position + tmp_cx;\n\t\t    float3
-      tmp_cz = tmp_cy * uniform_b;\n\t\t    SetAttribute_CAC29747( /*inout */attributes.position,
-      tmp_cz);\n\t\t}\n\t\tAge( /*inout */attributes.age, deltaTime_b);\n\t\tReap(attributes.age,
-      attributes.lifetime,  /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index
+      float tmp_bk = tmp_bi * (float)0.0213443767;\n\t\t    float tmp_bl = log2(tmp_bk);\n\t\t   
+      float tmp_bm = (float)10 * tmp_bl;\n\t\t    float tmp_bo = max(tmp_bm, (float)-10);\n\t\t   
+      float tmp_bp = min(tmp_bo, (float)10);\n\t\t    float tmp_bq = tmp_bp - (float)-10;\n\t\t   
+      float tmp_bs = tmp_bq / (float)20;\n\t\t    float tmp_bu = tmp_bs * (float)0.099999994;\n\t\t   
+      float tmp_bv = (float)0.469999999 + tmp_bu;\n\t\t    float3 tmp_bw = float3(tmp_bv,
+      tmp_bv, tmp_bv);\n\t\t    float tmp_bx = Rand(attributes.seed);\n\t\t    float
+      tmp_bz = tmp_bx * (float)4;\n\t\t    float tmp_ca = floor(tmp_bz);\n\t\t   
+      int tmp_cb = (int)tmp_ca;\n\t\t    float tmp_cc = (float)tmp_cb;\n\t\t    bool
+      tmp_ce = tmp_cc == (float)0;\n\t\t    bool tmp_ch = tmp_cc == (float)1;\n\t\t   
+      bool tmp_ck = tmp_cc == (float)2;\n\t\t    bool tmp_cn = tmp_cc == (float)3;\n\t\t   
+      float3 tmp_cp = tmp_cn ? float3(0, -1, 0.707106769) : float3(0, 1, 0.707106769);\n\t\t   
+      float3 tmp_cq = tmp_ck ? float3(0, 1, 0.707106769) : tmp_cp;\n\t\t    float3
+      tmp_cr = tmp_ch ? float3(-1, 0, -0.707106769) : tmp_cq;\n\t\t    float3 tmp_cs
+      = tmp_ce ? float3(1, 0, -0.707106769) : tmp_cr;\n\t\t    float3 tmp_cu = tmp_cs
+      * float3(37.5, 37.5, 37.5);\n\t\t    float3 tmp_cv = tmp_cu - attributes.position;\n\t\t   
+      float3 tmp_cw = tmp_bw * tmp_cv;\n\t\t    float3 tmp_cx = attributes.position
+      + tmp_cw;\n\t\t    float3 tmp_cy = tmp_cx * uniform_b;\n\t\t    SetAttribute_CAC29747(
+      /*inout */attributes.position, tmp_cy);\n\t\t}\n\t\tAge( /*inout */attributes.age,
+      deltaTime_b);\n\t\tReap(attributes.age, attributes.lifetime,  /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index
       * 0x8 + 0x0) << 2,asuint(attributes.position));\n\t\tattributeBuffer.Store((index
       * 0x1 + 0x493E00) << 2,asuint(attributes.seed));\n\t\tattributeBuffer.Store((index
       * 0x8 + 0x3) << 2,uint(attributes.alive));\n\t\tattributeBuffer.Store((index
@@ -989,18 +988,18 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 3
-      - op: 1
+      - op: 11
         valueIndex: 26
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 11
-        valueIndex: 27
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
         data[3]: -1
+      - op: 29
+        valueIndex: 27
+        data[0]: 16
+        data[1]: 16
+        data[2]: -1
+        data[3]: 6
       - op: 1
         valueIndex: 28
         data[0]: -1
@@ -1013,66 +1012,66 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 3
-      - op: 29
+      - op: 64
         valueIndex: 32
         data[0]: 17
-        data[1]: 17
-        data[2]: -1
-        data[3]: 6
-      - op: 64
-        valueIndex: 33
-        data[0]: 20
         data[1]: -1
         data[2]: -1
         data[3]: -1
       - op: 72
-        valueIndex: 34
-        data[0]: 21
-        data[1]: 14
+        valueIndex: 33
+        data[0]: 20
+        data[1]: 11
         data[2]: -1
         data[3]: 0
       - op: 73
-        valueIndex: 35
-        data[0]: 22
-        data[1]: 11
-        data[2]: 14
+        valueIndex: 34
+        data[0]: 21
+        data[1]: 10
+        data[2]: 11
         data[3]: 1
       - op: 1
-        valueIndex: 36
+        valueIndex: 35
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 14
       - op: 3
-        valueIndex: 37
-        data[0]: 23
-        data[1]: 23
-        data[2]: 23
+        valueIndex: 36
+        data[0]: 22
+        data[1]: 22
+        data[2]: 22
         data[3]: -1
       - op: 6
-        valueIndex: 40
+        valueIndex: 39
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: -1
+      - op: 1
+        valueIndex: 40
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 41
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
+      - op: 57
         valueIndex: 42
+        data[0]: 23
+        data[1]: -1
+        data[2]: -1
+        data[3]: 0
+      - op: 1
+        valueIndex: 43
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 57
-        valueIndex: 43
-        data[0]: 24
-        data[1]: -1
-        data[2]: -1
-        data[3]: 0
       - op: 1
         valueIndex: 44
         data[0]: -1
@@ -1084,27 +1083,21 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 48
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 51
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
         data[3]: 1
-      - op: 1
-        valueIndex: 46
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
-        valueIndex: 49
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
       - op: 1
         valueIndex: 52
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 53
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -1116,13 +1109,13 @@ VisualEffectResource:
       m_Float:
         m_Array:
         - m_ExpressionIndex: 1
-          m_Value: 0.5
-        - m_ExpressionIndex: 2
           m_Value: 4
+        - m_ExpressionIndex: 2
+          m_Value: 0.5
         - m_ExpressionIndex: 3
-          m_Value: 0.017824434
+          m_Value: 0.021344377
         - m_ExpressionIndex: 4
-          m_Value: 4.1
+          m_Value: 10
         - m_ExpressionIndex: 5
           m_Value: 3
         - m_ExpressionIndex: 6
@@ -1130,26 +1123,24 @@ VisualEffectResource:
         - m_ExpressionIndex: 9
           m_Value: 2
         - m_ExpressionIndex: 10
-          m_Value: 10
-        - m_ExpressionIndex: 11
           m_Value: 1
+        - m_ExpressionIndex: 11
+          m_Value: 0
         - m_ExpressionIndex: 13
           m_Value: 20
         - m_ExpressionIndex: 14
-          m_Value: 0
-        - m_ExpressionIndex: 16
-          m_Value: 0.13
+          m_Value: 0.099999994
         - m_ExpressionIndex: 18
-          m_Value: 0.44
-        - m_ExpressionIndex: 27
+          m_Value: 0.47
+        - m_ExpressionIndex: 26
           m_Value: 0.01
-        - m_ExpressionIndex: 28
+        - m_ExpressionIndex: 27
           m_Value: 25
-        - m_ExpressionIndex: 30
+        - m_ExpressionIndex: 29
           m_Value: 15000
-        - m_ExpressionIndex: 31
+        - m_ExpressionIndex: 30
           m_Value: 5
-        - m_ExpressionIndex: 34
+        - m_ExpressionIndex: 33
           m_Value: 6.2831855
       m_Vector2f:
         m_Array: []
@@ -1167,9 +1158,9 @@ VisualEffectResource:
           m_Value: {x: 1, y: 0, z: -0.70710677}
         - m_ExpressionIndex: 19
           m_Value: {x: 37.5, y: 37.5, z: 37.5}
-        - m_ExpressionIndex: 32
+        - m_ExpressionIndex: 31
           m_Value: {x: 100, y: 100, z: 100}
-        - m_ExpressionIndex: 33
+        - m_ExpressionIndex: 32
           m_Value: {x: 0, y: 0, z: 0}
       m_Vector4f:
         m_Array: []
@@ -1183,7 +1174,7 @@ VisualEffectResource:
         m_Array: []
       m_Gradient:
         m_Array:
-        - m_ExpressionIndex: 24
+        - m_ExpressionIndex: 23
           m_Value:
             serializedVersion: 2
             key0: {r: 1, g: 1, b: 1, a: 0}
@@ -1215,7 +1206,7 @@ VisualEffectResource:
             m_NumAlphaKeys: 4
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 35
+        - m_ExpressionIndex: 34
           m_Value: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
       m_Bool:
         m_Array: []
@@ -1337,7 +1328,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Rate
-        index: 30
+        index: 29
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -1358,9 +1349,9 @@ VisualEffectResource:
       index: 1
     values:
     - nameId: bounds_center
-      index: 33
-    - nameId: bounds_size
       index: 32
+    - nameId: bounds_size
+      index: 31
     tasks:
     - type: 536870912
       buffers:
@@ -1376,9 +1367,9 @@ VisualEffectResource:
       values: []
       params:
       - nameId: bounds_center
-        index: 33
-      - nameId: bounds_size
         index: 32
+      - nameId: bounds_size
+        index: 31
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -1392,9 +1383,9 @@ VisualEffectResource:
       - nameId: uniform_a
         index: 0
       - nameId: uniform_b
-        index: 25
+        index: 24
       - nameId: deltaTime_b
-        index: 26
+        index: 25
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 1
@@ -1405,9 +1396,9 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Color_d
-        index: 29
+        index: 28
       - nameId: mainTexture
-        index: 35
+        index: 34
       params:
       - nameId: sortPriority
         index: 0
@@ -11387,7 +11378,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 4.1
+      m_SerializableObject: 10
     m_Space: 2147483647
   m_Property:
     name: b
@@ -12699,7 +12690,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.44
+      m_SerializableObject: 0.47
     m_Space: 2147483647
   m_Property:
     name: newRangeMin
@@ -13109,7 +13100,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -5.81
+      m_SerializableObject: -5.55
     m_Space: 2147483647
   m_Property:
     name: 

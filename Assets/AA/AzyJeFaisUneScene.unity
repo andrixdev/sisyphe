@@ -347,7 +347,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678951932887082070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &678951933424002704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,6 +1691,7 @@ GameObject:
   - component: {fileID: 2619948348087239218}
   - component: {fileID: 2619948348087239221}
   - component: {fileID: 2619948348087239220}
+  - component: {fileID: 2619948348087239170}
   m_Layer: 0
   m_Name: ExalVFX
   m_TagString: Untagged
@@ -1712,6 +1713,21 @@ Transform:
   m_Father: {fileID: 8021358085448364636}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2619948348087239170
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619948348087239168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: camPos
+  Target: {fileID: 4621035533066322262}
 --- !u!114 &2619948348087239176
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -1915,6 +1931,9 @@ VisualEffect:
       - m_Value: {x: 0, y: 0, z: 0}
         m_Name: rightKnee_scale
         m_Overridden: 1
+      - m_Value: {x: -22.91, y: 0.9, z: -1.57}
+        m_Name: camPos
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -1976,6 +1995,7 @@ MonoBehaviour:
   - {fileID: 2619948348087239179}
   - {fileID: 2619948348087239177}
   - {fileID: 2619948348087239176}
+  - {fileID: 2619948348087239170}
   m_VisualEffect: {fileID: 2619948348087239178}
 --- !u!73398921 &2619948348087239181
 VFXRenderer:
@@ -2758,7 +2778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2619948349031371101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.07766983, y: 13.14, z: 14.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2619948348869083781}
@@ -3086,7 +3106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!2083052967 &3258338986643727790
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -3130,7 +3150,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3258338986643727785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3472,9 +3492,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4621035534996775112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ded6aadfcdff374eb80d158836e58a2, type: 3}
+  m_Script: {fileID: 11500000, guid: b1dc3bb253fb8ad45a1a69a2aed47491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 4621035534125891868}
 --- !u!114 &4621035534996775115
 MonoBehaviour:
   m_ObjectHideFlags: 0
