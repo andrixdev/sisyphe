@@ -27,7 +27,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - ColorTexture:
-        m_Texture: {fileID: 8400000, guid: 6428842d828d5f341be5564b01dd0c12, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - NormalMap:
@@ -123,14 +123,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Metallic: 0
+    - Metallic: 0.192
     - NormalScale: 1
-    - NormalStrength: 6.24
-    - RimIntensity: 0.3
+    - NormalStrength: 2
+    - RimIntensity: 0.02
     - RimPower: 1.99
-    - Smoothness: 0.29
+    - Smoothness: 0.327
     - TriplanarBlend: 1
-    - TriplanarTile: 0.66
+    - TriplanarTile: 2
     - Vector1_F4E1AA46: 1
     - _AORemapMax: 1
     - _AORemapMin: 0
