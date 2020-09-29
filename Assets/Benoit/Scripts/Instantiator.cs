@@ -54,6 +54,8 @@ public class Instantiator : MonoBehaviour
 
     private int[] _meshIndices;
 
+    private MaterialPropertyBlock properties;
+
 	private void Start() {
 
         Random.InitState(randomSeed);
@@ -102,6 +104,8 @@ public class Instantiator : MonoBehaviour
         }
 
         ComputeRandomMeshIndices();
+
+        properties = new MaterialPropertyBlock();
     }
 
     void ComputeRandomMeshIndices() {

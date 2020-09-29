@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshes:
-  - {fileID: -2228417370725966487, guid: c57205a2846973244b82d7f33f7043c8, type: 3}
-  - {fileID: -2228417370725966487, guid: a2a31f4b8d967ea42a4d903c6147d22d, type: 3}
-  - {fileID: -2228417370725966487, guid: a7c767a2fe8f2b04e8524cfdf9918dbf, type: 3}
+  - {fileID: -2228417370725966487, guid: 85d11a884b3545d45af20e433cdc1f07, type: 3}
+  - {fileID: 4493585093827132993, guid: 4fe9ef32e5c543e43b31d16ca2935333, type: 3}
+  - {fileID: -2228417370725966487, guid: da4416def8e43974ea5863d49260a2db, type: 3}
   - {fileID: 0}
   meshesProbabilities:
   - 1
@@ -87,8 +87,7 @@ MonoBehaviour:
   - 1
   - 0.2
   randomSeed: 0
-  areaOrigin: {x: 0, y: 0, z: 0}
-  centerOnOrigin: 0
+  centerOnOrigin: 1
   areaSize: {x: 50, y: 50, z: 50}
   areaSubdivisions: {x: 5, y: 5, z: 5}
   meshPositionRandom: {x: 0, y: 0, z: 0}
@@ -112,6 +111,15 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.06644144
     - serializedVersion: 3
+      time: 0.8574065
+      value: 0.15538704
+      inSlope: 0.44870332
+      outSlope: 0.44870332
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06850392
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 3.1364827
@@ -125,6 +133,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
+  renderCamera: {fileID: 0}
   reinitialize: 0
   recomputeMeshProbabilities: 0
 --- !u!1 &2625709441478024859
@@ -171,9 +180,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshes:
-  - {fileID: -2228417370725966487, guid: c57205a2846973244b82d7f33f7043c8, type: 3}
-  - {fileID: -2228417370725966487, guid: a2a31f4b8d967ea42a4d903c6147d22d, type: 3}
-  - {fileID: -2228417370725966487, guid: a7c767a2fe8f2b04e8524cfdf9918dbf, type: 3}
+  - {fileID: -2228417370725966487, guid: 85d11a884b3545d45af20e433cdc1f07, type: 3}
+  - {fileID: 4493585093827132993, guid: 4fe9ef32e5c543e43b31d16ca2935333, type: 3}
+  - {fileID: -2228417370725966487, guid: da4416def8e43974ea5863d49260a2db, type: 3}
   - {fileID: 0}
   meshesProbabilities:
   - 1
@@ -181,8 +190,7 @@ MonoBehaviour:
   - 1
   - 0.2
   randomSeed: 0
-  areaOrigin: {x: 0, y: 0, z: 0}
-  centerOnOrigin: 0
+  centerOnOrigin: 1
   areaSize: {x: 50, y: 50, z: 50}
   areaSubdivisions: {x: 5, y: 5, z: 5}
   meshPositionRandom: {x: 0, y: 0, z: 0}
@@ -206,6 +214,15 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.06644144
     - serializedVersion: 3
+      time: 0.8574065
+      value: 0.15538704
+      inSlope: 0.44870332
+      outSlope: 0.44870332
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06850392
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 3.1364827
@@ -219,6 +236,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
+  renderCamera: {fileID: 0}
   reinitialize: 0
   recomputeMeshProbabilities: 0
 --- !u!1 &2625709441543040051
@@ -265,9 +283,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshes:
-  - {fileID: -2228417370725966487, guid: c57205a2846973244b82d7f33f7043c8, type: 3}
-  - {fileID: -2228417370725966487, guid: a2a31f4b8d967ea42a4d903c6147d22d, type: 3}
-  - {fileID: -2228417370725966487, guid: a7c767a2fe8f2b04e8524cfdf9918dbf, type: 3}
+  - {fileID: -2228417370725966487, guid: 85d11a884b3545d45af20e433cdc1f07, type: 3}
+  - {fileID: 4493585093827132993, guid: 4fe9ef32e5c543e43b31d16ca2935333, type: 3}
+  - {fileID: -2228417370725966487, guid: da4416def8e43974ea5863d49260a2db, type: 3}
   - {fileID: 0}
   meshesProbabilities:
   - 1
@@ -275,8 +293,7 @@ MonoBehaviour:
   - 1
   - 0.2
   randomSeed: 0
-  areaOrigin: {x: 0, y: 0, z: 0}
-  centerOnOrigin: 0
+  centerOnOrigin: 1
   areaSize: {x: 50, y: 50, z: 50}
   areaSubdivisions: {x: 5, y: 5, z: 5}
   meshPositionRandom: {x: 0, y: 0, z: 0}
@@ -300,6 +317,15 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.06644144
     - serializedVersion: 3
+      time: 0.8574065
+      value: 0.15538704
+      inSlope: 0.44870332
+      outSlope: 0.44870332
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06850392
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 3.1364827
@@ -313,5 +339,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
+  renderCamera: {fileID: 0}
   reinitialize: 0
   recomputeMeshProbabilities: 0
