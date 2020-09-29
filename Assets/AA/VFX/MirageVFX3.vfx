@@ -335,7 +335,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.15
+      m_SerializableObject: 0.23
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1.067
+      m_SerializableObject: 0.3
     min: 0.02
     max: 7
     descendantCount: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 35.83333
+      m_SerializableObject: 16.66667
     min: 0
     max: 100
     descendantCount: 0
@@ -386,7 +386,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 5.416667
     min: 0
     max: 50
     descendantCount: 0
@@ -2687,7 +2687,7 @@ VisualEffectResource:
       m_Float:
         m_Array:
         - m_ExpressionIndex: 0
-          m_Value: 1.067
+          m_Value: 0.3
         - m_ExpressionIndex: 1
           m_Value: 1
         - m_ExpressionIndex: 2
@@ -2829,7 +2829,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 87
           m_Value: 0
         - m_ExpressionIndex: 88
-          m_Value: 0.5666667
+          m_Value: 0.6666667
         - m_ExpressionIndex: 89
           m_Value: -1
         - m_ExpressionIndex: 90
@@ -2837,13 +2837,13 @@ VisualEffectResource:
         - m_ExpressionIndex: 92
           m_Value: -1
         - m_ExpressionIndex: 93
-          m_Value: 0
+          m_Value: 5.416667
         - m_ExpressionIndex: 94
-          m_Value: 35.83333
+          m_Value: 16.66667
         - m_ExpressionIndex: 96
           m_Value: 0.5
         - m_ExpressionIndex: 97
-          m_Value: 2.66
+          m_Value: 0.09
         - m_ExpressionIndex: 103
           m_Value: 0
         - m_ExpressionIndex: 104
@@ -2867,7 +2867,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 116
           m_Value: 100
         - m_ExpressionIndex: 118
-          m_Value: 0.15
+          m_Value: 0.23
         - m_ExpressionIndex: 119
           m_Value: 5
         - m_ExpressionIndex: 120
@@ -2885,7 +2885,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 126
           m_Value: 2
         - m_ExpressionIndex: 128
-          m_Value: 0.1
+          m_Value: 0.5
         - m_ExpressionIndex: 130
           m_Value: 0.1
         - m_ExpressionIndex: 135
@@ -2893,9 +2893,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 136
           m_Value: 8
         - m_ExpressionIndex: 139
-          m_Value: 2
+          m_Value: 5
         - m_ExpressionIndex: 142
-          m_Value: 3.083333
+          m_Value: 0.8333334
         - m_ExpressionIndex: 144
           m_Value: 0.25
       m_Vector2f:
@@ -4206,7 +4206,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 5
     m_Space: 2147483647
   m_Property:
     name: dragCoefficient
@@ -4988,7 +4988,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -5068,7 +5068,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -6793,7 +6793,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":-5.0,"z":0.0},"size":{"x":5.0,"y":0.10000000149011612,"z":5.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":-5.0,"z":0.0},"size":{"x":5.0,"y":0.5,"z":5.0}}'
     m_Space: 0
   m_Property:
     name: Box
@@ -7750,7 +7750,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -13615,7 +13615,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.15
+      m_SerializableObject: 0.23
     m_Space: 2147483647
   m_Property:
     name: o
@@ -14988,7 +14988,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -15045,7 +15045,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1.067
+      m_SerializableObject: 0.3
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15073,7 +15073,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -15126,7 +15126,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 35.83333
+      m_SerializableObject: 16.66667
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15187,7 +15187,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -15240,7 +15240,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 5.416667
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15401,7 +15401,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 3.083333
+      m_SerializableObject: 0.8333334
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15480,7 +15480,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.5666667
+      m_SerializableObject: 0.6666667
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15638,7 +15638,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.66
+      m_SerializableObject: 0.09
     m_Space: 2147483647
   m_Property:
     name: o
