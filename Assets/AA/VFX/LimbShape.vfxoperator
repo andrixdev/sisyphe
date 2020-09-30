@@ -126,55 +126,29 @@ MonoBehaviour:
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 3}
   m_ParameterInfo:
-  - name: boneLerpS
-    path: boneLerpS
+  - name: joint1
+    path: joint1
     tooltip: 
-    sheetType: m_Float
-    realType: Single
+    sheetType: m_Vector3f
+    realType: Vector3
     defaultValue:
       m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: lambda
-    path: lambda
+  - name: joint2
+    path: joint2
     tooltip: 
-    sheetType: m_Float
-    realType: Single
+    sheetType: m_Vector3f
+    realType: Vector3
     defaultValue:
       m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: 0
-    max: 1
-    descendantCount: 0
-  - name: rSup
-    path: rSup
-    tooltip: 
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
-    min: -Infinity
-    max: Infinity
-    descendantCount: 0
-  - name: theta
-    path: theta
-    tooltip: 
-    sheetType: m_Float
-    realType: Single
-    defaultValue:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -204,29 +178,55 @@ MonoBehaviour:
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: joint1
-    path: joint1
+  - name: lambda
+    path: lambda
     tooltip: 
-    sheetType: m_Vector3f
-    realType: Vector3
+    sheetType: m_Float
+    realType: Single
     defaultValue:
       m_Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0.5
+    min: 0
+    max: 1
+    descendantCount: 0
+  - name: rSup
+    path: rSup
+    tooltip: 
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0
     min: -Infinity
     max: Infinity
     descendantCount: 0
-  - name: joint2
-    path: joint2
+  - name: boneLerpS
+    path: boneLerpS
     tooltip: 
-    sheetType: m_Vector3f
-    realType: Vector3
+    sheetType: m_Float
+    realType: Single
     defaultValue:
       m_Type:
-        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0
+    min: 0
+    max: 1
+    descendantCount: 0
+  - name: theta
+    path: theta
+    tooltip: 
+    sheetType: m_Float
+    realType: Single
+    defaultValue:
+      m_Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      m_SerializableObject: 0
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -3189
     y: -2638
-    width: 3183
+    width: 3189
     height: 1377
 --- !u!114 &4
 MonoBehaviour:
@@ -9252,16 +9252,18 @@ MonoBehaviour:
   - {fileID: 265}
   m_ExposedName: boneLerpS
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 6
   m_Category: 
   m_Min:
     m_Type:
-      m_SerializableType: 
+      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
     m_SerializableObject: 
   m_Max:
     m_Type:
-      m_SerializableType: 
-    m_SerializableObject: 
+      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+    m_SerializableObject: 1
   m_IsOutput: 0
   m_Tooltip: 
   m_Nodes:
@@ -9329,7 +9331,7 @@ MonoBehaviour:
   - {fileID: 267}
   m_ExposedName: lambda
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 4
   m_Category: 
   m_Min:
     m_Type:
@@ -9375,7 +9377,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: o
@@ -9401,14 +9403,14 @@ MonoBehaviour:
   m_Parent: {fileID: 2}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 269}
   m_ExposedName: rSup
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 5
   m_Category: 
   m_Min:
     m_Type:
@@ -9485,7 +9487,7 @@ MonoBehaviour:
   - {fileID: 271}
   m_ExposedName: theta
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 7
   m_Category: 
   m_Min:
     m_Type:
@@ -9562,7 +9564,7 @@ MonoBehaviour:
   - {fileID: 273}
   m_ExposedName: r1
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -9639,7 +9641,7 @@ MonoBehaviour:
   - {fileID: 275}
   m_ExposedName: r2
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:
@@ -9716,7 +9718,7 @@ MonoBehaviour:
   - {fileID: 277}
   m_ExposedName: joint1
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 0
   m_Category: 
   m_Min:
     m_Type:
@@ -9888,14 +9890,14 @@ MonoBehaviour:
   m_Parent: {fileID: 2}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 282}
   m_ExposedName: joint2
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:
