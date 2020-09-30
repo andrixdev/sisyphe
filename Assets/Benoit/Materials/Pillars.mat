@@ -27,11 +27,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - ColorTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e9012512237dfbe4dadc39add5beb488, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - NormalMap:
-        m_Texture: {fileID: 2800000, guid: 29336fae27dfda546af7c6ae569e961e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 74b05e1cd482a07479e9f4d7774c10dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -123,12 +123,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Metallic: 0.196
+    - Metallic: 0.01
     - NormalScale: 1
-    - NormalStrength: 2
+    - NormalStrength: 5
     - RimIntensity: 0
     - RimPower: 1.99
-    - Smoothness: 0.381
+    - Smoothness: 0.75
     - TriplanarBlend: 1
     - TriplanarTile: 2
     - Vector1_F4E1AA46: 1
@@ -257,7 +257,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - RimColor: {r: 1, g: 1, b: 1, a: 0}
-    - Tint: {r: 1, g: 1, b: 1, a: 1}
+    - Tint: {r: 2, g: 2, b: 2, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

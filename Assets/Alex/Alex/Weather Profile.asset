@@ -54,10 +54,10 @@ MonoBehaviour:
     m_Value: 0
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1.5
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.16428514, g: 0.076409996, b: 0.566, a: 1}
+    m_Value: {r: 0.14631036, g: 0.061596017, b: 0.522, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
