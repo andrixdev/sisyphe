@@ -168,6 +168,7 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 1.44
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -644,8 +645,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494142459577088571}
-  m_LocalRotation: {x: 0.00018919464, y: 0.99770164, z: 0.06770291, w: -0.002787972}
-  m_LocalPosition: {x: -1.8647082, y: 0.05, z: 0.84341025}
+  m_LocalRotation: {x: 0.0028146154, y: 0.013352677, z: -0.00003758778, w: 0.9999069}
+  m_LocalPosition: {x: -0.8918831, y: 3.153704, z: 18.126074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7812541190771243075}
@@ -1000,15 +1001,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3566983389207193901}
-  m_LocalRotation: {x: 0.54013497, y: 0.4747723, z: 0.42899516, w: 0.5466339}
-  m_LocalPosition: {x: -12.41, y: 2.7, z: 33.46}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalRotation: {x: 0, y: 0.7424437, z: 0, w: 0.6699085}
+  m_LocalPosition: {x: -0.12, y: 2.98, z: 32.66}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4056332609833738993}
   - {fileID: 1830994815176213620}
   m_Father: {fileID: 7326004073740038785}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 10.554001, y: 92, z: 87.176}
+  m_LocalEulerAnglesHint: {x: 0, y: 95.88, z: 0}
 --- !u!23 &1212475179679556588
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1102,7 +1103,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8617402330961685769}
-  m_Mesh: {fileID: -2432090755550338912, guid: b58a3a2f06d2b784eb9b69ce8e8d690b, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 4f44a7e0a0328da41ae8cd3d09ae3265, type: 3}
 --- !u!4 &3399974180795207972
 Transform:
   m_ObjectHideFlags: 0
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -1448,7 +1450,7 @@ VisualEffect:
       - m_Value: 5
         m_Name: expansionRadius
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.02
         m_Name: camvariableParticleSize
         m_Overridden: 1
       - m_Value: 10
@@ -1458,7 +1460,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -1.8647082, y: 0.05, z: 0.84341025}
+      - m_Value: {x: -0.8918831, y: 3.153704, z: 18.126074}
         m_Name: camPos
         m_Overridden: 1
     m_Vector4f:
@@ -1500,7 +1502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4056332609937830185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 0, z: 3.03}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4056332609833738993}
@@ -1685,6 +1687,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.1
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 10
   blendOperator: 1
   normalInfluence: 1
@@ -2082,6 +2085,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.2
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1.5
   blendOperator: 1
   normalInfluence: 1
@@ -2978,6 +2982,7 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 0.2
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1
   blendOperator: 1
   normalInfluence: 1
@@ -3031,6 +3036,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1.28
   blendOperator: 3
   normalInfluence: 1
@@ -3059,7 +3065,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8279378571027106806}
-  m_LocalRotation: {x: 0.00018919464, y: 0.99770164, z: 0.06770291, w: -0.002787972}
+  m_LocalRotation: {x: 0.0028146154, y: 0.013352677, z: -0.00003758778, w: 0.9999069}
   m_LocalPosition: {x: -3.8529623, y: 1.5600257, z: 9.291866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
