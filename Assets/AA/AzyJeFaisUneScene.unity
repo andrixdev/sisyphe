@@ -435,7 +435,7 @@ Transform:
   m_GameObject: {fileID: 414245278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -767,7 +767,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.8
+      - m_Value: 0.6
         m_Name: camvariableParticleSize
         m_Overridden: 1
       - m_Value: 50
@@ -810,7 +810,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightHand_angles
         m_Overridden: 1
-      - m_Value: {x: -0.09944349, y: 0.15106374, z: 1.1543865}
+      - m_Value: {x: -1.9888698, y: 3.0212748, z: 23.08773}
         m_Name: rightHand_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -819,7 +819,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightElbow_angles
         m_Overridden: 1
-      - m_Value: {x: -0.19564101, y: 0.15063216, z: 1.3751538}
+      - m_Value: {x: -3.9128203, y: 3.012643, z: 27.503075}
         m_Name: rightElbow_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -828,7 +828,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightShoulder_angles
         m_Overridden: 1
-      - m_Value: {x: -0.101329006, y: 0.38257998, z: 1.5626732}
+      - m_Value: {x: -2.02658, y: 7.6516, z: 31.253464}
         m_Name: rightShoulder_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -846,7 +846,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: spineMid_angles
         m_Overridden: 1
-      - m_Value: {x: 0.077329494, y: 0.23518187, z: 1.5532153}
+      - m_Value: {x: 1.5465899, y: 4.703637, z: 31.064304}
         m_Name: spineMid_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -855,7 +855,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: spineShoulder_angles
         m_Overridden: 1
-      - m_Value: {x: 0.076151386, y: 0.4841774, z: 1.5751567}
+      - m_Value: {x: 1.5230277, y: 9.683548, z: 31.503134}
         m_Name: spineShoulder_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -864,7 +864,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: head_angles
         m_Overridden: 1
-      - m_Value: {x: 0.06307755, y: 0.7125044, z: 1.6149421}
+      - m_Value: {x: 1.2615509, y: 14.250088, z: 32.298843}
         m_Name: head_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -873,7 +873,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftElbow_angles
         m_Overridden: 1
-      - m_Value: {x: 0.2873116, y: 0.2776291, z: 1.1699616}
+      - m_Value: {x: 5.746232, y: 5.5525823, z: 23.399231}
         m_Name: leftElbow_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -882,7 +882,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftFoot_angles
         m_Overridden: 1
-      - m_Value: {x: 0.262, y: -0.321, z: 1.615}
+      - m_Value: {x: 5.24, y: -6.42, z: 32.3}
         m_Name: leftFoot_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -891,7 +891,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftHand_angles
         m_Overridden: 1
-      - m_Value: {x: 0.18871756, y: 0.47401494, z: 0.9706261}
+      - m_Value: {x: 3.7743511, y: 9.480299, z: 19.412521}
         m_Name: leftHand_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -900,7 +900,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftHip_angles
         m_Overridden: 1
-      - m_Value: {x: 0.15793648, y: -0.107148096, z: 1.4646883}
+      - m_Value: {x: 3.1587296, y: -2.142962, z: 29.293766}
         m_Name: leftHip_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -909,7 +909,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftKnee_angles
         m_Overridden: 1
-      - m_Value: {x: 0.25167942, y: -0.27681735, z: 1.2449343}
+      - m_Value: {x: 5.0335884, y: -5.536347, z: 24.898685}
         m_Name: leftKnee_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -918,7 +918,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: leftShoulder_angles
         m_Overridden: 1
-      - m_Value: {x: 0.19203019, y: 0.37771404, z: 1.4516807}
+      - m_Value: {x: 3.8406038, y: 7.5542808, z: 29.033613}
         m_Name: leftShoulder_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -927,7 +927,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightFoot_angles
         m_Overridden: 1
-      - m_Value: {x: -0.12190912, y: -0.356, z: 1.528}
+      - m_Value: {x: -2.4381824, y: -7.12, z: 30.56}
         m_Name: rightFoot_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -936,7 +936,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightHip_angles
         m_Overridden: 1
-      - m_Value: {x: -0.004999868, y: -0.11218682, z: 1.486509}
+      - m_Value: {x: -0.099997364, y: -2.2437363, z: 29.730179}
         m_Name: rightHip_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -945,13 +945,13 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: rightKnee_angles
         m_Overridden: 1
-      - m_Value: {x: -0.14853811, y: -0.33223155, z: 1.2212507}
+      - m_Value: {x: -2.9707623, y: -6.644631, z: 24.425013}
         m_Name: rightKnee_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: rightKnee_scale
         m_Overridden: 1
-      - m_Value: {x: -22.91, y: 0.9, z: -1.57}
+      - m_Value: {x: -1.9, y: 3.05, z: 29.29}
         m_Name: camPos
         m_Overridden: 1
     m_Vector4f:
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888183861}
-  m_LocalRotation: {x: 0.26663417, y: -0.23905087, z: 0.06845067, w: 0.93116885}
+  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
   m_LocalPosition: {x: 5.0803256, y: 8.149835, z: 9.344703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2956,24 +2956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 2619948348087239221}
-  - {fileID: 2619948348087239177}
-  - {fileID: 2619948348087239230}
-  - {fileID: 2619948348087239183}
-  - {fileID: 2619948348087239217}
-  - {fileID: 2619948348087239220}
-  - {fileID: 2619948348087239231}
-  - {fileID: 2619948348087239179}
-  - {fileID: 2619948348087239222}
-  - {fileID: 2619948348087239216}
-  - {fileID: 2619948348087239182}
-  - {fileID: 2619948348087239176}
-  - {fileID: 2619948348087239170}
-  - {fileID: 2619948348087239228}
-  - {fileID: 2619948348087239223}
-  - {fileID: 2619948348087239219}
-  - {fileID: 2619948348087239218}
+  m_Bindings: []
   m_VisualEffect: {fileID: 2619948348087239178}
 --- !u!73398921 &2619948348087239181
 VFXRenderer:
@@ -4903,7 +4886,7 @@ Transform:
   m_GameObject: {fileID: 4034371721644646843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 4034371721005368268}
   - {fileID: 4034371721515071960}
@@ -5517,7 +5500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035533066322258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.91, y: 0.9, z: -1.57}
+  m_LocalPosition: {x: -1.9, y: 3.05, z: 29.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4621035534996775113}
@@ -5664,8 +5647,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035534996775112}
-  m_LocalRotation: {x: 0.26663417, y: -0.23905087, z: 0.06845067, w: 0.93116885}
-  m_LocalPosition: {x: 24.289999, y: 15.249681, z: 12.91}
+  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
+  m_LocalPosition: {x: 3.28, y: 13.099681, z: -17.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4621035533066322262}
@@ -7221,7 +7204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &8021358085529117330
 MeshFilter:
   m_ObjectHideFlags: 0
