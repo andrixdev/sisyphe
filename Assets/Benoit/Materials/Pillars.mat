@@ -123,12 +123,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Metallic: 0.192
+    - Metallic: 0.196
     - NormalScale: 1
     - NormalStrength: 2
-    - RimIntensity: 0.02
+    - RimIntensity: 0
     - RimPower: 1.99
-    - Smoothness: 0.327
+    - Smoothness: 0.381
     - TriplanarBlend: 1
     - TriplanarTile: 2
     - Vector1_F4E1AA46: 1
