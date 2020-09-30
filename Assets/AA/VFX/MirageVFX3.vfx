@@ -872,9 +872,9 @@ VisualEffectResource:
       1\n#define VFX_USE_POSITION_CURRENT 1\n#define VFX_USE_VELOCITY_CURRENT 1\n#define
       VFX_USE_ALIVE_CURRENT 1\n#define VFX_USE_AGE_CURRENT 1\n#define VFX_LOCAL_SPACE
       1\n#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXDefines.hlsl\"\n\n\r\nCBUFFER_START(parameters)\n   
-      float3 Box_center_b;\n    float A_a;\n    float3 Box_size_b;\n    float B_a;\nCBUFFER_END\n\nstruct
-      Attributes\n{\n    float lifetime;\n    uint seed;\n    float3 position;\n   
-      float3 velocity;\n    bool alive;\n    float age;\n};\n\nstruct SourceAttributes\n{\n};\n\n\n\r\n\r\n#define
+      float3 Box_size_b;\n    uint PADDING_0;\nCBUFFER_END\n\nstruct Attributes\n{\n   
+      float lifetime;\n    uint seed;\n    float3 position;\n    float3 velocity;\n   
+      bool alive;\n    float age;\n};\n\nstruct SourceAttributes\n{\n};\n\n\n\r\n\r\n#define
       USE_DEAD_LIST (VFX_USE_ALIVE_CURRENT && !HAS_STRIPS)\r\n\r\nRWByteAddressBuffer
       attributeBuffer;\r\nByteAddressBuffer sourceAttributeBuffer;\r\n\r\nCBUFFER_START(initParams)\r\n#if
       !VFX_USE_SPAWNER_FROM_GPU\r\n    uint nbSpawned;\t\t\t\t\t// Numbers of particle
@@ -930,9 +930,10 @@ VisualEffectResource:
       return;\r\n\r\n        const StripData stripData = GetStripDataFromStripIndex(stripIndex,
       PARTICLE_PER_STRIP_COUNT);\r\n\t\tInitStripAttributes(particleIndex, attributes,
       stripData);\r\n\t\t// TODO Change seed to be sure we're deterministic on random
-      with strip\r\n#endif\r\n        \r\n        SetAttribute_F01429A3( /*inout
-      */attributes.lifetime,  /*inout */attributes.seed, A_a, B_a);\n        PositionAABox_18D(
-      /*inout */attributes.position,  /*inout */attributes.seed, Box_center_b, Box_size_b);\n       
+      with strip\r\n#endif\r\n        \r\n        {\n            SetAttribute_F01429A3(
+      /*inout */attributes.lifetime,  /*inout */attributes.seed, (float)10, (float)10);\n       
+      }\n        {\n            PositionAABox_18D( /*inout */attributes.position, 
+      /*inout */attributes.seed, float3(0, 0, 0), Box_size_b);\n        }\n       
       \n\r\n\t\t\r\n#if VFX_USE_ALIVE_CURRENT\r\n        if (attributes.alive)\r\n#endif      
       \r\n        {\r\n#if USE_DEAD_LIST\r\n\t        uint deadIndex = deadListIn.DecrementCounter();\r\n           
       uint index = deadListIn[deadIndex];\r\n#else\r\n            uint index = particleIndex;\r\n#endif\r\n           
@@ -950,26 +951,8 @@ VisualEffectResource:
       1\n#define VFX_USE_VELOCITY_CURRENT 1\n#define VFX_USE_MASS_CURRENT 1\n#define
       VFX_USE_ALIVE_CURRENT 1\n#define VFX_USE_AGE_CURRENT 1\n#define VFX_LOCAL_SPACE
       1\n#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXDefines.hlsl\"\n\n\r\nCBUFFER_START(parameters)\n   
-      float4x4 InvFieldTransform_b;\n    float4x4 FieldTransform_b;\n    float3 Force_a;\n   
-      float deltaTime_a;\n    float3 uniform_cf;\n    float Intensity_b;\n    float3
-      uniform_cg;\n    float Drag_b;\n    float frequency_b;\n    float octaves_b;\n   
-      float roughness_b;\n    float lacunarity_b;\n    float dragCoefficient_c;\n   
-      float uniform_a;\n    float uniform_b;\n    float uniform_c;\n    float uniform_d;\n   
-      float uniform_e;\n    float uniform_f;\n    float uniform_g;\n    float uniform_h;\n   
-      float uniform_i;\n    float uniform_j;\n    float uniform_k;\n    float uniform_l;\n   
-      float uniform_m;\n    float uniform_n;\n    float uniform_o;\n    float uniform_p;\n   
-      float uniform_q;\n    float uniform_r;\n    float uniform_s;\n    float uniform_t;\n   
-      float uniform_u;\n    float uniform_v;\n    float uniform_w;\n    float uniform_x;\n   
-      float uniform_y;\n    float uniform_z;\n    float uniform_ba;\n    float uniform_bb;\n   
-      float uniform_bc;\n    float uniform_bd;\n    float uniform_be;\n    float
-      uniform_bf;\n    float uniform_bg;\n    float uniform_bh;\n    float uniform_bi;\n   
-      float uniform_bj;\n    float uniform_bk;\n    float uniform_bl;\n    float
-      uniform_bm;\n    float uniform_bn;\n    float uniform_bo;\n    float uniform_bp;\n   
-      float uniform_bq;\n    float uniform_br;\n    float uniform_bs;\n    float
-      uniform_bt;\n    float uniform_bu;\n    float uniform_bv;\n    float uniform_bw;\n   
-      float uniform_bx;\n    float uniform_by;\n    float uniform_bz;\n    float
-      uniform_ca;\n    float uniform_cb;\n    float uniform_cc;\n    float uniform_cd;\n   
-      float uniform_ce;\n    uint2 PADDING_0;\nCBUFFER_END\n\nstruct Attributes\n{\n   
+      float3 uniform_c;\n    float deltaTime_a;\n    float uniform_a;\n    float
+      uniform_b;\n    uint2 PADDING_0;\nCBUFFER_END\n\nstruct Attributes\n{\n   
       float lifetime;\n    float3 position;\n    float3 velocity;\n    float mass;\n   
       bool alive;\n    float age;\n};\n\nstruct SourceAttributes\n{\n};\n\n\n\r\n\r\n#define
       USE_DEAD_LIST (VFX_USE_ALIVE_CURRENT && !HAS_STRIPS)\r\n\r\nRWByteAddressBuffer
@@ -1012,117 +995,105 @@ VisualEffectResource:
       Initialize built-in needed attributes\r\n#if VFX_USE_OLDPOSITION_CURRENT\r\n\t\t\tattributes.oldPosition
       = attributes.position;\r\n#endif\r\n#if HAS_STRIPS\r\n            const StripData
       stripData = GetStripDataFromParticleIndex(index, PARTICLE_PER_STRIP_COUNT);\r\n           
-      InitStripAttributes(index, attributes, stripData);\r\n#endif\r\n\t\t\t\r\n\t\t\tGravity(
-      /*inout */attributes.velocity, Force_a, deltaTime_a);\n\t\t\tTurbulence_18D(attributes.position, 
-      /*inout */attributes.velocity, attributes.mass, InvFieldTransform_b, FieldTransform_b,
-      Intensity_b, Drag_b, frequency_b, asint(octaves_b), roughness_b, lacunarity_b,
-      deltaTime_a);\n\t\t\tDrag_0( /*inout */attributes.velocity, attributes.mass,
-      dragCoefficient_c, deltaTime_a);\n\t\t\t{\n\t\t\t    float tmp_dp = attributes.position[0];\n\t\t\t   
-      float tmp_dq = tmp_dp / uniform_a;\n\t\t\t    float tmp_dr = frac(tmp_dq);\n\t\t\t   
-      float tmp_ds = tmp_dr * uniform_a;\n\t\t\t    float tmp_dt = floor(tmp_dq);\n\t\t\t   
-      float tmp_du = tmp_dt / uniform_b;\n\t\t\t    float tmp_dv = attributes.position[1];\n\t\t\t   
-      float tmp_dw = tmp_dv / uniform_c;\n\t\t\t    float tmp_dx = floor(tmp_dw);\n\t\t\t   
-      float tmp_dy = tmp_dx / uniform_d;\n\t\t\t    float tmp_dz = tmp_du + tmp_dy;\n\t\t\t   
-      float tmp_ea = tmp_dz / uniform_e;\n\t\t\t    float tmp_eb = frac(tmp_ea);\n\t\t\t   
-      float tmp_ec = tmp_eb * uniform_e;\n\t\t\t    float tmp_ed = tmp_ds - tmp_ec;\n\t\t\t   
-      float tmp_ee = sign(tmp_ed);\n\t\t\t    float tmp_ef = (float)-1 * tmp_ee;\n\t\t\t   
-      float tmp_eg = tmp_ef * uniform_f;\n\t\t\t    float tmp_eh = attributes.position[2];\n\t\t\t   
-      float tmp_ei = tmp_eh / uniform_h;\n\t\t\t    float tmp_ej = frac(tmp_ei);\n\t\t\t   
-      float tmp_ek = tmp_ej * uniform_h;\n\t\t\t    float tmp_el = floor(tmp_ei);\n\t\t\t   
-      float tmp_em = tmp_el / uniform_i;\n\t\t\t    float tmp_en = tmp_dy + tmp_em;\n\t\t\t   
-      float tmp_eo = tmp_en / uniform_j;\n\t\t\t    float tmp_ep = frac(tmp_eo);\n\t\t\t   
-      float tmp_eq = tmp_ep * uniform_j;\n\t\t\t    float tmp_er = tmp_ek - tmp_eq;\n\t\t\t   
-      float tmp_es = sign(tmp_er);\n\t\t\t    float tmp_et = (float)-1 * tmp_es;\n\t\t\t   
-      float tmp_eu = tmp_et * uniform_f;\n\t\t\t    float3 tmp_ev = float3(tmp_eg,
-      uniform_g, tmp_eu);\n\t\t\t    Force_0( /*inout */attributes.velocity, attributes.mass,
-      tmp_ev, deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t    float tmp_do = attributes.position[0];\n\t\t\t   
-      float tmp_dp = tmp_do / uniform_l;\n\t\t\t    float tmp_dq = frac(tmp_dp);\n\t\t\t   
-      float tmp_dr = tmp_dq * uniform_l;\n\t\t\t    float tmp_dt = attributes.position[2];\n\t\t\t   
-      float tmp_du = tmp_dt / uniform_l;\n\t\t\t    float tmp_dv = frac(tmp_du);\n\t\t\t   
-      float tmp_dw = tmp_dv * uniform_l;\n\t\t\t    float tmp_dx = tmp_dw / uniform_l;\n\t\t\t   
-      float tmp_dy = (float)1 - tmp_dx;\n\t\t\t    float tmp_dz = min(tmp_dy, tmp_dx);\n\t\t\t   
-      float tmp_ea = uniform_l * tmp_dz;\n\t\t\t    bool tmp_eb = tmp_dr <= tmp_ea;\n\t\t\t   
-      float tmp_ec = attributes.position[1];\n\t\t\t    float tmp_ed = tmp_ec / uniform_l;\n\t\t\t   
-      float tmp_ee = frac(tmp_ed);\n\t\t\t    float tmp_ef = tmp_ee * uniform_l;\n\t\t\t   
-      float tmp_eg = tmp_dz * uniform_l;\n\t\t\t    bool tmp_eh = tmp_ef <= tmp_eg;\n\t\t\t   
-      bool tmp_ei = tmp_eb && tmp_eh;\n\t\t\t    float tmp_ej = tmp_ei ? uniform_m
-      : uniform_n;\n\t\t\t    float3 tmp_ek = float3(tmp_ej, tmp_ej, tmp_ej);\n\t\t\t   
-      float3 tmp_el = float3(tmp_dr, tmp_ef, tmp_dw);\n\t\t\t    float3 tmp_em =
-      float3(uniform_o, uniform_p, tmp_dw);\n\t\t\t    float3 tmp_en = tmp_el - tmp_em;\n\t\t\t   
-      float3 tmp_eo = tmp_ek * tmp_en;\n\t\t\t    float tmp_ep = uniform_l - tmp_eg;\n\t\t\t   
-      bool tmp_eq = tmp_ef > tmp_ep;\n\t\t\t    bool tmp_er = tmp_eb && tmp_eq;\n\t\t\t   
-      float tmp_es = tmp_er ? uniform_q : uniform_r;\n\t\t\t    float3 tmp_et = float3(tmp_es,
-      tmp_es, tmp_es);\n\t\t\t    float3 tmp_eu = float3(uniform_s, uniform_l, tmp_dw);\n\t\t\t   
-      float3 tmp_ev = tmp_el - tmp_eu;\n\t\t\t    float3 tmp_ew = tmp_et * tmp_ev;\n\t\t\t   
-      float3 tmp_ex = tmp_eo + tmp_ew;\n\t\t\t    float tmp_ey = uniform_l - tmp_ea;\n\t\t\t   
-      bool tmp_ez = tmp_dr > tmp_ey;\n\t\t\t    bool tmp_fa = tmp_ez && tmp_eq;\n\t\t\t   
-      float tmp_fb = tmp_fa ? uniform_t : uniform_u;\n\t\t\t    float3 tmp_fc = float3(tmp_fb,
-      tmp_fb, tmp_fb);\n\t\t\t    float3 tmp_fd = float3(uniform_l, uniform_l, tmp_dw);\n\t\t\t   
-      float3 tmp_fe = tmp_el - tmp_fd;\n\t\t\t    float3 tmp_ff = tmp_fc * tmp_fe;\n\t\t\t   
-      float3 tmp_fg = tmp_ex + tmp_ff;\n\t\t\t    bool tmp_fh = tmp_ez && tmp_eh;\n\t\t\t   
-      float tmp_fi = tmp_fh ? uniform_v : uniform_w;\n\t\t\t    float3 tmp_fj = float3(tmp_fi,
-      tmp_fi, tmp_fi);\n\t\t\t    float3 tmp_fk = float3(uniform_l, uniform_x, tmp_dw);\n\t\t\t   
-      float3 tmp_fl = tmp_el - tmp_fk;\n\t\t\t    float3 tmp_fm = tmp_fj * tmp_fl;\n\t\t\t   
-      float3 tmp_fn = tmp_fg + tmp_fm;\n\t\t\t    bool tmp_fo = tmp_ef > tmp_eg;\n\t\t\t   
-      bool tmp_fp = tmp_ef <= tmp_ep;\n\t\t\t    bool tmp_fq = tmp_fo && tmp_fp;\n\t\t\t   
-      float tmp_fr = tmp_ef / uniform_l;\n\t\t\t    float tmp_fs = tmp_dr / uniform_l;\n\t\t\t   
-      float tmp_ft = tmp_fr - tmp_fs;\n\t\t\t    bool tmp_fu = tmp_ft > uniform_y;\n\t\t\t   
-      bool tmp_fv = tmp_fq && tmp_fu;\n\t\t\t    float tmp_fw = tmp_fs + tmp_fr;\n\t\t\t   
-      bool tmp_fx = tmp_fw <= uniform_z;\n\t\t\t    bool tmp_fy = tmp_fv && tmp_fx;\n\t\t\t   
-      bool tmp_fz = tmp_dw < uniform_ba;\n\t\t\t    bool tmp_ga = tmp_fy && tmp_fz;\n\t\t\t   
-      float tmp_gb = tmp_ga ? uniform_bb : uniform_bc;\n\t\t\t    float3 tmp_gc =
-      float3(tmp_gb, tmp_gb, tmp_gb);\n\t\t\t    float3 tmp_gd = float3(uniform_bd,
-      tmp_ef, uniform_be);\n\t\t\t    float3 tmp_ge = tmp_el - tmp_gd;\n\t\t\t   
-      float3 tmp_gf = tmp_gc * tmp_ge;\n\t\t\t    float3 tmp_gg = tmp_fn + tmp_gf;\n\t\t\t   
-      bool tmp_gh = !tmp_fz;\n\t\t\t    bool tmp_gi = tmp_fy && tmp_gh;\n\t\t\t   
-      float tmp_gj = tmp_gi ? uniform_bf : uniform_bg;\n\t\t\t    float3 tmp_gk =
-      float3(tmp_gj, tmp_gj, tmp_gj);\n\t\t\t    float3 tmp_gl = float3(uniform_bh,
-      tmp_ef, uniform_l);\n\t\t\t    float3 tmp_gm = tmp_el - tmp_gl;\n\t\t\t   
-      float3 tmp_gn = tmp_gk * tmp_gm;\n\t\t\t    float3 tmp_go = tmp_gg + tmp_gn;\n\t\t\t   
-      bool tmp_gp = tmp_dr > tmp_ea;\n\t\t\t    bool tmp_gq = tmp_dr <= tmp_ey;\n\t\t\t   
-      bool tmp_gr = tmp_gp && tmp_gq;\n\t\t\t    bool tmp_gs = tmp_ft > uniform_bi;\n\t\t\t   
-      bool tmp_gt = tmp_gr && tmp_gs;\n\t\t\t    bool tmp_gu = tmp_fw > uniform_bj;\n\t\t\t   
-      bool tmp_gv = tmp_gt && tmp_gu;\n\t\t\t    bool tmp_gw = tmp_dw <= uniform_ba;\n\t\t\t   
-      bool tmp_gx = tmp_gv && tmp_gw;\n\t\t\t    float tmp_gy = tmp_gx ? uniform_bk
-      : uniform_bl;\n\t\t\t    float3 tmp_gz = float3(tmp_gy, tmp_gy, tmp_gy);\n\t\t\t   
-      float3 tmp_ha = float3(tmp_dr, uniform_l, uniform_bm);\n\t\t\t    float3 tmp_hb
-      = tmp_el - tmp_ha;\n\t\t\t    float3 tmp_hc = tmp_gz * tmp_hb;\n\t\t\t    float3
-      tmp_hd = tmp_go + tmp_hc;\n\t\t\t    bool tmp_he = !tmp_gw;\n\t\t\t    bool
-      tmp_hf = tmp_gv && tmp_he;\n\t\t\t    float tmp_hg = tmp_hf ? uniform_bn :
-      uniform_bo;\n\t\t\t    float3 tmp_hh = float3(tmp_hg, tmp_hg, tmp_hg);\n\t\t\t   
-      float3 tmp_hi = float3(tmp_dr, uniform_l, uniform_l);\n\t\t\t    float3 tmp_hj
-      = tmp_el - tmp_hi;\n\t\t\t    float3 tmp_hk = tmp_hh * tmp_hj;\n\t\t\t    float3
-      tmp_hl = tmp_hd + tmp_hk;\n\t\t\t    bool tmp_hm = tmp_ft <= uniform_bp;\n\t\t\t   
-      bool tmp_hn = tmp_fq && tmp_hm;\n\t\t\t    bool tmp_ho = tmp_fw > uniform_bq;\n\t\t\t   
-      bool tmp_hp = tmp_hn && tmp_ho;\n\t\t\t    bool tmp_hq = tmp_hp && tmp_gw;\n\t\t\t   
-      float tmp_hr = tmp_hq ? uniform_br : uniform_bs;\n\t\t\t    float3 tmp_hs =
-      float3(tmp_hr, tmp_hr, tmp_hr);\n\t\t\t    float3 tmp_ht = float3(uniform_l,
-      tmp_ef, uniform_bt);\n\t\t\t    float3 tmp_hu = tmp_el - tmp_ht;\n\t\t\t   
-      float3 tmp_hv = tmp_hs * tmp_hu;\n\t\t\t    float3 tmp_hw = tmp_hl + tmp_hv;\n\t\t\t   
-      bool tmp_hx = tmp_hp && tmp_he;\n\t\t\t    float tmp_hy = tmp_hx ? uniform_bu
-      : uniform_bv;\n\t\t\t    float3 tmp_hz = float3(tmp_hy, tmp_hy, tmp_hy);\n\t\t\t   
-      float3 tmp_ia = float3(uniform_l, tmp_ef, uniform_l);\n\t\t\t    float3 tmp_ib
-      = tmp_el - tmp_ia;\n\t\t\t    float3 tmp_ic = tmp_hz * tmp_ib;\n\t\t\t    float3
-      tmp_id = tmp_hw + tmp_ic;\n\t\t\t    bool tmp_ie = tmp_ft <= uniform_bw;\n\t\t\t   
-      bool tmp_if = tmp_gr && tmp_ie;\n\t\t\t    bool tmp_ig = tmp_fw <= uniform_bx;\n\t\t\t   
-      bool tmp_ih = tmp_if && tmp_ig;\n\t\t\t    bool tmp_ii = tmp_ih && tmp_gw;\n\t\t\t   
-      float tmp_ij = tmp_ii ? uniform_by : uniform_bz;\n\t\t\t    float3 tmp_ik =
-      float3(tmp_ij, tmp_ij, tmp_ij);\n\t\t\t    float3 tmp_il = float3(tmp_dr, uniform_ca,
-      uniform_cb);\n\t\t\t    float3 tmp_im = tmp_el - tmp_il;\n\t\t\t    float3
-      tmp_in = tmp_ik * tmp_im;\n\t\t\t    float3 tmp_io = tmp_id + tmp_in;\n\t\t\t   
-      bool tmp_ip = tmp_ih && tmp_he;\n\t\t\t    float tmp_iq = tmp_ip ? uniform_cc
-      : uniform_cd;\n\t\t\t    float3 tmp_ir = float3(tmp_iq, tmp_iq, tmp_iq);\n\t\t\t   
-      float3 tmp_is = float3(tmp_dr, uniform_ce, uniform_l);\n\t\t\t    float3 tmp_it
-      = tmp_el - tmp_is;\n\t\t\t    float3 tmp_iu = tmp_ir * tmp_it;\n\t\t\t    float3
-      tmp_iv = tmp_io + tmp_iu;\n\t\t\t    float3 tmp_iw = tmp_iv * tmp_iv;\n\t\t\t   
-      float tmp_ix = tmp_iw[2];\n\t\t\t    float tmp_iy = tmp_iw[1];\n\t\t\t    float
-      tmp_iz = tmp_ix + tmp_iy;\n\t\t\t    float tmp_ja = tmp_iw[0];\n\t\t\t    float
-      tmp_jb = tmp_iz + tmp_ja;\n\t\t\t    float tmp_jd = pow(tmp_jb, (float)0.5);\n\t\t\t   
-      float tmp_je = (float)1 / tmp_jd;\n\t\t\t    float3 tmp_jf = float3(tmp_je,
-      tmp_je, tmp_je);\n\t\t\t    float3 tmp_jg = tmp_iv * tmp_jf;\n\t\t\t    float3
-      tmp_jh = (bool)asuint(uniform_k) ? tmp_iv : tmp_jg;\n\t\t\t    float3 tmp_ji
-      = tmp_jh * uniform_cf;\n\t\t\t    float3 tmp_jj = tmp_ji * uniform_cg;\n\t\t\t   
-      Force_0( /*inout */attributes.velocity, attributes.mass, tmp_jj, deltaTime_a);\n\t\t\t}\n\t\t\tEulerIntegration(
+      InitStripAttributes(index, attributes, stripData);\r\n#endif\r\n\t\t\t\r\n\t\t\t{\n\t\t\t   
+      Gravity( /*inout */attributes.velocity, float3(0, 1, 0), deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t   
+      Turbulence_18D(attributes.position,  /*inout */attributes.velocity, attributes.mass,
+      float4x4(0.25,0,0,0,0,0.25,0,0,0,0,0.25,0,0,0,0,1), float4x4(4,0,0,0,0,4,0,0,0,0,4,0,0,0,0,1),
+      (float)0.699999988, (float)5, (float)0.25, (int)4, (float)0.5, (float)2, deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t   
+      Drag_0( /*inout */attributes.velocity, attributes.mass, (float)5, deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t   
+      float tmp_bb = attributes.position[0];\n\t\t\t    float tmp_bd = tmp_bb / (float)0.5;\n\t\t\t   
+      float tmp_be = frac(tmp_bd);\n\t\t\t    float tmp_bf = tmp_be * (float)0.5;\n\t\t\t   
+      float tmp_bg = floor(tmp_bd);\n\t\t\t    float tmp_bi = tmp_bg / (float)3.03360415;\n\t\t\t   
+      float tmp_bj = attributes.position[1];\n\t\t\t    float tmp_bl = tmp_bj / (float)0.100000001;\n\t\t\t   
+      float tmp_bm = floor(tmp_bl);\n\t\t\t    float tmp_bo = tmp_bm / (float)2.35153627;\n\t\t\t   
+      float tmp_bp = tmp_bi + tmp_bo;\n\t\t\t    float tmp_bq = frac(tmp_bp);\n\t\t\t   
+      float tmp_br = tmp_bf - tmp_bq;\n\t\t\t    float tmp_bs = sign(tmp_br);\n\t\t\t   
+      float tmp_bt = (float)-1 * tmp_bs;\n\t\t\t    float tmp_bv = tmp_bt * (float)1.71000004;\n\t\t\t   
+      float tmp_bx = attributes.position[2];\n\t\t\t    float tmp_bz = tmp_bx / (float)0.699999988;\n\t\t\t   
+      float tmp_ca = frac(tmp_bz);\n\t\t\t    float tmp_cb = tmp_ca * (float)0.699999988;\n\t\t\t   
+      float tmp_cc = floor(tmp_bz);\n\t\t\t    float tmp_ce = tmp_cc / (float)4.83541393;\n\t\t\t   
+      float tmp_cf = tmp_bo + tmp_ce;\n\t\t\t    float tmp_cg = frac(tmp_cf);\n\t\t\t   
+      float tmp_ch = tmp_cb - tmp_cg;\n\t\t\t    float tmp_ci = sign(tmp_ch);\n\t\t\t   
+      float tmp_cj = (float)-1 * tmp_ci;\n\t\t\t    float tmp_ck = tmp_cj * (float)1.71000004;\n\t\t\t   
+      float3 tmp_cl = float3(tmp_bv, (float)0, tmp_ck);\n\t\t\t    Force_0( /*inout
+      */attributes.velocity, attributes.mass, tmp_cl, deltaTime_a);\n\t\t\t}\n\t\t\t{\n\t\t\t   
+      float tmp_ba = attributes.position[0];\n\t\t\t    float tmp_bb = tmp_ba / uniform_a;\n\t\t\t   
+      float tmp_bc = frac(tmp_bb);\n\t\t\t    float tmp_bd = tmp_bc * uniform_a;\n\t\t\t   
+      float tmp_bf = attributes.position[2];\n\t\t\t    float tmp_bg = tmp_bf / uniform_a;\n\t\t\t   
+      float tmp_bh = frac(tmp_bg);\n\t\t\t    float tmp_bi = tmp_bh * uniform_a;\n\t\t\t   
+      float tmp_bj = tmp_bi / uniform_a;\n\t\t\t    float tmp_bk = (float)1 - tmp_bj;\n\t\t\t   
+      float tmp_bl = min(tmp_bk, tmp_bj);\n\t\t\t    float tmp_bm = uniform_a * tmp_bl;\n\t\t\t   
+      bool tmp_bn = tmp_bd <= tmp_bm;\n\t\t\t    float tmp_bo = attributes.position[1];\n\t\t\t   
+      float tmp_bp = tmp_bo / uniform_a;\n\t\t\t    float tmp_bq = frac(tmp_bp);\n\t\t\t   
+      float tmp_br = tmp_bq * uniform_a;\n\t\t\t    float tmp_bs = tmp_bl * uniform_a;\n\t\t\t   
+      bool tmp_bt = tmp_br <= tmp_bs;\n\t\t\t    bool tmp_bu = tmp_bn && tmp_bt;\n\t\t\t   
+      float tmp_bw = tmp_bu ? (float)1 : (float)0;\n\t\t\t    float3 tmp_bx = float3(tmp_bw,
+      tmp_bw, tmp_bw);\n\t\t\t    float3 tmp_by = float3(tmp_bd, tmp_br, tmp_bi);\n\t\t\t   
+      float3 tmp_bz = float3((float)0, (float)0, tmp_bi);\n\t\t\t    float3 tmp_ca
+      = tmp_by - tmp_bz;\n\t\t\t    float3 tmp_cb = tmp_bx * tmp_ca;\n\t\t\t    float
+      tmp_cc = uniform_a - tmp_bs;\n\t\t\t    bool tmp_cd = tmp_br > tmp_cc;\n\t\t\t   
+      bool tmp_ce = tmp_bn && tmp_cd;\n\t\t\t    float tmp_cf = tmp_ce ? (float)1
+      : (float)0;\n\t\t\t    float3 tmp_cg = float3(tmp_cf, tmp_cf, tmp_cf);\n\t\t\t   
+      float3 tmp_ch = float3((float)0, uniform_a, tmp_bi);\n\t\t\t    float3 tmp_ci
+      = tmp_by - tmp_ch;\n\t\t\t    float3 tmp_cj = tmp_cg * tmp_ci;\n\t\t\t    float3
+      tmp_ck = tmp_cb + tmp_cj;\n\t\t\t    float tmp_cl = uniform_a - tmp_bm;\n\t\t\t   
+      bool tmp_cm = tmp_bd > tmp_cl;\n\t\t\t    bool tmp_cn = tmp_cm && tmp_cd;\n\t\t\t   
+      float tmp_co = tmp_cn ? (float)1 : (float)0;\n\t\t\t    float3 tmp_cp = float3(tmp_co,
+      tmp_co, tmp_co);\n\t\t\t    float3 tmp_cq = float3(uniform_a, uniform_a, tmp_bi);\n\t\t\t   
+      float3 tmp_cr = tmp_by - tmp_cq;\n\t\t\t    float3 tmp_cs = tmp_cp * tmp_cr;\n\t\t\t   
+      float3 tmp_ct = tmp_ck + tmp_cs;\n\t\t\t    bool tmp_cu = tmp_cm && tmp_bt;\n\t\t\t   
+      float tmp_cv = tmp_cu ? (float)1 : (float)0;\n\t\t\t    float3 tmp_cw = float3(tmp_cv,
+      tmp_cv, tmp_cv);\n\t\t\t    float3 tmp_cx = float3(uniform_a, (float)0, tmp_bi);\n\t\t\t   
+      float3 tmp_cy = tmp_by - tmp_cx;\n\t\t\t    float3 tmp_cz = tmp_cw * tmp_cy;\n\t\t\t   
+      float3 tmp_da = tmp_ct + tmp_cz;\n\t\t\t    bool tmp_db = tmp_br > tmp_bs;\n\t\t\t   
+      bool tmp_dc = tmp_br <= tmp_cc;\n\t\t\t    bool tmp_dd = tmp_db && tmp_dc;\n\t\t\t   
+      float tmp_de = tmp_br / uniform_a;\n\t\t\t    float tmp_df = tmp_bd / uniform_a;\n\t\t\t   
+      float tmp_dg = tmp_de - tmp_df;\n\t\t\t    bool tmp_dh = tmp_dg > (float)0;\n\t\t\t   
+      bool tmp_di = tmp_dd && tmp_dh;\n\t\t\t    float tmp_dj = tmp_df + tmp_de;\n\t\t\t   
+      bool tmp_dk = tmp_dj <= (float)1;\n\t\t\t    bool tmp_dl = tmp_di && tmp_dk;\n\t\t\t   
+      bool tmp_dm = tmp_bi < uniform_b;\n\t\t\t    bool tmp_dn = tmp_dl && tmp_dm;\n\t\t\t   
+      float tmp_do = tmp_dn ? (float)1 : (float)0;\n\t\t\t    float3 tmp_dp = float3(tmp_do,
+      tmp_do, tmp_do);\n\t\t\t    float3 tmp_dq = float3((float)0, tmp_br, (float)0);\n\t\t\t   
+      float3 tmp_dr = tmp_by - tmp_dq;\n\t\t\t    float3 tmp_ds = tmp_dp * tmp_dr;\n\t\t\t   
+      float3 tmp_dt = tmp_da + tmp_ds;\n\t\t\t    bool tmp_du = !tmp_dm;\n\t\t\t   
+      bool tmp_dv = tmp_dl && tmp_du;\n\t\t\t    float tmp_dw = tmp_dv ? (float)1
+      : (float)0;\n\t\t\t    float3 tmp_dx = float3(tmp_dw, tmp_dw, tmp_dw);\n\t\t\t   
+      float3 tmp_dy = float3((float)0, tmp_br, uniform_a);\n\t\t\t    float3 tmp_dz
+      = tmp_by - tmp_dy;\n\t\t\t    float3 tmp_ea = tmp_dx * tmp_dz;\n\t\t\t    float3
+      tmp_eb = tmp_dt + tmp_ea;\n\t\t\t    bool tmp_ec = tmp_bd > tmp_bm;\n\t\t\t   
+      bool tmp_ed = tmp_bd <= tmp_cl;\n\t\t\t    bool tmp_ee = tmp_ec && tmp_ed;\n\t\t\t   
+      bool tmp_ef = tmp_ee && tmp_dh;\n\t\t\t    bool tmp_eg = tmp_dj > (float)1;\n\t\t\t   
+      bool tmp_eh = tmp_ef && tmp_eg;\n\t\t\t    bool tmp_ei = tmp_bi <= uniform_b;\n\t\t\t   
+      bool tmp_ej = tmp_eh && tmp_ei;\n\t\t\t    float tmp_ek = tmp_ej ? (float)1
+      : (float)0;\n\t\t\t    float3 tmp_el = float3(tmp_ek, tmp_ek, tmp_ek);\n\t\t\t   
+      float3 tmp_em = float3(tmp_bd, uniform_a, (float)0);\n\t\t\t    float3 tmp_en
+      = tmp_by - tmp_em;\n\t\t\t    float3 tmp_eo = tmp_el * tmp_en;\n\t\t\t    float3
+      tmp_ep = tmp_eb + tmp_eo;\n\t\t\t    bool tmp_eq = !tmp_ei;\n\t\t\t    bool
+      tmp_er = tmp_eh && tmp_eq;\n\t\t\t    float tmp_es = tmp_er ? (float)1 : (float)0;\n\t\t\t   
+      float3 tmp_et = float3(tmp_es, tmp_es, tmp_es);\n\t\t\t    float3 tmp_eu =
+      float3(tmp_bd, uniform_a, uniform_a);\n\t\t\t    float3 tmp_ev = tmp_by - tmp_eu;\n\t\t\t   
+      float3 tmp_ew = tmp_et * tmp_ev;\n\t\t\t    float3 tmp_ex = tmp_ep + tmp_ew;\n\t\t\t   
+      bool tmp_ey = tmp_dg <= (float)0;\n\t\t\t    bool tmp_ez = tmp_dd && tmp_ey;\n\t\t\t   
+      bool tmp_fa = tmp_ez && tmp_eg;\n\t\t\t    bool tmp_fb = tmp_fa && tmp_ei;\n\t\t\t   
+      float tmp_fc = tmp_fb ? (float)1 : (float)0;\n\t\t\t    float3 tmp_fd = float3(tmp_fc,
+      tmp_fc, tmp_fc);\n\t\t\t    float3 tmp_fe = float3(uniform_a, tmp_br, (float)0);\n\t\t\t   
+      float3 tmp_ff = tmp_by - tmp_fe;\n\t\t\t    float3 tmp_fg = tmp_fd * tmp_ff;\n\t\t\t   
+      float3 tmp_fh = tmp_ex + tmp_fg;\n\t\t\t    bool tmp_fi = tmp_fa && tmp_eq;\n\t\t\t   
+      float tmp_fj = tmp_fi ? (float)1 : (float)0;\n\t\t\t    float3 tmp_fk = float3(tmp_fj,
+      tmp_fj, tmp_fj);\n\t\t\t    float3 tmp_fl = float3(uniform_a, tmp_br, uniform_a);\n\t\t\t   
+      float3 tmp_fm = tmp_by - tmp_fl;\n\t\t\t    float3 tmp_fn = tmp_fk * tmp_fm;\n\t\t\t   
+      float3 tmp_fo = tmp_fh + tmp_fn;\n\t\t\t    bool tmp_fp = tmp_ee && tmp_ey;\n\t\t\t   
+      bool tmp_fq = tmp_fp && tmp_dk;\n\t\t\t    bool tmp_fr = tmp_fq && tmp_ei;\n\t\t\t   
+      float tmp_fs = tmp_fr ? (float)1 : (float)0;\n\t\t\t    float3 tmp_ft = float3(tmp_fs,
+      tmp_fs, tmp_fs);\n\t\t\t    float3 tmp_fu = float3(tmp_bd, (float)0, (float)0);\n\t\t\t   
+      float3 tmp_fv = tmp_by - tmp_fu;\n\t\t\t    float3 tmp_fw = tmp_ft * tmp_fv;\n\t\t\t   
+      float3 tmp_fx = tmp_fo + tmp_fw;\n\t\t\t    bool tmp_fy = tmp_fq && tmp_eq;\n\t\t\t   
+      float tmp_fz = tmp_fy ? (float)1 : (float)0;\n\t\t\t    float3 tmp_ga = float3(tmp_fz,
+      tmp_fz, tmp_fz);\n\t\t\t    float3 tmp_gb = float3(tmp_bd, (float)0, uniform_a);\n\t\t\t   
+      float3 tmp_gc = tmp_by - tmp_gb;\n\t\t\t    float3 tmp_gd = tmp_ga * tmp_gc;\n\t\t\t   
+      float3 tmp_ge = tmp_fx + tmp_gd;\n\t\t\t    float3 tmp_gg = tmp_ge * float3(-1,
+      -1, -1);\n\t\t\t    float3 tmp_gh = tmp_gg * uniform_c;\n\t\t\t    Force_0(
+      /*inout */attributes.velocity, attributes.mass, tmp_gh, deltaTime_a);\n\t\t\t}\n\t\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\t\tAge(
       /*inout */attributes.age, deltaTime_a);\n\t\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index
@@ -1150,114 +1121,104 @@ VisualEffectResource:
       << 2));\n\t\t\n\r\n\t\t\r\n#if VFX_USE_OLDPOSITION_CURRENT\r\n\t\tattributes.oldPosition
       = attributes.position;\r\n#endif\r\n#if HAS_STRIPS\r\n        const StripData
       stripData = GetStripDataFromParticleIndex(index, PARTICLE_PER_STRIP_COUNT);\r\n       
-      InitStripAttributes(index, attributes, stripData);\r\n#endif\r\n\t\t\r\n\t\tGravity(
-      /*inout */attributes.velocity, Force_a, deltaTime_a);\n\t\tTurbulence_18D(attributes.position, 
-      /*inout */attributes.velocity, attributes.mass, InvFieldTransform_b, FieldTransform_b,
-      Intensity_b, Drag_b, frequency_b, asint(octaves_b), roughness_b, lacunarity_b,
-      deltaTime_a);\n\t\tDrag_0( /*inout */attributes.velocity, attributes.mass,
-      dragCoefficient_c, deltaTime_a);\n\t\t{\n\t\t    float tmp_dp = attributes.position[0];\n\t\t   
-      float tmp_dq = tmp_dp / uniform_a;\n\t\t    float tmp_dr = frac(tmp_dq);\n\t\t   
-      float tmp_ds = tmp_dr * uniform_a;\n\t\t    float tmp_dt = floor(tmp_dq);\n\t\t   
-      float tmp_du = tmp_dt / uniform_b;\n\t\t    float tmp_dv = attributes.position[1];\n\t\t   
-      float tmp_dw = tmp_dv / uniform_c;\n\t\t    float tmp_dx = floor(tmp_dw);\n\t\t   
-      float tmp_dy = tmp_dx / uniform_d;\n\t\t    float tmp_dz = tmp_du + tmp_dy;\n\t\t   
-      float tmp_ea = tmp_dz / uniform_e;\n\t\t    float tmp_eb = frac(tmp_ea);\n\t\t   
-      float tmp_ec = tmp_eb * uniform_e;\n\t\t    float tmp_ed = tmp_ds - tmp_ec;\n\t\t   
-      float tmp_ee = sign(tmp_ed);\n\t\t    float tmp_ef = (float)-1 * tmp_ee;\n\t\t   
-      float tmp_eg = tmp_ef * uniform_f;\n\t\t    float tmp_eh = attributes.position[2];\n\t\t   
-      float tmp_ei = tmp_eh / uniform_h;\n\t\t    float tmp_ej = frac(tmp_ei);\n\t\t   
-      float tmp_ek = tmp_ej * uniform_h;\n\t\t    float tmp_el = floor(tmp_ei);\n\t\t   
-      float tmp_em = tmp_el / uniform_i;\n\t\t    float tmp_en = tmp_dy + tmp_em;\n\t\t   
-      float tmp_eo = tmp_en / uniform_j;\n\t\t    float tmp_ep = frac(tmp_eo);\n\t\t   
-      float tmp_eq = tmp_ep * uniform_j;\n\t\t    float tmp_er = tmp_ek - tmp_eq;\n\t\t   
-      float tmp_es = sign(tmp_er);\n\t\t    float tmp_et = (float)-1 * tmp_es;\n\t\t   
-      float tmp_eu = tmp_et * uniform_f;\n\t\t    float3 tmp_ev = float3(tmp_eg,
-      uniform_g, tmp_eu);\n\t\t    Force_0( /*inout */attributes.velocity, attributes.mass,
-      tmp_ev, deltaTime_a);\n\t\t}\n\t\t{\n\t\t    float tmp_do = attributes.position[0];\n\t\t   
-      float tmp_dp = tmp_do / uniform_l;\n\t\t    float tmp_dq = frac(tmp_dp);\n\t\t   
-      float tmp_dr = tmp_dq * uniform_l;\n\t\t    float tmp_dt = attributes.position[2];\n\t\t   
-      float tmp_du = tmp_dt / uniform_l;\n\t\t    float tmp_dv = frac(tmp_du);\n\t\t   
-      float tmp_dw = tmp_dv * uniform_l;\n\t\t    float tmp_dx = tmp_dw / uniform_l;\n\t\t   
-      float tmp_dy = (float)1 - tmp_dx;\n\t\t    float tmp_dz = min(tmp_dy, tmp_dx);\n\t\t   
-      float tmp_ea = uniform_l * tmp_dz;\n\t\t    bool tmp_eb = tmp_dr <= tmp_ea;\n\t\t   
-      float tmp_ec = attributes.position[1];\n\t\t    float tmp_ed = tmp_ec / uniform_l;\n\t\t   
-      float tmp_ee = frac(tmp_ed);\n\t\t    float tmp_ef = tmp_ee * uniform_l;\n\t\t   
-      float tmp_eg = tmp_dz * uniform_l;\n\t\t    bool tmp_eh = tmp_ef <= tmp_eg;\n\t\t   
-      bool tmp_ei = tmp_eb && tmp_eh;\n\t\t    float tmp_ej = tmp_ei ? uniform_m
-      : uniform_n;\n\t\t    float3 tmp_ek = float3(tmp_ej, tmp_ej, tmp_ej);\n\t\t   
-      float3 tmp_el = float3(tmp_dr, tmp_ef, tmp_dw);\n\t\t    float3 tmp_em = float3(uniform_o,
-      uniform_p, tmp_dw);\n\t\t    float3 tmp_en = tmp_el - tmp_em;\n\t\t    float3
-      tmp_eo = tmp_ek * tmp_en;\n\t\t    float tmp_ep = uniform_l - tmp_eg;\n\t\t   
-      bool tmp_eq = tmp_ef > tmp_ep;\n\t\t    bool tmp_er = tmp_eb && tmp_eq;\n\t\t   
-      float tmp_es = tmp_er ? uniform_q : uniform_r;\n\t\t    float3 tmp_et = float3(tmp_es,
-      tmp_es, tmp_es);\n\t\t    float3 tmp_eu = float3(uniform_s, uniform_l, tmp_dw);\n\t\t   
-      float3 tmp_ev = tmp_el - tmp_eu;\n\t\t    float3 tmp_ew = tmp_et * tmp_ev;\n\t\t   
-      float3 tmp_ex = tmp_eo + tmp_ew;\n\t\t    float tmp_ey = uniform_l - tmp_ea;\n\t\t   
-      bool tmp_ez = tmp_dr > tmp_ey;\n\t\t    bool tmp_fa = tmp_ez && tmp_eq;\n\t\t   
-      float tmp_fb = tmp_fa ? uniform_t : uniform_u;\n\t\t    float3 tmp_fc = float3(tmp_fb,
-      tmp_fb, tmp_fb);\n\t\t    float3 tmp_fd = float3(uniform_l, uniform_l, tmp_dw);\n\t\t   
-      float3 tmp_fe = tmp_el - tmp_fd;\n\t\t    float3 tmp_ff = tmp_fc * tmp_fe;\n\t\t   
-      float3 tmp_fg = tmp_ex + tmp_ff;\n\t\t    bool tmp_fh = tmp_ez && tmp_eh;\n\t\t   
-      float tmp_fi = tmp_fh ? uniform_v : uniform_w;\n\t\t    float3 tmp_fj = float3(tmp_fi,
-      tmp_fi, tmp_fi);\n\t\t    float3 tmp_fk = float3(uniform_l, uniform_x, tmp_dw);\n\t\t   
-      float3 tmp_fl = tmp_el - tmp_fk;\n\t\t    float3 tmp_fm = tmp_fj * tmp_fl;\n\t\t   
-      float3 tmp_fn = tmp_fg + tmp_fm;\n\t\t    bool tmp_fo = tmp_ef > tmp_eg;\n\t\t   
-      bool tmp_fp = tmp_ef <= tmp_ep;\n\t\t    bool tmp_fq = tmp_fo && tmp_fp;\n\t\t   
-      float tmp_fr = tmp_ef / uniform_l;\n\t\t    float tmp_fs = tmp_dr / uniform_l;\n\t\t   
-      float tmp_ft = tmp_fr - tmp_fs;\n\t\t    bool tmp_fu = tmp_ft > uniform_y;\n\t\t   
-      bool tmp_fv = tmp_fq && tmp_fu;\n\t\t    float tmp_fw = tmp_fs + tmp_fr;\n\t\t   
-      bool tmp_fx = tmp_fw <= uniform_z;\n\t\t    bool tmp_fy = tmp_fv && tmp_fx;\n\t\t   
-      bool tmp_fz = tmp_dw < uniform_ba;\n\t\t    bool tmp_ga = tmp_fy && tmp_fz;\n\t\t   
-      float tmp_gb = tmp_ga ? uniform_bb : uniform_bc;\n\t\t    float3 tmp_gc = float3(tmp_gb,
-      tmp_gb, tmp_gb);\n\t\t    float3 tmp_gd = float3(uniform_bd, tmp_ef, uniform_be);\n\t\t   
-      float3 tmp_ge = tmp_el - tmp_gd;\n\t\t    float3 tmp_gf = tmp_gc * tmp_ge;\n\t\t   
-      float3 tmp_gg = tmp_fn + tmp_gf;\n\t\t    bool tmp_gh = !tmp_fz;\n\t\t    bool
-      tmp_gi = tmp_fy && tmp_gh;\n\t\t    float tmp_gj = tmp_gi ? uniform_bf : uniform_bg;\n\t\t   
-      float3 tmp_gk = float3(tmp_gj, tmp_gj, tmp_gj);\n\t\t    float3 tmp_gl = float3(uniform_bh,
-      tmp_ef, uniform_l);\n\t\t    float3 tmp_gm = tmp_el - tmp_gl;\n\t\t    float3
-      tmp_gn = tmp_gk * tmp_gm;\n\t\t    float3 tmp_go = tmp_gg + tmp_gn;\n\t\t   
-      bool tmp_gp = tmp_dr > tmp_ea;\n\t\t    bool tmp_gq = tmp_dr <= tmp_ey;\n\t\t   
-      bool tmp_gr = tmp_gp && tmp_gq;\n\t\t    bool tmp_gs = tmp_ft > uniform_bi;\n\t\t   
-      bool tmp_gt = tmp_gr && tmp_gs;\n\t\t    bool tmp_gu = tmp_fw > uniform_bj;\n\t\t   
-      bool tmp_gv = tmp_gt && tmp_gu;\n\t\t    bool tmp_gw = tmp_dw <= uniform_ba;\n\t\t   
-      bool tmp_gx = tmp_gv && tmp_gw;\n\t\t    float tmp_gy = tmp_gx ? uniform_bk
-      : uniform_bl;\n\t\t    float3 tmp_gz = float3(tmp_gy, tmp_gy, tmp_gy);\n\t\t   
-      float3 tmp_ha = float3(tmp_dr, uniform_l, uniform_bm);\n\t\t    float3 tmp_hb
-      = tmp_el - tmp_ha;\n\t\t    float3 tmp_hc = tmp_gz * tmp_hb;\n\t\t    float3
-      tmp_hd = tmp_go + tmp_hc;\n\t\t    bool tmp_he = !tmp_gw;\n\t\t    bool tmp_hf
-      = tmp_gv && tmp_he;\n\t\t    float tmp_hg = tmp_hf ? uniform_bn : uniform_bo;\n\t\t   
-      float3 tmp_hh = float3(tmp_hg, tmp_hg, tmp_hg);\n\t\t    float3 tmp_hi = float3(tmp_dr,
-      uniform_l, uniform_l);\n\t\t    float3 tmp_hj = tmp_el - tmp_hi;\n\t\t    float3
-      tmp_hk = tmp_hh * tmp_hj;\n\t\t    float3 tmp_hl = tmp_hd + tmp_hk;\n\t\t   
-      bool tmp_hm = tmp_ft <= uniform_bp;\n\t\t    bool tmp_hn = tmp_fq && tmp_hm;\n\t\t   
-      bool tmp_ho = tmp_fw > uniform_bq;\n\t\t    bool tmp_hp = tmp_hn && tmp_ho;\n\t\t   
-      bool tmp_hq = tmp_hp && tmp_gw;\n\t\t    float tmp_hr = tmp_hq ? uniform_br
-      : uniform_bs;\n\t\t    float3 tmp_hs = float3(tmp_hr, tmp_hr, tmp_hr);\n\t\t   
-      float3 tmp_ht = float3(uniform_l, tmp_ef, uniform_bt);\n\t\t    float3 tmp_hu
-      = tmp_el - tmp_ht;\n\t\t    float3 tmp_hv = tmp_hs * tmp_hu;\n\t\t    float3
-      tmp_hw = tmp_hl + tmp_hv;\n\t\t    bool tmp_hx = tmp_hp && tmp_he;\n\t\t   
-      float tmp_hy = tmp_hx ? uniform_bu : uniform_bv;\n\t\t    float3 tmp_hz = float3(tmp_hy,
-      tmp_hy, tmp_hy);\n\t\t    float3 tmp_ia = float3(uniform_l, tmp_ef, uniform_l);\n\t\t   
-      float3 tmp_ib = tmp_el - tmp_ia;\n\t\t    float3 tmp_ic = tmp_hz * tmp_ib;\n\t\t   
-      float3 tmp_id = tmp_hw + tmp_ic;\n\t\t    bool tmp_ie = tmp_ft <= uniform_bw;\n\t\t   
-      bool tmp_if = tmp_gr && tmp_ie;\n\t\t    bool tmp_ig = tmp_fw <= uniform_bx;\n\t\t   
-      bool tmp_ih = tmp_if && tmp_ig;\n\t\t    bool tmp_ii = tmp_ih && tmp_gw;\n\t\t   
-      float tmp_ij = tmp_ii ? uniform_by : uniform_bz;\n\t\t    float3 tmp_ik = float3(tmp_ij,
-      tmp_ij, tmp_ij);\n\t\t    float3 tmp_il = float3(tmp_dr, uniform_ca, uniform_cb);\n\t\t   
-      float3 tmp_im = tmp_el - tmp_il;\n\t\t    float3 tmp_in = tmp_ik * tmp_im;\n\t\t   
-      float3 tmp_io = tmp_id + tmp_in;\n\t\t    bool tmp_ip = tmp_ih && tmp_he;\n\t\t   
-      float tmp_iq = tmp_ip ? uniform_cc : uniform_cd;\n\t\t    float3 tmp_ir = float3(tmp_iq,
-      tmp_iq, tmp_iq);\n\t\t    float3 tmp_is = float3(tmp_dr, uniform_ce, uniform_l);\n\t\t   
-      float3 tmp_it = tmp_el - tmp_is;\n\t\t    float3 tmp_iu = tmp_ir * tmp_it;\n\t\t   
-      float3 tmp_iv = tmp_io + tmp_iu;\n\t\t    float3 tmp_iw = tmp_iv * tmp_iv;\n\t\t   
-      float tmp_ix = tmp_iw[2];\n\t\t    float tmp_iy = tmp_iw[1];\n\t\t    float
-      tmp_iz = tmp_ix + tmp_iy;\n\t\t    float tmp_ja = tmp_iw[0];\n\t\t    float
-      tmp_jb = tmp_iz + tmp_ja;\n\t\t    float tmp_jd = pow(tmp_jb, (float)0.5);\n\t\t   
-      float tmp_je = (float)1 / tmp_jd;\n\t\t    float3 tmp_jf = float3(tmp_je, tmp_je,
-      tmp_je);\n\t\t    float3 tmp_jg = tmp_iv * tmp_jf;\n\t\t    float3 tmp_jh =
-      (bool)asuint(uniform_k) ? tmp_iv : tmp_jg;\n\t\t    float3 tmp_ji = tmp_jh
-      * uniform_cf;\n\t\t    float3 tmp_jj = tmp_ji * uniform_cg;\n\t\t    Force_0(
-      /*inout */attributes.velocity, attributes.mass, tmp_jj, deltaTime_a);\n\t\t}\n\t\tEulerIntegration(
+      InitStripAttributes(index, attributes, stripData);\r\n#endif\r\n\t\t\r\n\t\t{\n\t\t   
+      Gravity( /*inout */attributes.velocity, float3(0, 1, 0), deltaTime_a);\n\t\t}\n\t\t{\n\t\t   
+      Turbulence_18D(attributes.position,  /*inout */attributes.velocity, attributes.mass,
+      float4x4(0.25,0,0,0,0,0.25,0,0,0,0,0.25,0,0,0,0,1), float4x4(4,0,0,0,0,4,0,0,0,0,4,0,0,0,0,1),
+      (float)0.699999988, (float)5, (float)0.25, (int)4, (float)0.5, (float)2, deltaTime_a);\n\t\t}\n\t\t{\n\t\t   
+      Drag_0( /*inout */attributes.velocity, attributes.mass, (float)5, deltaTime_a);\n\t\t}\n\t\t{\n\t\t   
+      float tmp_bb = attributes.position[0];\n\t\t    float tmp_bd = tmp_bb / (float)0.5;\n\t\t   
+      float tmp_be = frac(tmp_bd);\n\t\t    float tmp_bf = tmp_be * (float)0.5;\n\t\t   
+      float tmp_bg = floor(tmp_bd);\n\t\t    float tmp_bi = tmp_bg / (float)3.03360415;\n\t\t   
+      float tmp_bj = attributes.position[1];\n\t\t    float tmp_bl = tmp_bj / (float)0.100000001;\n\t\t   
+      float tmp_bm = floor(tmp_bl);\n\t\t    float tmp_bo = tmp_bm / (float)2.35153627;\n\t\t   
+      float tmp_bp = tmp_bi + tmp_bo;\n\t\t    float tmp_bq = frac(tmp_bp);\n\t\t   
+      float tmp_br = tmp_bf - tmp_bq;\n\t\t    float tmp_bs = sign(tmp_br);\n\t\t   
+      float tmp_bt = (float)-1 * tmp_bs;\n\t\t    float tmp_bv = tmp_bt * (float)1.71000004;\n\t\t   
+      float tmp_bx = attributes.position[2];\n\t\t    float tmp_bz = tmp_bx / (float)0.699999988;\n\t\t   
+      float tmp_ca = frac(tmp_bz);\n\t\t    float tmp_cb = tmp_ca * (float)0.699999988;\n\t\t   
+      float tmp_cc = floor(tmp_bz);\n\t\t    float tmp_ce = tmp_cc / (float)4.83541393;\n\t\t   
+      float tmp_cf = tmp_bo + tmp_ce;\n\t\t    float tmp_cg = frac(tmp_cf);\n\t\t   
+      float tmp_ch = tmp_cb - tmp_cg;\n\t\t    float tmp_ci = sign(tmp_ch);\n\t\t   
+      float tmp_cj = (float)-1 * tmp_ci;\n\t\t    float tmp_ck = tmp_cj * (float)1.71000004;\n\t\t   
+      float3 tmp_cl = float3(tmp_bv, (float)0, tmp_ck);\n\t\t    Force_0( /*inout
+      */attributes.velocity, attributes.mass, tmp_cl, deltaTime_a);\n\t\t}\n\t\t{\n\t\t   
+      float tmp_ba = attributes.position[0];\n\t\t    float tmp_bb = tmp_ba / uniform_a;\n\t\t   
+      float tmp_bc = frac(tmp_bb);\n\t\t    float tmp_bd = tmp_bc * uniform_a;\n\t\t   
+      float tmp_bf = attributes.position[2];\n\t\t    float tmp_bg = tmp_bf / uniform_a;\n\t\t   
+      float tmp_bh = frac(tmp_bg);\n\t\t    float tmp_bi = tmp_bh * uniform_a;\n\t\t   
+      float tmp_bj = tmp_bi / uniform_a;\n\t\t    float tmp_bk = (float)1 - tmp_bj;\n\t\t   
+      float tmp_bl = min(tmp_bk, tmp_bj);\n\t\t    float tmp_bm = uniform_a * tmp_bl;\n\t\t   
+      bool tmp_bn = tmp_bd <= tmp_bm;\n\t\t    float tmp_bo = attributes.position[1];\n\t\t   
+      float tmp_bp = tmp_bo / uniform_a;\n\t\t    float tmp_bq = frac(tmp_bp);\n\t\t   
+      float tmp_br = tmp_bq * uniform_a;\n\t\t    float tmp_bs = tmp_bl * uniform_a;\n\t\t   
+      bool tmp_bt = tmp_br <= tmp_bs;\n\t\t    bool tmp_bu = tmp_bn && tmp_bt;\n\t\t   
+      float tmp_bw = tmp_bu ? (float)1 : (float)0;\n\t\t    float3 tmp_bx = float3(tmp_bw,
+      tmp_bw, tmp_bw);\n\t\t    float3 tmp_by = float3(tmp_bd, tmp_br, tmp_bi);\n\t\t   
+      float3 tmp_bz = float3((float)0, (float)0, tmp_bi);\n\t\t    float3 tmp_ca
+      = tmp_by - tmp_bz;\n\t\t    float3 tmp_cb = tmp_bx * tmp_ca;\n\t\t    float
+      tmp_cc = uniform_a - tmp_bs;\n\t\t    bool tmp_cd = tmp_br > tmp_cc;\n\t\t   
+      bool tmp_ce = tmp_bn && tmp_cd;\n\t\t    float tmp_cf = tmp_ce ? (float)1 :
+      (float)0;\n\t\t    float3 tmp_cg = float3(tmp_cf, tmp_cf, tmp_cf);\n\t\t   
+      float3 tmp_ch = float3((float)0, uniform_a, tmp_bi);\n\t\t    float3 tmp_ci
+      = tmp_by - tmp_ch;\n\t\t    float3 tmp_cj = tmp_cg * tmp_ci;\n\t\t    float3
+      tmp_ck = tmp_cb + tmp_cj;\n\t\t    float tmp_cl = uniform_a - tmp_bm;\n\t\t   
+      bool tmp_cm = tmp_bd > tmp_cl;\n\t\t    bool tmp_cn = tmp_cm && tmp_cd;\n\t\t   
+      float tmp_co = tmp_cn ? (float)1 : (float)0;\n\t\t    float3 tmp_cp = float3(tmp_co,
+      tmp_co, tmp_co);\n\t\t    float3 tmp_cq = float3(uniform_a, uniform_a, tmp_bi);\n\t\t   
+      float3 tmp_cr = tmp_by - tmp_cq;\n\t\t    float3 tmp_cs = tmp_cp * tmp_cr;\n\t\t   
+      float3 tmp_ct = tmp_ck + tmp_cs;\n\t\t    bool tmp_cu = tmp_cm && tmp_bt;\n\t\t   
+      float tmp_cv = tmp_cu ? (float)1 : (float)0;\n\t\t    float3 tmp_cw = float3(tmp_cv,
+      tmp_cv, tmp_cv);\n\t\t    float3 tmp_cx = float3(uniform_a, (float)0, tmp_bi);\n\t\t   
+      float3 tmp_cy = tmp_by - tmp_cx;\n\t\t    float3 tmp_cz = tmp_cw * tmp_cy;\n\t\t   
+      float3 tmp_da = tmp_ct + tmp_cz;\n\t\t    bool tmp_db = tmp_br > tmp_bs;\n\t\t   
+      bool tmp_dc = tmp_br <= tmp_cc;\n\t\t    bool tmp_dd = tmp_db && tmp_dc;\n\t\t   
+      float tmp_de = tmp_br / uniform_a;\n\t\t    float tmp_df = tmp_bd / uniform_a;\n\t\t   
+      float tmp_dg = tmp_de - tmp_df;\n\t\t    bool tmp_dh = tmp_dg > (float)0;\n\t\t   
+      bool tmp_di = tmp_dd && tmp_dh;\n\t\t    float tmp_dj = tmp_df + tmp_de;\n\t\t   
+      bool tmp_dk = tmp_dj <= (float)1;\n\t\t    bool tmp_dl = tmp_di && tmp_dk;\n\t\t   
+      bool tmp_dm = tmp_bi < uniform_b;\n\t\t    bool tmp_dn = tmp_dl && tmp_dm;\n\t\t   
+      float tmp_do = tmp_dn ? (float)1 : (float)0;\n\t\t    float3 tmp_dp = float3(tmp_do,
+      tmp_do, tmp_do);\n\t\t    float3 tmp_dq = float3((float)0, tmp_br, (float)0);\n\t\t   
+      float3 tmp_dr = tmp_by - tmp_dq;\n\t\t    float3 tmp_ds = tmp_dp * tmp_dr;\n\t\t   
+      float3 tmp_dt = tmp_da + tmp_ds;\n\t\t    bool tmp_du = !tmp_dm;\n\t\t    bool
+      tmp_dv = tmp_dl && tmp_du;\n\t\t    float tmp_dw = tmp_dv ? (float)1 : (float)0;\n\t\t   
+      float3 tmp_dx = float3(tmp_dw, tmp_dw, tmp_dw);\n\t\t    float3 tmp_dy = float3((float)0,
+      tmp_br, uniform_a);\n\t\t    float3 tmp_dz = tmp_by - tmp_dy;\n\t\t    float3
+      tmp_ea = tmp_dx * tmp_dz;\n\t\t    float3 tmp_eb = tmp_dt + tmp_ea;\n\t\t   
+      bool tmp_ec = tmp_bd > tmp_bm;\n\t\t    bool tmp_ed = tmp_bd <= tmp_cl;\n\t\t   
+      bool tmp_ee = tmp_ec && tmp_ed;\n\t\t    bool tmp_ef = tmp_ee && tmp_dh;\n\t\t   
+      bool tmp_eg = tmp_dj > (float)1;\n\t\t    bool tmp_eh = tmp_ef && tmp_eg;\n\t\t   
+      bool tmp_ei = tmp_bi <= uniform_b;\n\t\t    bool tmp_ej = tmp_eh && tmp_ei;\n\t\t   
+      float tmp_ek = tmp_ej ? (float)1 : (float)0;\n\t\t    float3 tmp_el = float3(tmp_ek,
+      tmp_ek, tmp_ek);\n\t\t    float3 tmp_em = float3(tmp_bd, uniform_a, (float)0);\n\t\t   
+      float3 tmp_en = tmp_by - tmp_em;\n\t\t    float3 tmp_eo = tmp_el * tmp_en;\n\t\t   
+      float3 tmp_ep = tmp_eb + tmp_eo;\n\t\t    bool tmp_eq = !tmp_ei;\n\t\t    bool
+      tmp_er = tmp_eh && tmp_eq;\n\t\t    float tmp_es = tmp_er ? (float)1 : (float)0;\n\t\t   
+      float3 tmp_et = float3(tmp_es, tmp_es, tmp_es);\n\t\t    float3 tmp_eu = float3(tmp_bd,
+      uniform_a, uniform_a);\n\t\t    float3 tmp_ev = tmp_by - tmp_eu;\n\t\t    float3
+      tmp_ew = tmp_et * tmp_ev;\n\t\t    float3 tmp_ex = tmp_ep + tmp_ew;\n\t\t   
+      bool tmp_ey = tmp_dg <= (float)0;\n\t\t    bool tmp_ez = tmp_dd && tmp_ey;\n\t\t   
+      bool tmp_fa = tmp_ez && tmp_eg;\n\t\t    bool tmp_fb = tmp_fa && tmp_ei;\n\t\t   
+      float tmp_fc = tmp_fb ? (float)1 : (float)0;\n\t\t    float3 tmp_fd = float3(tmp_fc,
+      tmp_fc, tmp_fc);\n\t\t    float3 tmp_fe = float3(uniform_a, tmp_br, (float)0);\n\t\t   
+      float3 tmp_ff = tmp_by - tmp_fe;\n\t\t    float3 tmp_fg = tmp_fd * tmp_ff;\n\t\t   
+      float3 tmp_fh = tmp_ex + tmp_fg;\n\t\t    bool tmp_fi = tmp_fa && tmp_eq;\n\t\t   
+      float tmp_fj = tmp_fi ? (float)1 : (float)0;\n\t\t    float3 tmp_fk = float3(tmp_fj,
+      tmp_fj, tmp_fj);\n\t\t    float3 tmp_fl = float3(uniform_a, tmp_br, uniform_a);\n\t\t   
+      float3 tmp_fm = tmp_by - tmp_fl;\n\t\t    float3 tmp_fn = tmp_fk * tmp_fm;\n\t\t   
+      float3 tmp_fo = tmp_fh + tmp_fn;\n\t\t    bool tmp_fp = tmp_ee && tmp_ey;\n\t\t   
+      bool tmp_fq = tmp_fp && tmp_dk;\n\t\t    bool tmp_fr = tmp_fq && tmp_ei;\n\t\t   
+      float tmp_fs = tmp_fr ? (float)1 : (float)0;\n\t\t    float3 tmp_ft = float3(tmp_fs,
+      tmp_fs, tmp_fs);\n\t\t    float3 tmp_fu = float3(tmp_bd, (float)0, (float)0);\n\t\t   
+      float3 tmp_fv = tmp_by - tmp_fu;\n\t\t    float3 tmp_fw = tmp_ft * tmp_fv;\n\t\t   
+      float3 tmp_fx = tmp_fo + tmp_fw;\n\t\t    bool tmp_fy = tmp_fq && tmp_eq;\n\t\t   
+      float tmp_fz = tmp_fy ? (float)1 : (float)0;\n\t\t    float3 tmp_ga = float3(tmp_fz,
+      tmp_fz, tmp_fz);\n\t\t    float3 tmp_gb = float3(tmp_bd, (float)0, uniform_a);\n\t\t   
+      float3 tmp_gc = tmp_by - tmp_gb;\n\t\t    float3 tmp_gd = tmp_ga * tmp_gc;\n\t\t   
+      float3 tmp_ge = tmp_fx + tmp_gd;\n\t\t    float3 tmp_gg = tmp_ge * float3(-1,
+      -1, -1);\n\t\t    float3 tmp_gh = tmp_gg * uniform_c;\n\t\t    Force_0( /*inout
+      */attributes.velocity, attributes.mass, tmp_gh, deltaTime_a);\n\t\t}\n\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_a);\n\t\tAge(
       /*inout */attributes.age, deltaTime_a);\n\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index *
@@ -1287,17 +1248,14 @@ VisualEffectResource:
       1\n\t\t#define IS_TRANSPARENT_PARTICLE 1\n\t\t#define VFX_BLENDMODE_ADD 1\n\t\t#define
       VFX_BYPASS_EXPOSURE 1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t#define
       VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t   
-      float3 uniform_f;\n\t\t    float uniform_a;\n\t\t    float uniform_b;\n\t\t   
-      float uniform_c;\n\t\t    float uniform_d;\n\t\t    float uniform_e;\n\t\t   
-      float Size_c;\n\t\t    float uniform_g;\n\t\t    float uniform_h;\n\t\t   
-      float gradient_e;\n\t\t    float BlendColor_e;\n\t\t    float BlendAlpha_e;\n\t\t   
-      uint2 PADDING_0;\n\t\tCBUFFER_END\n\t\t\n\t\tstruct Attributes\n\t\t{\n\t\t   
-      float lifetime;\n\t\t    float3 position;\n\t\t    float3 color;\n\t\t    float
-      alpha;\n\t\t    bool alive;\n\t\t    float3 axisX;\n\t\t    float3 axisY;\n\t\t   
-      float3 axisZ;\n\t\t    float angleX;\n\t\t    float angleY;\n\t\t    float
-      angleZ;\n\t\t    float pivotX;\n\t\t    float pivotY;\n\t\t    float pivotZ;\n\t\t   
-      float size;\n\t\t    float scaleX;\n\t\t    float scaleY;\n\t\t    float scaleZ;\n\t\t   
-      float age;\n\t\t};\n\t\t\n\t\tstruct SourceAttributes\n\t\t{\n\t\t};\n\t\t\n\t\tTexture2D
+      float3 uniform_b;\n\t\t    float uniform_a;\n\t\t    float uniform_c;\n\t\t   
+      float gradient_e;\n\t\t    uint2 PADDING_0;\n\t\tCBUFFER_END\n\t\t\n\t\tstruct
+      Attributes\n\t\t{\n\t\t    float lifetime;\n\t\t    float3 position;\n\t\t   
+      float3 color;\n\t\t    float alpha;\n\t\t    bool alive;\n\t\t    float3 axisX;\n\t\t   
+      float3 axisY;\n\t\t    float3 axisZ;\n\t\t    float angleX;\n\t\t    float
+      angleY;\n\t\t    float angleZ;\n\t\t    float pivotX;\n\t\t    float pivotY;\n\t\t   
+      float pivotZ;\n\t\t    float size;\n\t\t    float scaleX;\n\t\t    float scaleY;\n\t\t   
+      float scaleZ;\n\t\t    float age;\n\t\t};\n\t\t\n\t\tstruct SourceAttributes\n\t\t{\n\t\t};\n\t\t\n\t\tTexture2D
       mainTexture;\n\t\tSamplerState samplermainTexture;\n\t\tfloat4 mainTexture_TexelSize;\n\t\t\n\t\t\n\n\t\t\n\t\t#define
       VFX_NEEDS_COLOR_INTERPOLATOR (VFX_USE_COLOR_CURRENT || VFX_USE_ALPHA_CURRENT)\n\t\t#if
       HAS_STRIPS\n\t\t#define VFX_OPTIONAL_INTERPOLATION \n\t\t#else\n\t\t#define
@@ -1422,29 +1380,29 @@ VisualEffectResource:
       * 0x8 + 0x16E384) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t\t\t//
       Initialize built-in needed attributes\n\t\t\t\t\t\t#if HAS_STRIPS\n\t\t\t\t\t\tInitStripAttributes(index,
       attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\t{\n\t\t\t\t   
-      float tmp_bj = attributes.position[1];\n\t\t\t\t    float tmp_bk = tmp_bj *
-      uniform_a;\n\t\t\t\t    float tmp_bl = cos(tmp_bk);\n\t\t\t\t    float tmp_bm
-      = attributes.position[2];\n\t\t\t\t    float tmp_bn = tmp_bm * uniform_b;\n\t\t\t\t   
-      float tmp_bo = cos(tmp_bn);\n\t\t\t\t    float tmp_bp = tmp_bl * tmp_bo;\n\t\t\t\t   
-      float tmp_bq = sin(tmp_bn);\n\t\t\t\t    float tmp_br = sin(tmp_bk);\n\t\t\t\t   
-      float tmp_bs = tmp_br * tmp_bo;\n\t\t\t\t    float3 tmp_bt = float3(tmp_bp,
-      tmp_bq, tmp_bs);\n\t\t\t\t    float tmp_bu = attributes.position[0];\n\t\t\t\t   
-      float tmp_bv = tmp_bu + uniform_c;\n\t\t\t\t    float tmp_bw = tmp_bv + uniform_d;\n\t\t\t\t   
-      float tmp_bx = tmp_bw + uniform_e;\n\t\t\t\t    float3 tmp_by = float3(tmp_bx,
-      tmp_bx, tmp_bx);\n\t\t\t\t    float3 tmp_bz = tmp_bt * tmp_by;\n\t\t\t\t   
-      SetAttribute_CAC29747( /*inout */attributes.position, tmp_bz);\n\t\t\t\t}\n\t\t\t\tOrient_189(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ,
-      attributes.position);\n\t\t\t\tSetAttribute_3278B22F( /*inout */attributes.size,
-      Size_c);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bj = uniform_f - attributes.position;\n\t\t\t\t   
-      float3 tmp_bk = tmp_bj * tmp_bj;\n\t\t\t\t    float tmp_bl = tmp_bk[2];\n\t\t\t\t   
-      float tmp_bm = tmp_bk[1];\n\t\t\t\t    float tmp_bn = tmp_bl + tmp_bm;\n\t\t\t\t   
-      float tmp_bo = tmp_bk[0];\n\t\t\t\t    float tmp_bp = tmp_bn + tmp_bo;\n\t\t\t\t   
-      float tmp_br = pow(tmp_bp, (float)0.5);\n\t\t\t\t    float tmp_bs = pow(tmp_br,
-      uniform_g);\n\t\t\t\t    float tmp_bt = tmp_bs * uniform_h;\n\t\t\t\t    SetAttribute_39EE3455(
-      /*inout */attributes.size, tmp_bt);\n\t\t\t\t}\n\t\t\t\tColorOverLife_73257(attributes.age,
+      float tmp_bb = attributes.position[1];\n\t\t\t\t    float tmp_bd = tmp_bb *
+      (float)0.340000004;\n\t\t\t\t    float tmp_be = cos(tmp_bd);\n\t\t\t\t    float
+      tmp_bf = attributes.position[2];\n\t\t\t\t    float tmp_bh = tmp_bf * (float)0.150000006;\n\t\t\t\t   
+      float tmp_bi = cos(tmp_bh);\n\t\t\t\t    float tmp_bj = tmp_be * tmp_bi;\n\t\t\t\t   
+      float tmp_bk = sin(tmp_bh);\n\t\t\t\t    float tmp_bl = sin(tmp_bd);\n\t\t\t\t   
+      float tmp_bm = tmp_bl * tmp_bi;\n\t\t\t\t    float3 tmp_bn = float3(tmp_bj,
+      tmp_bk, tmp_bm);\n\t\t\t\t    float tmp_bo = attributes.position[0];\n\t\t\t\t   
+      float tmp_bq = tmp_bo + (float)-4.25;\n\t\t\t\t    float tmp_br = tmp_bq +
+      uniform_a;\n\t\t\t\t    float3 tmp_bs = float3(tmp_br, tmp_br, tmp_br);\n\t\t\t\t   
+      float3 tmp_bt = tmp_bn * tmp_bs;\n\t\t\t\t    SetAttribute_CAC29747( /*inout
+      */attributes.position, tmp_bt);\n\t\t\t\t}\n\t\t\t\tOrient_189( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ, attributes.position);\n\t\t\t\t{\n\t\t\t\t   
+      SetAttribute_3278B22F( /*inout */attributes.size, (float)0.100000001);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
+      float3 tmp_bb = uniform_b - attributes.position;\n\t\t\t\t    float3 tmp_bc
+      = tmp_bb * tmp_bb;\n\t\t\t\t    float tmp_bd = tmp_bc[2];\n\t\t\t\t    float
+      tmp_be = tmp_bc[1];\n\t\t\t\t    float tmp_bf = tmp_bd + tmp_be;\n\t\t\t\t   
+      float tmp_bg = tmp_bc[0];\n\t\t\t\t    float tmp_bh = tmp_bf + tmp_bg;\n\t\t\t\t   
+      float tmp_bj = pow(tmp_bh, (float)0.5);\n\t\t\t\t    float tmp_bk = pow(tmp_bj,
+      (float)0.5);\n\t\t\t\t    float tmp_bl = tmp_bk * uniform_c;\n\t\t\t\t    SetAttribute_39EE3455(
+      /*inout */attributes.size, tmp_bl);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t    ColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
-      gradient_e, BlendColor_e, BlendAlpha_e);\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if !HAS_STRIPS\n\t\t\t\tif
-      (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
+      gradient_e, (float)1, (float)1);\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
+      !HAS_STRIPS\n\t\t\t\tif (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
       VFX_PRIMITIVE_QUAD\n\t\t\t\n\t\t\t#if HAS_STRIPS\n\t\t\t#if VFX_STRIPS_UV_STRECHED\n\t\t\t\to.VFX_VARYING_UV.x
       = (float)(currentIndex) / (stripData.nextIndex - 1);\n\t\t\t#elif VFX_STRIPS_UV_PER_SEGMENT\n\t\t\t\to.VFX_VARYING_UV.x
       = PARTICLE_IN_EDGE;\n\t\t\t#else\n\t\t\t\t\n\t\t\t    o.VFX_VARYING_UV.x =
@@ -1652,29 +1610,29 @@ VisualEffectResource:
       * 0x8 + 0x16E384) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t\t\t//
       Initialize built-in needed attributes\n\t\t\t\t\t\t#if HAS_STRIPS\n\t\t\t\t\t\tInitStripAttributes(index,
       attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\t{\n\t\t\t\t   
-      float tmp_bj = attributes.position[1];\n\t\t\t\t    float tmp_bk = tmp_bj *
-      uniform_a;\n\t\t\t\t    float tmp_bl = cos(tmp_bk);\n\t\t\t\t    float tmp_bm
-      = attributes.position[2];\n\t\t\t\t    float tmp_bn = tmp_bm * uniform_b;\n\t\t\t\t   
-      float tmp_bo = cos(tmp_bn);\n\t\t\t\t    float tmp_bp = tmp_bl * tmp_bo;\n\t\t\t\t   
-      float tmp_bq = sin(tmp_bn);\n\t\t\t\t    float tmp_br = sin(tmp_bk);\n\t\t\t\t   
-      float tmp_bs = tmp_br * tmp_bo;\n\t\t\t\t    float3 tmp_bt = float3(tmp_bp,
-      tmp_bq, tmp_bs);\n\t\t\t\t    float tmp_bu = attributes.position[0];\n\t\t\t\t   
-      float tmp_bv = tmp_bu + uniform_c;\n\t\t\t\t    float tmp_bw = tmp_bv + uniform_d;\n\t\t\t\t   
-      float tmp_bx = tmp_bw + uniform_e;\n\t\t\t\t    float3 tmp_by = float3(tmp_bx,
-      tmp_bx, tmp_bx);\n\t\t\t\t    float3 tmp_bz = tmp_bt * tmp_by;\n\t\t\t\t   
-      SetAttribute_CAC29747( /*inout */attributes.position, tmp_bz);\n\t\t\t\t}\n\t\t\t\tOrient_189(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ,
-      attributes.position);\n\t\t\t\tSetAttribute_3278B22F( /*inout */attributes.size,
-      Size_c);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bj = uniform_f - attributes.position;\n\t\t\t\t   
-      float3 tmp_bk = tmp_bj * tmp_bj;\n\t\t\t\t    float tmp_bl = tmp_bk[2];\n\t\t\t\t   
-      float tmp_bm = tmp_bk[1];\n\t\t\t\t    float tmp_bn = tmp_bl + tmp_bm;\n\t\t\t\t   
-      float tmp_bo = tmp_bk[0];\n\t\t\t\t    float tmp_bp = tmp_bn + tmp_bo;\n\t\t\t\t   
-      float tmp_br = pow(tmp_bp, (float)0.5);\n\t\t\t\t    float tmp_bs = pow(tmp_br,
-      uniform_g);\n\t\t\t\t    float tmp_bt = tmp_bs * uniform_h;\n\t\t\t\t    SetAttribute_39EE3455(
-      /*inout */attributes.size, tmp_bt);\n\t\t\t\t}\n\t\t\t\tColorOverLife_73257(attributes.age,
+      float tmp_bb = attributes.position[1];\n\t\t\t\t    float tmp_bd = tmp_bb *
+      (float)0.340000004;\n\t\t\t\t    float tmp_be = cos(tmp_bd);\n\t\t\t\t    float
+      tmp_bf = attributes.position[2];\n\t\t\t\t    float tmp_bh = tmp_bf * (float)0.150000006;\n\t\t\t\t   
+      float tmp_bi = cos(tmp_bh);\n\t\t\t\t    float tmp_bj = tmp_be * tmp_bi;\n\t\t\t\t   
+      float tmp_bk = sin(tmp_bh);\n\t\t\t\t    float tmp_bl = sin(tmp_bd);\n\t\t\t\t   
+      float tmp_bm = tmp_bl * tmp_bi;\n\t\t\t\t    float3 tmp_bn = float3(tmp_bj,
+      tmp_bk, tmp_bm);\n\t\t\t\t    float tmp_bo = attributes.position[0];\n\t\t\t\t   
+      float tmp_bq = tmp_bo + (float)-4.25;\n\t\t\t\t    float tmp_br = tmp_bq +
+      uniform_a;\n\t\t\t\t    float3 tmp_bs = float3(tmp_br, tmp_br, tmp_br);\n\t\t\t\t   
+      float3 tmp_bt = tmp_bn * tmp_bs;\n\t\t\t\t    SetAttribute_CAC29747( /*inout
+      */attributes.position, tmp_bt);\n\t\t\t\t}\n\t\t\t\tOrient_189( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ, attributes.position);\n\t\t\t\t{\n\t\t\t\t   
+      SetAttribute_3278B22F( /*inout */attributes.size, (float)0.100000001);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t   
+      float3 tmp_bb = uniform_b - attributes.position;\n\t\t\t\t    float3 tmp_bc
+      = tmp_bb * tmp_bb;\n\t\t\t\t    float tmp_bd = tmp_bc[2];\n\t\t\t\t    float
+      tmp_be = tmp_bc[1];\n\t\t\t\t    float tmp_bf = tmp_bd + tmp_be;\n\t\t\t\t   
+      float tmp_bg = tmp_bc[0];\n\t\t\t\t    float tmp_bh = tmp_bf + tmp_bg;\n\t\t\t\t   
+      float tmp_bj = pow(tmp_bh, (float)0.5);\n\t\t\t\t    float tmp_bk = pow(tmp_bj,
+      (float)0.5);\n\t\t\t\t    float tmp_bl = tmp_bk * uniform_c;\n\t\t\t\t    SetAttribute_39EE3455(
+      /*inout */attributes.size, tmp_bl);\n\t\t\t\t}\n\t\t\t\t{\n\t\t\t\t    ColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
-      gradient_e, BlendColor_e, BlendAlpha_e);\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if !HAS_STRIPS\n\t\t\t\tif
-      (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
+      gradient_e, (float)1, (float)1);\n\t\t\t\t}\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if
+      !HAS_STRIPS\n\t\t\t\tif (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
       VFX_PRIMITIVE_QUAD\n\t\t\t\n\t\t\t#if HAS_STRIPS\n\t\t\t#if VFX_STRIPS_UV_STRECHED\n\t\t\t\to.VFX_VARYING_UV.x
       = (float)(currentIndex) / (stripData.nextIndex - 1);\n\t\t\t#elif VFX_STRIPS_UV_PER_SEGMENT\n\t\t\t\to.VFX_VARYING_UV.x
       = PARTICLE_IN_EDGE;\n\t\t\t#else\n\t\t\t\t\n\t\t\t    o.VFX_VARYING_UV.x =
@@ -1816,10 +1774,10 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
+      - op: 27
         valueIndex: 4
-        data[0]: -1
-        data[1]: -1
+        data[0]: 0
+        data[1]: 3
         data[2]: -1
         data[3]: 1
       - op: 1
@@ -1863,29 +1821,17 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 12
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 13
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
+        data[3]: 3
       - op: 1
         valueIndex: 14
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 27
+      - op: 1
         valueIndex: 15
-        data[0]: 0
-        data[1]: 11
+        data[0]: -1
+        data[1]: -1
         data[2]: -1
         data[3]: 1
       - op: 1
@@ -1911,19 +1857,7 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 20
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 21
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
+        data[3]: 3
       - op: 1
         valueIndex: 22
         data[0]: -1
@@ -1941,7 +1875,7 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 14
       - op: 1
         valueIndex: 25
         data[0]: -1
@@ -1960,30 +1894,18 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
+      - op: 3
         valueIndex: 28
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 29
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 30
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
+        data[0]: 19
+        data[1]: 19
+        data[2]: 19
+        data[3]: -1
+      - op: 57
         valueIndex: 31
-        data[0]: -1
+        data[0]: 20
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 0
       - op: 1
         valueIndex: 32
         data[0]: -1
@@ -1995,7 +1917,7 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 5
       - op: 1
         valueIndex: 34
         data[0]: -1
@@ -2007,711 +1929,57 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 36
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 37
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 38
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 39
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 40
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 41
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 42
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 43
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 44
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 45
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 46
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 47
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 48
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 49
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 50
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
+        data[3]: 12
       - op: 1
         valueIndex: 51
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 52
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 53
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 54
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 55
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 56
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 31
-        valueIndex: 57
-        data[0]: 54
-        data[1]: 55
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 58
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 32
-        valueIndex: 59
-        data[0]: 51
-        data[1]: 48
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 60
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 32
-        valueIndex: 61
-        data[0]: 51
-        data[1]: 52
-        data[2]: -1
-        data[3]: 1
-      - op: 7
-        valueIndex: 62
+        data[3]: 12
+      - op: 6
+        valueIndex: 67
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: -1
-      - op: 27
-        valueIndex: 63
-        data[0]: 62
-        data[1]: 57
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 64
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 26
-        valueIndex: 65
-        data[0]: 51
-        data[1]: 58
-        data[2]: -1
-        data[3]: 1
-      - op: 26
-        valueIndex: 66
-        data[0]: 59
-        data[1]: 60
-        data[2]: -1
-        data[3]: 1
-      - op: 26
-        valueIndex: 67
-        data[0]: 61
-        data[1]: 56
-        data[2]: -1
-        data[3]: 1
       - op: 1
         valueIndex: 68
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 23
-        valueIndex: 69
-        data[0]: 63
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 29
-        valueIndex: 70
-        data[0]: 68
-        data[1]: 64
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 71
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
         data[3]: 3
+      - op: 3
+        valueIndex: 71
+        data[0]: 22
+        data[1]: 21
+        data[2]: 22
+        data[3]: -1
       - op: 1
         valueIndex: 74
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 26
+      - op: 1
         valueIndex: 75
-        data[0]: 69
-        data[1]: 70
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 76
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 77
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
+        data[3]: 3
       - op: 1
         valueIndex: 78
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 13
-      - op: 28
-        valueIndex: 79
-        data[0]: 64
-        data[1]: 73
-        data[2]: -1
-        data[3]: 1
-      - op: 49
-        valueIndex: 80
-        data[0]: 76
-        data[1]: 77
-        data[2]: -1
-        data[3]: -1
+        data[3]: 3
       - op: 1
         valueIndex: 81
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 26
+      - op: 1
         valueIndex: 82
-        data[0]: 78
-        data[1]: 79
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 83
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 84
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 85
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 86
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 87
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 88
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 89
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 90
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 91
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 17
-      - op: 1
-        valueIndex: 92
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 93
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 94
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 95
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 96
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 97
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 3
-        valueIndex: 98
-        data[0]: 85
-        data[1]: 85
-        data[2]: 85
-        data[3]: -1
-      - op: 1
-        valueIndex: 101
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 102
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 3
-        valueIndex: 103
-        data[0]: 88
-        data[1]: 87
-        data[2]: 86
-        data[3]: -1
-      - op: 3
-        valueIndex: 106
-        data[0]: 92
-        data[1]: 91
-        data[2]: 90
-        data[3]: -1
-      - op: 1
-        valueIndex: 109
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 5
-      - op: 1
-        valueIndex: 110
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 5
-      - op: 3
-        valueIndex: 111
-        data[0]: 84
-        data[1]: 84
-        data[2]: 84
-        data[3]: -1
-      - op: 1
-        valueIndex: 114
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 115
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 116
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 117
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 31
-        valueIndex: 118
-        data[0]: 102
-        data[1]: 101
-        data[2]: -1
-        data[3]: 5
-      - op: 3
-        valueIndex: 119
-        data[0]: 95
-        data[1]: 95
-        data[2]: 95
-        data[3]: -1
-      - op: 1
-        valueIndex: 122
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 5
-      - op: 1
-        valueIndex: 123
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 124
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 125
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 126
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 127
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 128
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 129
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 130
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 131
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 132
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 133
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 134
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 135
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 136
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 137
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 138
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 139
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 34
-        valueIndex: 140
-        data[0]: 100
-        data[1]: 99
-        data[2]: 103
-        data[3]: -1
-      - op: 1
-        valueIndex: 156
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 157
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 158
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 14
-      - op: 20
-        valueIndex: 159
-        data[0]: 116
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 20
-        valueIndex: 160
-        data[0]: 112
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 161
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 57
-        valueIndex: 162
-        data[0]: 131
-        data[1]: -1
-        data[2]: -1
-        data[3]: 0
-      - op: 31
-        valueIndex: 163
-        data[0]: 114
-        data[1]: 106
-        data[2]: -1
-        data[3]: 1
-      - op: 31
-        valueIndex: 164
-        data[0]: 113
-        data[1]: 106
-        data[2]: -1
-        data[3]: 1
-      - op: 3
-        valueIndex: 165
-        data[0]: 105
-        data[1]: 104
-        data[2]: 115
-        data[3]: -1
-      - op: 3
-        valueIndex: 168
-        data[0]: 117
-        data[1]: 118
-        data[2]: 130
-        data[3]: -1
-      - op: 1
-        valueIndex: 171
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 172
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 3
-        valueIndex: 173
-        data[0]: 124
-        data[1]: 123
-        data[2]: 122
-        data[3]: -1
-      - op: 3
-        valueIndex: 176
-        data[0]: 127
-        data[1]: 120
-        data[2]: 127
-        data[3]: -1
-      - op: 1
-        valueIndex: 179
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 3
-        valueIndex: 180
-        data[0]: 119
-        data[1]: 126
-        data[2]: 125
-        data[3]: -1
-      - op: 36
-        valueIndex: 183
-        data[0]: 128
-        data[1]: -1
-        data[2]: -1
-        data[3]: -1
-      - op: 1
-        valueIndex: 199
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 31
-        valueIndex: 200
-        data[0]: 107
-        data[1]: 106
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 201
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 30
-        valueIndex: 202
-        data[0]: 108
-        data[1]: 110
-        data[2]: -1
-        data[3]: 5
-      - op: 20
-        valueIndex: 203
-        data[0]: 111
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 6
-        valueIndex: 204
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: -1
-      - op: 1
-        valueIndex: 205
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -2729,222 +1997,60 @@ VisualEffectResource:
         - m_ExpressionIndex: 2
           m_Value: 0
         - m_ExpressionIndex: 3
-          m_Value: 1
-        - m_ExpressionIndex: 4
-          m_Value: 0
+          m_Value: 2
         - m_ExpressionIndex: 5
-          m_Value: 0
+          m_Value: 0.1
         - m_ExpressionIndex: 6
-          m_Value: 0
+          m_Value: 0.5
         - m_ExpressionIndex: 7
-          m_Value: 1
+          m_Value: 0.7
         - m_ExpressionIndex: 8
-          m_Value: 0
+          m_Value: 2.3515363
         - m_ExpressionIndex: 9
-          m_Value: 0
+          m_Value: 4.835414
         - m_ExpressionIndex: 10
-          m_Value: 1
-        - m_ExpressionIndex: 11
-          m_Value: 2
+          m_Value: 3.0336041
         - m_ExpressionIndex: 12
-          m_Value: 1
-        - m_ExpressionIndex: 13
-          m_Value: 0
-        - m_ExpressionIndex: 14
-          m_Value: 0
-        - m_ExpressionIndex: 16
-          m_Value: 0
-        - m_ExpressionIndex: 17
-          m_Value: 1
-        - m_ExpressionIndex: 18
-          m_Value: 1
-        - m_ExpressionIndex: 19
-          m_Value: 0
-        - m_ExpressionIndex: 20
-          m_Value: 0
-        - m_ExpressionIndex: 21
-          m_Value: 0
-        - m_ExpressionIndex: 22
-          m_Value: 1
-        - m_ExpressionIndex: 23
-          m_Value: 0
-        - m_ExpressionIndex: 24
-          m_Value: 0
-        - m_ExpressionIndex: 25
-          m_Value: 1
-        - m_ExpressionIndex: 26
-          m_Value: 0
-        - m_ExpressionIndex: 27
-          m_Value: 0
-        - m_ExpressionIndex: 28
-          m_Value: 1
-        - m_ExpressionIndex: 29
-          m_Value: 1
-        - m_ExpressionIndex: 30
-          m_Value: 0
-        - m_ExpressionIndex: 31
-          m_Value: 0
-        - m_ExpressionIndex: 32
-          m_Value: 0
-        - m_ExpressionIndex: 33
-          m_Value: 1
-        - m_ExpressionIndex: 34
-          m_Value: 1
-        - m_ExpressionIndex: 35
-          m_Value: 0
-        - m_ExpressionIndex: 36
-          m_Value: 0
-        - m_ExpressionIndex: 37
-          m_Value: 1
-        - m_ExpressionIndex: 38
-          m_Value: 0
-        - m_ExpressionIndex: 39
-          m_Value: 1
-        - m_ExpressionIndex: 40
-          m_Value: 0
-        - m_ExpressionIndex: 41
-          m_Value: 1
-        - m_ExpressionIndex: 42
-          m_Value: 0
-        - m_ExpressionIndex: 43
-          m_Value: 0
-        - m_ExpressionIndex: 44
-          m_Value: 0
-        - m_ExpressionIndex: 45
-          m_Value: 0
-        - m_ExpressionIndex: 46
-          m_Value: 1
-        - m_ExpressionIndex: 47
-          m_Value: 0
-        - m_ExpressionIndex: 48
-          m_Value: 2
-        - m_ExpressionIndex: 49
-          m_Value: 0.1
-        - m_ExpressionIndex: 50
-          m_Value: 0.5
-        - m_ExpressionIndex: 51
-          m_Value: 1.324718
-        - m_ExpressionIndex: 52
-          m_Value: 3
-        - m_ExpressionIndex: 53
-          m_Value: 0.7
-        - m_ExpressionIndex: 54
-          m_Value: 10
-        - m_ExpressionIndex: 55
-          m_Value: 0.001
-        - m_ExpressionIndex: 56
-          m_Value: 2.08
-        - m_ExpressionIndex: 58
-          m_Value: 2.29
-        - m_ExpressionIndex: 60
-          m_Value: 1.34
-        - m_ExpressionIndex: 64
-          m_Value: 0
-        - m_ExpressionIndex: 68
-          m_Value: 1
-        - m_ExpressionIndex: 72
-          m_Value: 1
-        - m_ExpressionIndex: 74
-          m_Value: 1
-        - m_ExpressionIndex: 75
-          m_Value: 0.5
-        - m_ExpressionIndex: 79
-          m_Value: 0
-        - m_ExpressionIndex: 81
-          m_Value: 0.15
-        - m_ExpressionIndex: 82
           m_Value: 0.34
-        - m_ExpressionIndex: 83
+        - m_ExpressionIndex: 13
+          m_Value: 0.15
+        - m_ExpressionIndex: 14
           m_Value: -4.25
-        - m_ExpressionIndex: 84
-          m_Value: 4
-        - m_ExpressionIndex: 85
-          m_Value: -1
-        - m_ExpressionIndex: 86
-          m_Value: 0
-        - m_ExpressionIndex: 87
-          m_Value: 0
-        - m_ExpressionIndex: 88
-          m_Value: 0
-        - m_ExpressionIndex: 90
-          m_Value: 0
-        - m_ExpressionIndex: 91
-          m_Value: 0
-        - m_ExpressionIndex: 92
-          m_Value: 0
-        - m_ExpressionIndex: 93
+        - m_ExpressionIndex: 15
           m_Value: 2.5
-        - m_ExpressionIndex: 94
+        - m_ExpressionIndex: 16
           m_Value: -1
-        - m_ExpressionIndex: 95
-          m_Value: 15
-        - m_ExpressionIndex: 97
-          m_Value: 0.5
-        - m_ExpressionIndex: 98
+        - m_ExpressionIndex: 18
           m_Value: 1.71
-        - m_ExpressionIndex: 104
-          m_Value: 0
-        - m_ExpressionIndex: 105
-          m_Value: 0
-        - m_ExpressionIndex: 106
-          m_Value: 0
-        - m_ExpressionIndex: 107
-          m_Value: 5
-        - m_ExpressionIndex: 111
-          m_Value: 0.5
-        - m_ExpressionIndex: 112
-          m_Value: 1
-        - m_ExpressionIndex: 113
-          m_Value: 2
-        - m_ExpressionIndex: 114
-          m_Value: 10000
-        - m_ExpressionIndex: 115
-          m_Value: 0
-        - m_ExpressionIndex: 116
-          m_Value: 1
-        - m_ExpressionIndex: 117
-          m_Value: 100
-        - m_ExpressionIndex: 118
-          m_Value: 100
-        - m_ExpressionIndex: 119
-          m_Value: 0
-        - m_ExpressionIndex: 120
+        - m_ExpressionIndex: 19
+          m_Value: 15
+        - m_ExpressionIndex: 21
           m_Value: 3
-        - m_ExpressionIndex: 121
-          m_Value: 0
-        - m_ExpressionIndex: 122
-          m_Value: 0
-        - m_ExpressionIndex: 123
-          m_Value: 0
-        - m_ExpressionIndex: 124
-          m_Value: 0
-        - m_ExpressionIndex: 125
-          m_Value: 0
-        - m_ExpressionIndex: 126
-          m_Value: 1
-        - m_ExpressionIndex: 127
+        - m_ExpressionIndex: 22
           m_Value: 18.3
-        - m_ExpressionIndex: 129
+        - m_ExpressionIndex: 23
           m_Value: 0.06
-        - m_ExpressionIndex: 130
-          m_Value: 100
-        - m_ExpressionIndex: 134
-          m_Value: 0.1
-        - m_ExpressionIndex: 140
-          m_Value: 10
-        - m_ExpressionIndex: 141
-          m_Value: 10
-        - m_ExpressionIndex: 144
+        - m_ExpressionIndex: 26
+          m_Value: 10000
+        - m_ExpressionIndex: 28
           m_Value: 5
-        - m_ExpressionIndex: 147
-          m_Value: 0.7
-        - m_ExpressionIndex: 149
+        - m_ExpressionIndex: 34
+          m_Value: 10
+        - m_ExpressionIndex: 37
           m_Value: 0.25
       m_Vector2f:
         m_Array: []
       m_Vector3f:
         m_Array:
-        - m_ExpressionIndex: 71
+        - m_ExpressionIndex: 11
+          m_Value: {x: 0, y: 0, z: 0}
+        - m_ExpressionIndex: 17
+          m_Value: {x: -1, y: -1, z: -1}
+        - m_ExpressionIndex: 32
+          m_Value: {x: 0, y: 1, z: 0}
+        - m_ExpressionIndex: 35
+          m_Value: {x: 100, y: 100, z: 100}
+        - m_ExpressionIndex: 36
           m_Value: {x: 0, y: 0, z: 0}
       m_Vector4f:
         m_Array: []
@@ -2952,62 +2058,51 @@ VisualEffectResource:
         m_Array: []
       m_Int:
         m_Array:
-        - m_ExpressionIndex: 101
-          m_Value: 1
-        - m_ExpressionIndex: 102
+        - m_ExpressionIndex: 27
           m_Value: 4
-        - m_ExpressionIndex: 110
-          m_Value: 8
       m_Matrix4x4f:
-        m_Array: []
-      m_AnimationCurve:
         m_Array:
-        - m_ExpressionIndex: 76
+        - m_ExpressionIndex: 29
           m_Value:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 0.10186115
-              value: 0.18041909
-              inSlope: 1.3436873
-              outSlope: 1.3436873
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 0.17110649
-              value: 0.22242102
-              inSlope: 0.00403284
-              outSlope: 0.00403284
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
+            e00: 4
+            e01: 0
+            e02: 0
+            e03: 0
+            e10: 0
+            e11: 4
+            e12: 0
+            e13: 0
+            e20: 0
+            e21: 0
+            e22: 4
+            e23: 0
+            e30: 0
+            e31: 0
+            e32: 0
+            e33: 1
+        - m_ExpressionIndex: 30
+          m_Value:
+            e00: 0.25
+            e01: -0
+            e02: 0
+            e03: -0
+            e10: -0
+            e11: 0.25
+            e12: -0
+            e13: -0
+            e20: 0
+            e21: -0
+            e22: 0.25
+            e23: -0
+            e30: 0
+            e31: 0
+            e32: 0
+            e33: 1
+      m_AnimationCurve:
+        m_Array: []
       m_Gradient:
         m_Array:
-        - m_ExpressionIndex: 131
+        - m_ExpressionIndex: 20
           m_Value:
             serializedVersion: 2
             key0: {r: 0.027450966, g: 0.29207337, b: 0.50980395, a: 0}
@@ -3039,25 +2134,23 @@ VisualEffectResource:
             m_NumAlphaKeys: 4
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 153
+        - m_ExpressionIndex: 38
           m_Value: {fileID: 2800000, guid: 790918bafedbcdc4499706ab9de9671c, type: 3}
       m_Bool:
-        m_Array:
-        - m_ExpressionIndex: 89
-          m_Value: 1
+        m_Array: []
     m_ExposedExpressions:
     - nameId: camPos
-      index: 71
+      index: 11
     - nameId: camvariableParticleSize
-      index: 129
+      index: 23
     - nameId: expansionRadius
-      index: 93
+      index: 15
     - nameId: gridForceCellIntensity
-      index: 95
+      index: 19
     - nameId: gridForceCellSize
       index: 0
     - nameId: spawnSize
-      index: 127
+      index: 22
     m_Buffers:
     - type: 1
       size: 19500416
@@ -3173,7 +2266,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Rate
-        index: 136
+        index: 26
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -3194,9 +2287,9 @@ VisualEffectResource:
       index: 1
     values:
     - nameId: bounds_center
-      index: 138
+      index: 36
     - nameId: bounds_size
-      index: 139
+      index: 35
     tasks:
     - type: 536870912
       buffers:
@@ -3210,19 +2303,13 @@ VisualEffectResource:
         index: 1
       temporaryBuffers: []
       values:
-      - nameId: A_a
-        index: 140
-      - nameId: B_a
-        index: 141
-      - nameId: Box_center_b
-        index: 142
       - nameId: Box_size_b
-        index: 143
+        index: 33
       params:
       - nameId: bounds_center
-        index: 138
+        index: 36
       - nameId: bounds_size
-        index: 139
+        index: 35
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -3233,146 +2320,14 @@ VisualEffectResource:
         index: 2
       temporaryBuffers: []
       values:
-      - nameId: Force_a
-        index: 145
       - nameId: deltaTime_a
-        index: 152
-      - nameId: InvFieldTransform_b
-        index: 146
-      - nameId: FieldTransform_b
-        index: 128
-      - nameId: Intensity_b
-        index: 147
-      - nameId: Drag_b
-        index: 148
-      - nameId: frequency_b
-        index: 149
-      - nameId: octaves_b
-        index: 150
-      - nameId: roughness_b
-        index: 151
-      - nameId: lacunarity_b
-        index: 137
-      - nameId: dragCoefficient_c
-        index: 144
-      - nameId: uniform_a
-        index: 50
-      - nameId: uniform_b
-        index: 65
-      - nameId: uniform_c
-        index: 49
-      - nameId: uniform_d
-        index: 66
-      - nameId: uniform_e
-        index: 74
-      - nameId: uniform_f
-        index: 98
-      - nameId: uniform_g
-        index: 121
-      - nameId: uniform_h
-        index: 53
-      - nameId: uniform_i
-        index: 67
-      - nameId: uniform_j
-        index: 72
-      - nameId: uniform_k
-        index: 89
-      - nameId: uniform_l
-        index: 0
-      - nameId: uniform_m
-        index: 3
-      - nameId: uniform_n
-        index: 4
-      - nameId: uniform_o
-        index: 5
-      - nameId: uniform_p
-        index: 6
-      - nameId: uniform_q
-        index: 7
-      - nameId: uniform_r
-        index: 8
-      - nameId: uniform_s
-        index: 9
-      - nameId: uniform_t
-        index: 12
-      - nameId: uniform_u
-        index: 13
-      - nameId: uniform_v
-        index: 17
-      - nameId: uniform_w
-        index: 16
-      - nameId: uniform_x
-        index: 19
-      - nameId: uniform_y
-        index: 2
-      - nameId: uniform_z
-        index: 10
-      - nameId: uniform_ba
-        index: 15
-      - nameId: uniform_bb
-        index: 22
-      - nameId: uniform_bc
-        index: 20
-      - nameId: uniform_bd
-        index: 23
-      - nameId: uniform_be
-        index: 24
-      - nameId: uniform_bf
-        index: 25
-      - nameId: uniform_bg
-        index: 26
-      - nameId: uniform_bh
-        index: 27
-      - nameId: uniform_bi
-        index: 14
-      - nameId: uniform_bj
-        index: 18
-      - nameId: uniform_bk
-        index: 29
-      - nameId: uniform_bl
-        index: 30
-      - nameId: uniform_bm
         index: 31
-      - nameId: uniform_bn
-        index: 34
-      - nameId: uniform_bo
-        index: 35
-      - nameId: uniform_bp
-        index: 21
-      - nameId: uniform_bq
-        index: 28
-      - nameId: uniform_br
-        index: 37
-      - nameId: uniform_bs
-        index: 36
-      - nameId: uniform_bt
-        index: 38
-      - nameId: uniform_bu
-        index: 39
-      - nameId: uniform_bv
-        index: 40
-      - nameId: uniform_bw
-        index: 32
-      - nameId: uniform_bx
-        index: 33
-      - nameId: uniform_by
-        index: 41
-      - nameId: uniform_bz
-        index: 42
-      - nameId: uniform_ca
-        index: 43
-      - nameId: uniform_cb
-        index: 44
-      - nameId: uniform_cc
-        index: 46
-      - nameId: uniform_cd
-        index: 47
-      - nameId: uniform_ce
-        index: 45
-      - nameId: uniform_cf
-        index: 96
-      - nameId: uniform_cg
-        index: 109
+      - nameId: uniform_a
+        index: 0
+      - nameId: uniform_b
+        index: 4
+      - nameId: uniform_c
+        index: 24
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 1
@@ -3383,31 +2338,15 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: uniform_a
-        index: 82
+        index: 15
       - nameId: uniform_b
-        index: 81
+        index: 11
       - nameId: uniform_c
-        index: 80
-      - nameId: uniform_d
-        index: 83
-      - nameId: uniform_e
-        index: 93
-      - nameId: Size_c
-        index: 134
-      - nameId: uniform_f
-        index: 71
-      - nameId: uniform_g
-        index: 97
-      - nameId: uniform_h
-        index: 129
+        index: 23
       - nameId: gradient_e
-        index: 135
-      - nameId: BlendColor_e
-        index: 132
-      - nameId: BlendAlpha_e
-        index: 133
+        index: 25
       - nameId: mainTexture
-        index: 153
+        index: 38
       params:
       - nameId: sortPriority
         index: 0
