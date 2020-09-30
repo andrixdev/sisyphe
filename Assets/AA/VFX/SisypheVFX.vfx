@@ -1375,7 +1375,7 @@ MonoBehaviour:
   - name: Joints
     collapsed: 1
   - name: Mirage params
-    collapsed: 1
+    collapsed: 0
   - name: Sisyphe params
     collapsed: 0
   uiBounds:
@@ -2562,7 +2562,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.5
+      m_SerializableObject: 2
     min: 0
     max: 50
     descendantCount: 0
@@ -12926,7 +12926,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 746
           m_Value: 1
         - m_ExpressionIndex: 752
-          m_Value: 0.34
+          m_Value: 1.17
         - m_ExpressionIndex: 753
           m_Value: 1
         - m_ExpressionIndex: 755
@@ -13004,7 +13004,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 800
           m_Value: 1
         - m_ExpressionIndex: 801
-          m_Value: 2.5
+          m_Value: 2
         - m_ExpressionIndex: 803
           m_Value: 1
         - m_ExpressionIndex: 807
@@ -105103,7 +105103,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.34
+      m_SerializableObject: 1.17
     m_Space: 2147483647
   m_Property:
     name: b
@@ -106022,7 +106022,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -106075,7 +106075,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.5
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: o
