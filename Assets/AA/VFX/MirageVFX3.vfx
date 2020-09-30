@@ -361,7 +361,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.114
+      m_SerializableObject: 1.706833
     min: 0.02
     max: 7
     descendantCount: 0
@@ -2723,7 +2723,7 @@ VisualEffectResource:
       m_Float:
         m_Array:
         - m_ExpressionIndex: 0
-          m_Value: 2.114
+          m_Value: 1.706833
         - m_ExpressionIndex: 1
           m_Value: 1
         - m_ExpressionIndex: 2
@@ -2931,13 +2931,13 @@ VisualEffectResource:
         - m_ExpressionIndex: 134
           m_Value: 0.1
         - m_ExpressionIndex: 140
-          m_Value: 8
+          m_Value: 10
         - m_ExpressionIndex: 141
-          m_Value: 8
+          m_Value: 10
         - m_ExpressionIndex: 144
           m_Value: 5
         - m_ExpressionIndex: 147
-          m_Value: 0.25
+          m_Value: 0.7
         - m_ExpressionIndex: 149
           m_Value: 0.25
       m_Vector2f:
@@ -9030,7 +9030,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 8
+      m_SerializableObject: 10
     m_Space: 2147483647
   m_Property:
     name: A
@@ -9071,7 +9071,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 8
+      m_SerializableObject: 10
     m_Space: 2147483647
   m_Property:
     name: B
@@ -15095,7 +15095,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.114
+      m_SerializableObject: 1.706833
     m_Space: 2147483647
   m_Property:
     name: o
@@ -15451,7 +15451,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.25
+      m_SerializableObject: 0.7
     m_Space: 2147483647
   m_Property:
     name: o
