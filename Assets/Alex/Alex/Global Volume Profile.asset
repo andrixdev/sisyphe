@@ -34,14 +34,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8bcdf71d7fafa419fca1ed162f5fc9, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.21
+    m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 0
     min: -100
     max: 100
   colorFilter:
@@ -52,7 +52,7 @@ MonoBehaviour:
     showEyeDropper: 1
   hueShift:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: -67
     min: -180
     max: 180
   saturation:
@@ -184,6 +184,7 @@ MonoBehaviour:
   - {fileID: -5164216404296417025}
   - {fileID: -6341889133161503271}
   - {fileID: -3273354747898109839}
+  - {fileID: 5244285162070484050}
 --- !u!114 &597895697884899315
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -279,17 +280,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9008a067f4d626c4d8bc4bc48f04bb89, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   rayTracing:
     m_OverrideState: 0
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
     min: 0
     max: 4
   directLightingStrength:
@@ -299,12 +300,12 @@ MonoBehaviour:
     max: 1
   radius:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 5
     min: 0.25
     max: 5
   temporalAccumulation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   ghostingReduction:
     m_OverrideState: 0
     m_Value: 0.5
@@ -359,6 +360,29 @@ MonoBehaviour:
     m_Value: 2
     min: 1
     max: 6
+--- !u!114 &5244285162070484050
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5ab44aadfb1804db5fd470983ac1b8, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  lift:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.11034341}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: 0.05141389}
 --- !u!114 &5336212091654185669
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -461,7 +485,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   quality:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
   focusMode:
     m_OverrideState: 1
     m_Value: 2
@@ -475,15 +499,15 @@ MonoBehaviour:
     min: 0
   nearFocusEnd:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.15
     min: 0
   farFocusStart:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 100
     min: 0
   farFocusEnd:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 200
     min: 0
   m_NearSampleCount:
     m_OverrideState: 0
