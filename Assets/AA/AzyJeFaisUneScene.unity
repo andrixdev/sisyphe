@@ -846,7 +846,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 0}
         m_Name: spineMid_angles
         m_Overridden: 1
-      - m_Value: {x: 1.5465899, y: 4.703637, z: 31.064304}
+      - m_Value: {x: 1.5465899, y: 1.62, z: 30.32}
         m_Name: spineMid_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888183861}
-  m_LocalRotation: {x: 0.26663414, y: -0.23905097, z: 0.06845068, w: 0.93116885}
+  m_LocalRotation: {x: 0.26663417, y: -0.2390509, z: 0.068450674, w: 0.93116885}
   m_LocalPosition: {x: 5.0803256, y: 8.149835, z: 9.344703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5293,7 +5293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4034371722821693215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.077329494, y: 0.23518187, z: 1.5532153}
+  m_LocalPosition: {x: 0.077329494, y: 0.081, z: 1.516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4034371721644646842}
@@ -5647,7 +5647,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035534996775112}
-  m_LocalRotation: {x: 0.26663414, y: -0.23905097, z: 0.06845068, w: 0.93116885}
+  m_LocalRotation: {x: 0.26663417, y: -0.2390509, z: 0.068450674, w: 0.93116885}
   m_LocalPosition: {x: 3.28, y: 13.099681, z: -17.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
