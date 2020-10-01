@@ -123,12 +123,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Metallic: 0.01
+    - Metallic: 0
     - NormalScale: 1
     - NormalStrength: 5
     - RimIntensity: 0
     - RimPower: 1.99
-    - Smoothness: 0.75
+    - Smoothness: 0.38
     - TriplanarBlend: 1
     - TriplanarTile: 2
     - Vector1_F4E1AA46: 1
@@ -257,7 +257,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - RimColor: {r: 1, g: 1, b: 1, a: 0}
-    - Tint: {r: 2, g: 2, b: 2, a: 1}
+    - Tint: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

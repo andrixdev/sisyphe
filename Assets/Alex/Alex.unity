@@ -372,12 +372,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209656421436277396}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1d97942d9ecb394ba759aca53f87bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 11
   axis: {x: 0, y: 1, z: 0}
 --- !u!4 &209656421436277398
 Transform:
@@ -386,13 +386,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209656421436277396}
-  m_LocalRotation: {x: -0.33336127, y: 0.210106, z: -0.07647231, w: -0.91590273}
+  m_LocalRotation: {x: 0.23035449, y: -0.7151641, z: 0.2745258, w: 0.60009396}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7032480180634686679}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 40, y: -385.84, z: 0}
+  m_LocalEulerAnglesHint: {x: 42, y: -100, z: 0}
 --- !u!108 &209656421436277399
 Light:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
   SMAAQuality: 2
   dithering: 1
   stopNaNs: 1
-  taaSharpenStrength: 1
+  taaSharpenStrength: 2
   physicalParameters:
     m_Iso: 200
     m_ShutterSpeed: 0.005
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209656423328898157}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8a636f62116c0a40bbfefdf876d4608, type: 3}
   m_Name: 
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302676400478104980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 378c25ab0ad6f0a40a082ab2f4597c26, type: 3}
   m_Name: 
@@ -783,7 +783,6 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 1.44
   clampDeformationToVolume: 0
-  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -886,6 +885,8 @@ PlayableDirector:
     value: {fileID: 8562768291048664485}
   - key: {fileID: -185288096579964926, guid: e59fe253bcb7f534f8e9f2e7016977dc, type: 2}
     value: {fileID: 7113714200808384675}
+  - key: {fileID: 812808830696169636, guid: e59fe253bcb7f534f8e9f2e7016977dc, type: 2}
+    value: {fileID: 209656421436277394}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &387978185144887612
@@ -925,7 +926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9092049026192980222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9, y: 18.8, z: 90}
+  m_LocalPosition: {x: -2.9, y: 18.2, z: 89.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5185943836222565255}
@@ -941,7 +942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869483695786921851}
-  m_LocalRotation: {x: 0, y: 0.7424437, z: 0, w: 0.6699085}
+  m_LocalRotation: {x: 0, y: 0.7148999, z: 0, w: 0.6992268}
   m_LocalPosition: {x: -0.12, y: 2.98, z: 32.66}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
@@ -949,7 +950,7 @@ Transform:
   - {fileID: 2115093686035112482}
   m_Father: {fileID: 7032480180634686679}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 95.88, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 91.27, z: 0}
 --- !u!4 &941907803464030308
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1091,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8332920820938197855}
-  m_Mesh: {fileID: -2432090755550338912, guid: 4f44a7e0a0328da41ae8cd3d09ae3265, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: b58a3a2f06d2b784eb9b69ce8e8d690b, type: 3}
 --- !u!1 &3106481082723088241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1139,6 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
-  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -1543,7 +1543,7 @@ VisualEffect:
       - m_Value: 5
         m_Name: expansionRadius
         m_Overridden: 1
-      - m_Value: 0.02
+      - m_Value: 0.015
         m_Name: camvariableParticleSize
         m_Overridden: 1
       - m_Value: 10
@@ -1674,8 +1674,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.1
   clampDeformationToVolume: 0
-  volumeIndex: -1
-  intensity: 10
+  intensity: 5
   blendOperator: 1
   normalInfluence: 1
   axisInfluence: {x: 0, y: 0, z: 0}
@@ -1793,19 +1792,19 @@ MonoBehaviour:
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 10
+  playerRadius: 7
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.0062893084
-      outSlope: -0.0062893084
+      inSlope: 0.008987681
+      outSlope: 0.008987681
       tangentMode: 0
       weightedMode: 3
       inWeight: 0.33333334
-      outWeight: 0.75
+      outWeight: 0.24583334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -1821,7 +1820,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
   renderCamera: {fileID: 209656423328898159}
-  reinitialize: 0
+  reinitialize: 1
   recomputeMeshProbabilities: 0
 --- !u!1 &5185943836019136809
 GameObject:
@@ -1867,25 +1866,25 @@ MonoBehaviour:
   areaSize: {x: 35.5, y: 9.7, z: 35.5}
   areaSubdivisions: {x: 10, y: 3, z: 10}
   meshPositionRandom: {x: 0, y: 0, z: 0}
-  meshRotation: {x: 0, y: -90, z: 0}
+  meshRotation: {x: 0, y: -180, z: 0}
   meshRotationRandom: {x: 70, y: 70, z: 70}
   meshScale: 1.25
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 10
+  playerRadius: 7
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.0062893084
-      outSlope: -0.0062893084
+      inSlope: 0.008987681
+      outSlope: 0.008987681
       tangentMode: 0
       weightedMode: 3
       inWeight: 0.33333334
-      outWeight: 0.75
+      outWeight: 0.24583334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -1901,7 +1900,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
   renderCamera: {fileID: 209656423328898159}
-  reinitialize: 0
+  reinitialize: 1
   recomputeMeshProbabilities: 0
 --- !u!4 &5185943836019136815
 Transform:
@@ -1967,19 +1966,19 @@ MonoBehaviour:
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 10
+  playerRadius: 7
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.0062893084
-      outSlope: -0.0062893084
+      inSlope: 0.008987681
+      outSlope: 0.008987681
       tangentMode: 0
       weightedMode: 3
       inWeight: 0.33333334
-      outWeight: 0.75
+      outWeight: 0.24583334
     - serializedVersion: 3
       time: 1
       value: 1
@@ -1995,7 +1994,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 239b1b30f84a1a04a828c23bd9a57b4c, type: 2}
   shadowCastingMode: 2
   renderCamera: {fileID: 209656423328898159}
-  reinitialize: 0
+  reinitialize: 1
   recomputeMeshProbabilities: 0
 --- !u!4 &5185943836222565255
 Transform:
@@ -2058,7 +2057,6 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.2
   clampDeformationToVolume: 0
-  volumeIndex: -1
   intensity: 1.5
   blendOperator: 1
   normalInfluence: 1
@@ -2607,7 +2605,6 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 0.2
   clampDeformationToVolume: 0
-  volumeIndex: -1
   intensity: 1
   blendOperator: 1
   normalInfluence: 1
@@ -3101,7 +3098,6 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
-  volumeIndex: -1
   intensity: 1.28
   blendOperator: 3
   normalInfluence: 1
