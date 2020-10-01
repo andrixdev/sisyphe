@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d97942d9ecb394ba759aca53f87bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 11
+  speed: 17
   axis: {x: 0, y: 1, z: 0}
 --- !u!4 &209656421436277398
 Transform:
@@ -716,8 +716,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209656423328898157}
-  m_LocalRotation: {x: 0.00018919464, y: 0.99770164, z: 0.06770291, w: -0.002787972}
-  m_LocalPosition: {x: -1.8647082, y: 0.05, z: 0.84341025}
+  m_LocalRotation: {x: -0.006503363, y: 0.033644557, z: 0.00021893825, w: 0.9994127}
+  m_LocalPosition: {x: -0.6731664, y: 2.9971359, z: 32.487373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7519017168892370453}
@@ -943,15 +943,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869483695786921851}
-  m_LocalRotation: {x: 0, y: 0.7148999, z: 0, w: 0.6992268}
-  m_LocalPosition: {x: -0.7, y: 2.98, z: 32.66}
+  m_LocalRotation: {x: 0, y: 0.7259748, z: 0, w: 0.6877213}
+  m_LocalPosition: {x: -0.64, y: 3, z: 32.66}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4357707153861723303}
   - {fileID: 2115093686035112482}
   m_Father: {fileID: 7032480180634686679}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 91.27, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 93.1, z: 0}
 --- !u!4 &941907803464030308
 Transform:
   m_ObjectHideFlags: 0
@@ -1545,7 +1545,7 @@ VisualEffect:
       - m_Value: 5
         m_Name: expansionRadius
         m_Overridden: 1
-      - m_Value: 0.015
+      - m_Value: 0.0125
         m_Name: camvariableParticleSize
         m_Overridden: 1
       - m_Value: 10
@@ -1555,7 +1555,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -1.8647082, y: 0.05, z: 0.84341025}
+      - m_Value: {x: -0.6731664, y: 2.9971359, z: 32.487373}
         m_Name: camPos
         m_Overridden: 1
     m_Vector4f:
@@ -1795,27 +1795,36 @@ MonoBehaviour:
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 7
+  playerRadius: 8
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.000003963709
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.016426375
+      outSlope: -0.016426375
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.46129897
+    - serializedVersion: 3
+      time: 0.5334358
+      value: -0.000047125388
+      inSlope: -0.013844336
+      outSlope: -0.013844336
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.30730915
+      outWeight: 0.33539575
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.007349612
+      outSlope: 0.007349612
       tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      weightedMode: 3
+      inWeight: 0.5336
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1875,27 +1884,36 @@ MonoBehaviour:
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 7
+  playerRadius: 8
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.000003963709
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.016426375
+      outSlope: -0.016426375
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.46129897
+    - serializedVersion: 3
+      time: 0.5334358
+      value: -0.000047125388
+      inSlope: -0.013844336
+      outSlope: -0.013844336
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.30730915
+      outWeight: 0.33539575
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.007349612
+      outSlope: 0.007349612
       tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      weightedMode: 3
+      inWeight: 0.5336
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -1969,27 +1987,36 @@ MonoBehaviour:
   meshScaleRandom: {x: 0, y: 0, z: 0}
   clampNegativeScale: 1
   playerTransform: {fileID: 209656423328898158}
-  playerRadius: 7
+  playerRadius: 8
   playerRadiusEffect:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.000003963709
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.016426375
+      outSlope: -0.016426375
       tangentMode: 0
-      weightedMode: 0
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.46129897
+    - serializedVersion: 3
+      time: 0.5334358
+      value: -0.000047125388
+      inSlope: -0.013844336
+      outSlope: -0.013844336
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.30730915
+      outWeight: 0.33539575
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.007349612
+      outSlope: 0.007349612
       tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      weightedMode: 3
+      inWeight: 0.5336
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -3169,7 +3196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8562768291048664480}
-  m_LocalRotation: {x: 0.00018919464, y: 0.99770164, z: 0.06770291, w: -0.002787972}
+  m_LocalRotation: {x: -0.006503363, y: 0.033644557, z: 0.00021893825, w: 0.9994127}
   m_LocalPosition: {x: -3.8529623, y: 1.5600257, z: 9.291866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
