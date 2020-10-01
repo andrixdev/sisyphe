@@ -16596,7 +16596,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 52
           m_Value: 5
         - m_ExpressionIndex: 59
-          m_Value: 5
+          m_Value: -10
         - m_ExpressionIndex: 61
           m_Value: 10
         - m_ExpressionIndex: 71
@@ -16634,7 +16634,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 189
           m_Value: 1
         - m_ExpressionIndex: 190
-          m_Value: 0.1
+          m_Value: 0.5
         - m_ExpressionIndex: 192
           m_Value: 1
         - m_ExpressionIndex: 201
@@ -16658,9 +16658,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 277
           m_Value: 1
         - m_ExpressionIndex: 280
-          m_Value: 1
+          m_Value: 0.5
         - m_ExpressionIndex: 281
-          m_Value: 0.1
+          m_Value: 0.5
         - m_ExpressionIndex: 304
           m_Value: 0
         - m_ExpressionIndex: 332
@@ -17170,7 +17170,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 1538
           m_Value: 0.4
         - m_ExpressionIndex: 1545
-          m_Value: 0.1
+          m_Value: 4
         - m_ExpressionIndex: 1550
           m_Value: 1.17
         - m_ExpressionIndex: 1555
@@ -17234,7 +17234,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 1593
           m_Value: 1
         - m_ExpressionIndex: 1594
-          m_Value: 5
+          m_Value: 2
         - m_ExpressionIndex: 1596
           m_Value: 0
         - m_ExpressionIndex: 1597
@@ -71053,7 +71053,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.1
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: cellX
@@ -71087,7 +71087,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: cellY
@@ -71121,7 +71121,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.1
+      m_SerializableObject: 0.5
     m_Space: 2147483647
   m_Property:
     name: cellZ
@@ -71189,7 +71189,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.1
+      m_SerializableObject: 4
     m_Space: 2147483647
   m_Property:
     name: transportIntensity
@@ -73387,7 +73387,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: b
@@ -77082,7 +77082,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: -10
     m_Space: 2147483647
   m_Property:
     name: 
