@@ -783,6 +783,7 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 1.44
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -943,7 +944,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869483695786921851}
   m_LocalRotation: {x: 0, y: 0.7148999, z: 0, w: 0.6992268}
-  m_LocalPosition: {x: -0.12, y: 2.98, z: 32.66}
+  m_LocalPosition: {x: -0.7, y: 2.98, z: 32.66}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4357707153861723303}
@@ -1091,7 +1092,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8332920820938197855}
-  m_Mesh: {fileID: -2432090755550338912, guid: b58a3a2f06d2b784eb9b69ce8e8d690b, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 4f44a7e0a0328da41ae8cd3d09ae3265, type: 3}
 --- !u!1 &3106481082723088241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1140,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 0.005
   blendOperator: 1
   normalInfluence: 1
@@ -1674,6 +1676,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.1
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 5
   blendOperator: 1
   normalInfluence: 1
@@ -1799,21 +1802,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.008987681
-      outSlope: 0.008987681
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.33333334
-      outWeight: 0.24583334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 6.0188785
-      outSlope: 6.0188785
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.15037507
-      outWeight: 0.33333334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1879,21 +1882,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.008987681
-      outSlope: 0.008987681
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.33333334
-      outWeight: 0.24583334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 6.0188785
-      outSlope: 6.0188785
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.15037507
-      outWeight: 0.33333334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1973,21 +1976,21 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.008987681
-      outSlope: 0.008987681
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.33333334
-      outWeight: 0.24583334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 6.0188785
-      outSlope: 6.0188785
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.15037507
-      outWeight: 0.33333334
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -2057,6 +2060,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0.2
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1.5
   blendOperator: 1
   normalInfluence: 1
@@ -2422,7 +2426,7 @@ ReflectionProbe:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3483883731903573616}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Type: 0
   m_Mode: 2
@@ -2605,6 +2609,7 @@ MonoBehaviour:
   volumeType: 1
   falloffRadius: 0.2
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1
   blendOperator: 1
   normalInfluence: 1
@@ -3027,9 +3032,9 @@ MonoBehaviour:
     roll: 0
   - position: {x: 1.4292312, y: 0.6019039, z: -0.64445305}
     roll: 0
-  - position: {x: -0.022067308, y: 2.78, z: 6.519692}
+  - position: {x: 0.47150803, y: 2.78, z: 6.519692}
     roll: 0
-  - position: {x: 0.8370366, y: 2.947136, z: 29.887373}
+  - position: {x: 0.2668336, y: 2.947136, z: 29.887373}
     roll: 0
 --- !u!1 &8107749390527716444
 GameObject:
@@ -3098,6 +3103,7 @@ MonoBehaviour:
   volumeType: 0
   falloffRadius: 0
   clampDeformationToVolume: 0
+  volumeIndex: -1
   intensity: 1.28
   blendOperator: 3
   normalInfluence: 1
