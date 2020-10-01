@@ -1230,7 +1230,7 @@ MonoBehaviour:
     x: -3461
     y: -1603
     width: 7908
-    height: 5359
+    height: 5357
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5651,9 +5651,9 @@ VisualEffectResource:
       1\n\t\t#define IS_TRANSPARENT_PARTICLE 1\n\t\t#define VFX_BLENDMODE_ADD 1\n\t\t#define
       VFX_BYPASS_EXPOSURE 1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t#define
       VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t   
-      float3 uniform_f;\n\t\t    float uniform_a;\n\t\t    float3 Position_e;\n\t\t   
+      float3 uniform_f;\n\t\t    float uniform_a;\n\t\t    float3 Position_d;\n\t\t   
       float uniform_b;\n\t\t    float uniform_c;\n\t\t    float uniform_d;\n\t\t   
-      float uniform_e;\n\t\t    float Size_c;\n\t\t    float uniform_g;\n\t\t   
+      float uniform_e;\n\t\t    float Size_b;\n\t\t    float uniform_g;\n\t\t   
       float uniform_h;\n\t\t    float gradient_f;\n\t\t    float BlendColor_f;\n\t\t   
       float BlendAlpha_f;\n\t\t    uint3 PADDING_0;\n\t\tCBUFFER_END\n\t\t\n\t\tstruct
       Attributes\n\t\t{\n\t\t    float lifetime;\n\t\t    float3 position;\n\t\t   
@@ -5705,28 +5705,28 @@ VisualEffectResource:
       \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.hlsl\"\n\t\t\t\n\n\t\t\tvoid
       SetAttribute_CAC29747(inout float3 position, float3 Position) /*attribute:position
       Composition:Overwrite Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t   
-      position = Position;\n\t\t\t}\n\t\t\tvoid Orient_189(inout float3 axisX, inout
-      float3 axisY, inout float3 axisZ, float3 position) /*mode:FaceCameraPosition
-      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    if (unity_OrthoParams.w == 1.0f)
-      // Face plane for ortho\n\t\t\t    {\n\t\t\t        float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t       
-      axisX = viewRot[0].xyz;\n\t\t\t        axisY = viewRot[1].xyz;\n\t\t\t       
-      #if VFX_LOCAL_SPACE // Need to remove potential scale in local transform\n\t\t\t       
-      axisX = normalize(axisX);\n\t\t\t        axisY = normalize(axisY);\n\t\t\t       
-      axisZ = cross(axisX,axisY);\n\t\t\t        #else\n\t\t\t        axisZ = -viewRot[2].xyz;\n\t\t\t       
-      #endif\n\t\t\t    }\n\t\t\t    else\n\t\t\t    {\n\t\t\t        axisZ = normalize(position
-      - GetViewVFXPosition());\n\t\t\t        axisX = normalize(cross(GetVFXToViewRotMatrix()[1].xyz,axisZ));\n\t\t\t       
-      axisY = cross(axisZ,axisX);\n\t\t\t    }\n\t\t\t    \n\t\t\t}\n\t\t\tvoid SetAttribute_3278B22F(inout
-      float size, float Size) /*attribute:size Composition:Overwrite Source:Slot
-      Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    size = Size;\n\t\t\t}\n\t\t\tvoid
-      SetAttribute_39EE3455(inout float size, float Size) /*attribute:size Composition:Multiply
-      Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid
-      SetAttribute_C707D62A(inout float3 position, float3 Position) /*attribute:position
-      Composition:Add Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t   
-      position += Position;\n\t\t\t}\n\t\t\tvoid ColorOverLife_73257(float age, float
-      lifetime, inout float3 color, inout float alpha, float gradient, float BlendColor,
-      float BlendAlpha) /*mode:ColorAndAlpha ColorComposition:Blend AlphaComposition:Blend
-      */\n\t\t\t{\n\t\t\t    \n\t\t\t    float4 sampledColor = SampleGradient(gradient,
-      age/lifetime);\n\t\t\t    color = lerp(color,sampledColor.rgb,BlendColor);\n\t\t\t   
+      position = Position;\n\t\t\t}\n\t\t\tvoid SetAttribute_3278B22F(inout float
+      size, float Size) /*attribute:size Composition:Overwrite Source:Slot Random:Off
+      channels:XYZ */\n\t\t\t{\n\t\t\t    size = Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_39EE3455(inout
+      float size, float Size) /*attribute:size Composition:Multiply Source:Slot Random:Off
+      channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_C707D62A(inout
+      float3 position, float3 Position) /*attribute:position Composition:Add Source:Slot
+      Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    position += Position;\n\t\t\t}\n\t\t\tvoid
+      Orient_189(inout float3 axisX, inout float3 axisY, inout float3 axisZ, float3
+      position) /*mode:FaceCameraPosition axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t   
+      if (unity_OrthoParams.w == 1.0f) // Face plane for ortho\n\t\t\t    {\n\t\t\t       
+      float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t        axisX = viewRot[0].xyz;\n\t\t\t       
+      axisY = viewRot[1].xyz;\n\t\t\t        #if VFX_LOCAL_SPACE // Need to remove
+      potential scale in local transform\n\t\t\t        axisX = normalize(axisX);\n\t\t\t       
+      axisY = normalize(axisY);\n\t\t\t        axisZ = cross(axisX,axisY);\n\t\t\t       
+      #else\n\t\t\t        axisZ = -viewRot[2].xyz;\n\t\t\t        #endif\n\t\t\t   
+      }\n\t\t\t    else\n\t\t\t    {\n\t\t\t        axisZ = normalize(position -
+      GetViewVFXPosition());\n\t\t\t        axisX = normalize(cross(GetVFXToViewRotMatrix()[1].xyz,axisZ));\n\t\t\t       
+      axisY = cross(axisZ,axisX);\n\t\t\t    }\n\t\t\t    \n\t\t\t}\n\t\t\tvoid ColorOverLife_73257(float
+      age, float lifetime, inout float3 color, inout float alpha, float gradient,
+      float BlendColor, float BlendAlpha) /*mode:ColorAndAlpha ColorComposition:Blend
+      AlphaComposition:Blend */\n\t\t\t{\n\t\t\t    \n\t\t\t    float4 sampledColor
+      = SampleGradient(gradient, age/lifetime);\n\t\t\t    color = lerp(color,sampledColor.rgb,BlendColor);\n\t\t\t   
       alpha = lerp(alpha,sampledColor.a,BlendAlpha);\n\t\t\t    \n\t\t\t}\n\t\t\t\n\n\t\t\t\n\t\t\t#if
       defined(HAS_STRIPS) && !defined(VFX_PRIMITIVE_QUAD)\n\t\t\t#error VFX_PRIMITIVE_QUAD
       must be defined when HAS_STRIPS is.\n\t\t\t#endif\n\t\t\t\n\t\t\tstruct vs_input\n\t\t\t{\n\t\t\t\tVFX_DECLARE_INSTANCE_ID\n\t\t\t};\n\t\t\t\n\t\t\t#if
@@ -5798,17 +5798,16 @@ VisualEffectResource:
       float tmp_bw = tmp_bv + uniform_c;\n\t\t\t\t    float tmp_bx = tmp_bw + uniform_d;\n\t\t\t\t   
       float tmp_by = tmp_bx + uniform_e;\n\t\t\t\t    float3 tmp_bz = float3(tmp_by,
       tmp_by, tmp_by);\n\t\t\t\t    float3 tmp_ca = tmp_bu * tmp_bz;\n\t\t\t\t   
-      SetAttribute_CAC29747( /*inout */attributes.position, tmp_ca);\n\t\t\t\t}\n\t\t\t\tOrient_189(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ,
-      attributes.position);\n\t\t\t\tSetAttribute_3278B22F( /*inout */attributes.size,
-      Size_c);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bk = uniform_f - attributes.position;\n\t\t\t\t   
-      float3 tmp_bl = tmp_bk * tmp_bk;\n\t\t\t\t    float tmp_bm = tmp_bl[2];\n\t\t\t\t   
-      float tmp_bn = tmp_bl[1];\n\t\t\t\t    float tmp_bo = tmp_bm + tmp_bn;\n\t\t\t\t   
-      float tmp_bp = tmp_bl[0];\n\t\t\t\t    float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t   
-      float tmp_bs = pow(tmp_bq, (float)0.5);\n\t\t\t\t    float tmp_bt = pow(tmp_bs,
-      uniform_g);\n\t\t\t\t    float tmp_bu = tmp_bt * uniform_h;\n\t\t\t\t    SetAttribute_39EE3455(
-      /*inout */attributes.size, tmp_bu);\n\t\t\t\t}\n\t\t\t\tSetAttribute_C707D62A(
-      /*inout */attributes.position, Position_e);\n\t\t\t\tColorOverLife_73257(attributes.age,
+      SetAttribute_CAC29747( /*inout */attributes.position, tmp_ca);\n\t\t\t\t}\n\t\t\t\tSetAttribute_3278B22F(
+      /*inout */attributes.size, Size_b);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bk =
+      uniform_f - attributes.position;\n\t\t\t\t    float3 tmp_bl = tmp_bk * tmp_bk;\n\t\t\t\t   
+      float tmp_bm = tmp_bl[2];\n\t\t\t\t    float tmp_bn = tmp_bl[1];\n\t\t\t\t   
+      float tmp_bo = tmp_bm + tmp_bn;\n\t\t\t\t    float tmp_bp = tmp_bl[0];\n\t\t\t\t   
+      float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t    float tmp_bs = pow(tmp_bq, (float)0.5);\n\t\t\t\t   
+      float tmp_bt = pow(tmp_bs, uniform_g);\n\t\t\t\t    float tmp_bu = tmp_bt *
+      uniform_h;\n\t\t\t\t    SetAttribute_39EE3455( /*inout */attributes.size, tmp_bu);\n\t\t\t\t}\n\t\t\t\tSetAttribute_C707D62A(
+      /*inout */attributes.position, Position_d);\n\t\t\t\tOrient_189( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ, attributes.position);\n\t\t\t\tColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
       gradient_f, BlendColor_f, BlendAlpha_f);\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if !HAS_STRIPS\n\t\t\t\tif
       (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
@@ -5938,28 +5937,28 @@ VisualEffectResource:
       \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.hlsl\"\n\t\t\t\n\n\t\t\tvoid
       SetAttribute_CAC29747(inout float3 position, float3 Position) /*attribute:position
       Composition:Overwrite Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t   
-      position = Position;\n\t\t\t}\n\t\t\tvoid Orient_189(inout float3 axisX, inout
-      float3 axisY, inout float3 axisZ, float3 position) /*mode:FaceCameraPosition
-      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    if (unity_OrthoParams.w == 1.0f)
-      // Face plane for ortho\n\t\t\t    {\n\t\t\t        float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t       
-      axisX = viewRot[0].xyz;\n\t\t\t        axisY = viewRot[1].xyz;\n\t\t\t       
-      #if VFX_LOCAL_SPACE // Need to remove potential scale in local transform\n\t\t\t       
-      axisX = normalize(axisX);\n\t\t\t        axisY = normalize(axisY);\n\t\t\t       
-      axisZ = cross(axisX,axisY);\n\t\t\t        #else\n\t\t\t        axisZ = -viewRot[2].xyz;\n\t\t\t       
-      #endif\n\t\t\t    }\n\t\t\t    else\n\t\t\t    {\n\t\t\t        axisZ = normalize(position
-      - GetViewVFXPosition());\n\t\t\t        axisX = normalize(cross(GetVFXToViewRotMatrix()[1].xyz,axisZ));\n\t\t\t       
-      axisY = cross(axisZ,axisX);\n\t\t\t    }\n\t\t\t    \n\t\t\t}\n\t\t\tvoid SetAttribute_3278B22F(inout
-      float size, float Size) /*attribute:size Composition:Overwrite Source:Slot
-      Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    size = Size;\n\t\t\t}\n\t\t\tvoid
-      SetAttribute_39EE3455(inout float size, float Size) /*attribute:size Composition:Multiply
-      Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid
-      SetAttribute_C707D62A(inout float3 position, float3 Position) /*attribute:position
-      Composition:Add Source:Slot Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t   
-      position += Position;\n\t\t\t}\n\t\t\tvoid ColorOverLife_73257(float age, float
-      lifetime, inout float3 color, inout float alpha, float gradient, float BlendColor,
-      float BlendAlpha) /*mode:ColorAndAlpha ColorComposition:Blend AlphaComposition:Blend
-      */\n\t\t\t{\n\t\t\t    \n\t\t\t    float4 sampledColor = SampleGradient(gradient,
-      age/lifetime);\n\t\t\t    color = lerp(color,sampledColor.rgb,BlendColor);\n\t\t\t   
+      position = Position;\n\t\t\t}\n\t\t\tvoid SetAttribute_3278B22F(inout float
+      size, float Size) /*attribute:size Composition:Overwrite Source:Slot Random:Off
+      channels:XYZ */\n\t\t\t{\n\t\t\t    size = Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_39EE3455(inout
+      float size, float Size) /*attribute:size Composition:Multiply Source:Slot Random:Off
+      channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_C707D62A(inout
+      float3 position, float3 Position) /*attribute:position Composition:Add Source:Slot
+      Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    position += Position;\n\t\t\t}\n\t\t\tvoid
+      Orient_189(inout float3 axisX, inout float3 axisY, inout float3 axisZ, float3
+      position) /*mode:FaceCameraPosition axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t   
+      if (unity_OrthoParams.w == 1.0f) // Face plane for ortho\n\t\t\t    {\n\t\t\t       
+      float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t        axisX = viewRot[0].xyz;\n\t\t\t       
+      axisY = viewRot[1].xyz;\n\t\t\t        #if VFX_LOCAL_SPACE // Need to remove
+      potential scale in local transform\n\t\t\t        axisX = normalize(axisX);\n\t\t\t       
+      axisY = normalize(axisY);\n\t\t\t        axisZ = cross(axisX,axisY);\n\t\t\t       
+      #else\n\t\t\t        axisZ = -viewRot[2].xyz;\n\t\t\t        #endif\n\t\t\t   
+      }\n\t\t\t    else\n\t\t\t    {\n\t\t\t        axisZ = normalize(position -
+      GetViewVFXPosition());\n\t\t\t        axisX = normalize(cross(GetVFXToViewRotMatrix()[1].xyz,axisZ));\n\t\t\t       
+      axisY = cross(axisZ,axisX);\n\t\t\t    }\n\t\t\t    \n\t\t\t}\n\t\t\tvoid ColorOverLife_73257(float
+      age, float lifetime, inout float3 color, inout float alpha, float gradient,
+      float BlendColor, float BlendAlpha) /*mode:ColorAndAlpha ColorComposition:Blend
+      AlphaComposition:Blend */\n\t\t\t{\n\t\t\t    \n\t\t\t    float4 sampledColor
+      = SampleGradient(gradient, age/lifetime);\n\t\t\t    color = lerp(color,sampledColor.rgb,BlendColor);\n\t\t\t   
       alpha = lerp(alpha,sampledColor.a,BlendAlpha);\n\t\t\t    \n\t\t\t}\n\t\t\t\n\n\t\t\t\n\t\t\t#if
       defined(HAS_STRIPS) && !defined(VFX_PRIMITIVE_QUAD)\n\t\t\t#error VFX_PRIMITIVE_QUAD
       must be defined when HAS_STRIPS is.\n\t\t\t#endif\n\t\t\t\n\t\t\tstruct vs_input\n\t\t\t{\n\t\t\t\tVFX_DECLARE_INSTANCE_ID\n\t\t\t};\n\t\t\t\n\t\t\t#if
@@ -6031,17 +6030,16 @@ VisualEffectResource:
       float tmp_bw = tmp_bv + uniform_c;\n\t\t\t\t    float tmp_bx = tmp_bw + uniform_d;\n\t\t\t\t   
       float tmp_by = tmp_bx + uniform_e;\n\t\t\t\t    float3 tmp_bz = float3(tmp_by,
       tmp_by, tmp_by);\n\t\t\t\t    float3 tmp_ca = tmp_bu * tmp_bz;\n\t\t\t\t   
-      SetAttribute_CAC29747( /*inout */attributes.position, tmp_ca);\n\t\t\t\t}\n\t\t\t\tOrient_189(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ,
-      attributes.position);\n\t\t\t\tSetAttribute_3278B22F( /*inout */attributes.size,
-      Size_c);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bk = uniform_f - attributes.position;\n\t\t\t\t   
-      float3 tmp_bl = tmp_bk * tmp_bk;\n\t\t\t\t    float tmp_bm = tmp_bl[2];\n\t\t\t\t   
-      float tmp_bn = tmp_bl[1];\n\t\t\t\t    float tmp_bo = tmp_bm + tmp_bn;\n\t\t\t\t   
-      float tmp_bp = tmp_bl[0];\n\t\t\t\t    float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t   
-      float tmp_bs = pow(tmp_bq, (float)0.5);\n\t\t\t\t    float tmp_bt = pow(tmp_bs,
-      uniform_g);\n\t\t\t\t    float tmp_bu = tmp_bt * uniform_h;\n\t\t\t\t    SetAttribute_39EE3455(
-      /*inout */attributes.size, tmp_bu);\n\t\t\t\t}\n\t\t\t\tSetAttribute_C707D62A(
-      /*inout */attributes.position, Position_e);\n\t\t\t\tColorOverLife_73257(attributes.age,
+      SetAttribute_CAC29747( /*inout */attributes.position, tmp_ca);\n\t\t\t\t}\n\t\t\t\tSetAttribute_3278B22F(
+      /*inout */attributes.size, Size_b);\n\t\t\t\t{\n\t\t\t\t    float3 tmp_bk =
+      uniform_f - attributes.position;\n\t\t\t\t    float3 tmp_bl = tmp_bk * tmp_bk;\n\t\t\t\t   
+      float tmp_bm = tmp_bl[2];\n\t\t\t\t    float tmp_bn = tmp_bl[1];\n\t\t\t\t   
+      float tmp_bo = tmp_bm + tmp_bn;\n\t\t\t\t    float tmp_bp = tmp_bl[0];\n\t\t\t\t   
+      float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t    float tmp_bs = pow(tmp_bq, (float)0.5);\n\t\t\t\t   
+      float tmp_bt = pow(tmp_bs, uniform_g);\n\t\t\t\t    float tmp_bu = tmp_bt *
+      uniform_h;\n\t\t\t\t    SetAttribute_39EE3455( /*inout */attributes.size, tmp_bu);\n\t\t\t\t}\n\t\t\t\tSetAttribute_C707D62A(
+      /*inout */attributes.position, Position_d);\n\t\t\t\tOrient_189( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ, attributes.position);\n\t\t\t\tColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
       gradient_f, BlendColor_f, BlendAlpha_f);\n\t\t\t\t\n\n\t\t\t\t\n\t\t\t#if !HAS_STRIPS\n\t\t\t\tif
       (!attributes.alive)\n\t\t\t\t\treturn o;\n\t\t\t#endif\n\t\t\t\t\n\t\t\t#if
@@ -19524,7 +19522,7 @@ VisualEffectResource:
         index: 1609
       - nameId: uniform_e
         index: 1642
-      - nameId: Size_c
+      - nameId: Size_b
         index: 1726
       - nameId: uniform_f
         index: 1544
@@ -19532,7 +19530,7 @@ VisualEffectResource:
         index: 1656
       - nameId: uniform_h
         index: 1691
-      - nameId: Position_e
+      - nameId: Position_d
         index: 1782
       - nameId: gradient_f
         index: 1727
@@ -81097,10 +81095,10 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children:
   - {fileID: 8926484042661621589}
-  - {fileID: 8926484042661621596}
   - {fileID: 8926484042661621597}
   - {fileID: 8926484042661621599}
   - {fileID: 8926484042661621909}
+  - {fileID: 8926484042661621596}
   - {fileID: 8926484042661621601}
   m_UIPosition: {x: 3037, y: 1748}
   m_UICollapsed: 0
@@ -110010,40 +110008,6 @@ MonoBehaviour:
     type:
       m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
---- !u!114 &8926484042661622674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f780aa281814f9842a7c076d436932e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  m_MasterSlot: {fileID: 8926484042661622674}
-  m_MasterData:
-    m_Owner: {fileID: 0}
-    m_Value:
-      m_Type:
-        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 
-    m_Space: 2147483647
-  m_Property:
-    name: 
-    m_serializedType:
-      m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-    attributes: []
-  m_Direction: 1
-  m_LinkedSlots: []
 --- !u!114 &8926484042661622675
 MonoBehaviour:
   m_ObjectHideFlags: 0
