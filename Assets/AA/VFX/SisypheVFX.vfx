@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children:
-  - {fileID: 114580989189733782}
   - {fileID: 8926484042661614765}
   - {fileID: 8926484042661614767}
   - {fileID: 8926484042661621398}
+  - {fileID: 114580989189733782}
   - {fileID: 8926484042661614763}
   - {fileID: 114596491906001080}
   - {fileID: 8926484042661621920}
@@ -1144,9 +1144,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: -2655
-    y: -1603
+    y: -1604
     width: 7102
-    height: 5358
+    height: 5359
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4565,7 +4565,7 @@ VisualEffectResource:
       1\n\t\t#define IS_TRANSPARENT_PARTICLE 1\n\t\t#define VFX_BLENDMODE_ADD 1\n\t\t#define
       VFX_BYPASS_EXPOSURE 1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t#define
       VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t   
-      float4 Size_b;\n\t\t    float3 uniform_a;\n\t\t    float uniform_b;\n\t\t   
+      float4 Size_a;\n\t\t    float3 uniform_a;\n\t\t    float uniform_b;\n\t\t   
       float3 uniform_d;\n\t\t    float uniform_c;\n\t\t    float3 uniform_g;\n\t\t   
       float uniform_e;\n\t\t    float3 uniform_h;\n\t\t    float uniform_f;\n\t\t   
       float3 Position_g;\n\t\t    float Size_e;\n\t\t    float gradient_f;\n\t\t   
@@ -4617,12 +4617,6 @@ VisualEffectResource:
       && defined(VFX_VARYING_POSCS))\n\t\t\t#error VFX_VARYING_PS_INPUTS, VFX_VARYING_POSCS
       and VFX_VARYING_UV must be defined.\n\t\t\t#endif\n\t\t\t\n\t\t\t#include \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXCommon.hlsl\"\n\t\t\t#include
       \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.hlsl\"\n\t\t\t\n\n\t\t\tvoid
-      Orient_4(inout float3 axisX, inout float3 axisY, inout float3 axisZ) /*mode:FaceCameraPlane
-      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t   
-      axisX = viewRot[0].xyz;\n\t\t\t    axisY = viewRot[1].xyz;\n\t\t\t    #if VFX_LOCAL_SPACE
-      // Need to remove potential scale in local transform\n\t\t\t    axisX = normalize(axisX);\n\t\t\t   
-      axisY = normalize(axisY);\n\t\t\t    axisZ = cross(axisX,axisY);\n\t\t\t   
-      #else\n\t\t\t    axisZ = -viewRot[2].xyz;\n\t\t\t    #endif\n\t\t\t    \n\t\t\t}\n\t\t\tvoid
       AttributeFromCurve_45ABB909(inout float size, float age, float lifetime, float4
       Size) /*attribute:size Composition:Overwrite AlphaComposition:Overwrite SampleMode:OverLife
       Mode:PerComponent ColorMode:ColorAndAlpha channels:XYZ */\n\t\t\t{\n\t\t\t   
@@ -4632,6 +4626,12 @@ VisualEffectResource:
       channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_C707D62A(inout
       float3 position, float3 Position) /*attribute:position Composition:Add Source:Slot
       Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    position += Position;\n\t\t\t}\n\t\t\tvoid
+      Orient_4(inout float3 axisX, inout float3 axisY, inout float3 axisZ) /*mode:FaceCameraPlane
+      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t   
+      axisX = viewRot[0].xyz;\n\t\t\t    axisY = viewRot[1].xyz;\n\t\t\t    #if VFX_LOCAL_SPACE
+      // Need to remove potential scale in local transform\n\t\t\t    axisX = normalize(axisX);\n\t\t\t   
+      axisY = normalize(axisY);\n\t\t\t    axisZ = cross(axisX,axisY);\n\t\t\t   
+      #else\n\t\t\t    axisZ = -viewRot[2].xyz;\n\t\t\t    #endif\n\t\t\t    \n\t\t\t}\n\t\t\tvoid
       ColorOverLife_73257(float age, float lifetime, inout float3 color, inout float
       alpha, float gradient, float BlendColor, float BlendAlpha) /*mode:ColorAndAlpha
       ColorComposition:Blend AlphaComposition:Blend */\n\t\t\t{\n\t\t\t    \n\t\t\t   
@@ -4697,9 +4697,8 @@ VisualEffectResource:
       = (float)1;\n\t\t\t\t\t\tattributes.age = asfloat(attributeBuffer.Load((index
       * 0x8 + 0x16E384) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t\t\t//
       Initialize built-in needed attributes\n\t\t\t\t\t\t#if HAS_STRIPS\n\t\t\t\t\t\tInitStripAttributes(index,
-      attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\tOrient_4(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ);\n\t\t\t\tAttributeFromCurve_45ABB909(
-      /*inout */attributes.size, attributes.age, attributes.lifetime, Size_b);\n\t\t\t\t{\n\t\t\t\t   
+      attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\tAttributeFromCurve_45ABB909(
+      /*inout */attributes.size, attributes.age, attributes.lifetime, Size_a);\n\t\t\t\t{\n\t\t\t\t   
       float3 tmp_bm = uniform_a - attributes.position;\n\t\t\t\t    float3 tmp_bn
       = tmp_bm * tmp_bm;\n\t\t\t\t    float tmp_bo = tmp_bn[2];\n\t\t\t\t    float
       tmp_bp = tmp_bn[1];\n\t\t\t\t    float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t   
@@ -4714,7 +4713,8 @@ VisualEffectResource:
       float tmp_bs = tmp_br * uniform_f;\n\t\t\t\t    float3 tmp_bt = float3(tmp_bo,
       tmp_bq, tmp_bs);\n\t\t\t\t    float3 tmp_bu = tmp_bt * uniform_g;\n\t\t\t\t   
       float3 tmp_bv = tmp_bu * uniform_h;\n\t\t\t\t    SetAttribute_C707D62A( /*inout
-      */attributes.position, tmp_bv);\n\t\t\t\t}\n\t\t\t\tSetAttribute_39EE3455(
+      */attributes.position, tmp_bv);\n\t\t\t\t}\n\t\t\t\tOrient_4( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ);\n\t\t\t\tSetAttribute_39EE3455(
       /*inout */attributes.size, Size_e);\n\t\t\t\tColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
       gradient_f, BlendColor_f, BlendAlpha_f);\n\t\t\t\tSetAttribute_C707D62A( /*inout
@@ -4844,12 +4844,6 @@ VisualEffectResource:
       VFX_VARYING_PS_INPUTS, VFX_VARYING_POSCS and VFX_VARYING_UV must be defined.\n\t\t\t#endif\n\t\t\t\n\t\t\t#include
       \"Packages/com.unity.render-pipelines.high-definition/Runtime/VFXGraph/Shaders/VFXCommon.hlsl\"\n\t\t\t#include
       \"Packages/com.unity.visualeffectgraph/Shaders/VFXCommon.hlsl\"\n\t\t\t\n\n\t\t\tvoid
-      Orient_4(inout float3 axisX, inout float3 axisY, inout float3 axisZ) /*mode:FaceCameraPlane
-      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t   
-      axisX = viewRot[0].xyz;\n\t\t\t    axisY = viewRot[1].xyz;\n\t\t\t    #if VFX_LOCAL_SPACE
-      // Need to remove potential scale in local transform\n\t\t\t    axisX = normalize(axisX);\n\t\t\t   
-      axisY = normalize(axisY);\n\t\t\t    axisZ = cross(axisX,axisY);\n\t\t\t   
-      #else\n\t\t\t    axisZ = -viewRot[2].xyz;\n\t\t\t    #endif\n\t\t\t    \n\t\t\t}\n\t\t\tvoid
       AttributeFromCurve_45ABB909(inout float size, float age, float lifetime, float4
       Size) /*attribute:size Composition:Overwrite AlphaComposition:Overwrite SampleMode:OverLife
       Mode:PerComponent ColorMode:ColorAndAlpha channels:XYZ */\n\t\t\t{\n\t\t\t   
@@ -4859,6 +4853,12 @@ VisualEffectResource:
       channels:XYZ */\n\t\t\t{\n\t\t\t    size *= Size;\n\t\t\t}\n\t\t\tvoid SetAttribute_C707D62A(inout
       float3 position, float3 Position) /*attribute:position Composition:Add Source:Slot
       Random:Off channels:XYZ */\n\t\t\t{\n\t\t\t    position += Position;\n\t\t\t}\n\t\t\tvoid
+      Orient_4(inout float3 axisX, inout float3 axisY, inout float3 axisZ) /*mode:FaceCameraPlane
+      axes:ZY */\n\t\t\t{\n\t\t\t    \n\t\t\t    float3x3 viewRot = GetVFXToViewRotMatrix();\n\t\t\t   
+      axisX = viewRot[0].xyz;\n\t\t\t    axisY = viewRot[1].xyz;\n\t\t\t    #if VFX_LOCAL_SPACE
+      // Need to remove potential scale in local transform\n\t\t\t    axisX = normalize(axisX);\n\t\t\t   
+      axisY = normalize(axisY);\n\t\t\t    axisZ = cross(axisX,axisY);\n\t\t\t   
+      #else\n\t\t\t    axisZ = -viewRot[2].xyz;\n\t\t\t    #endif\n\t\t\t    \n\t\t\t}\n\t\t\tvoid
       ColorOverLife_73257(float age, float lifetime, inout float3 color, inout float
       alpha, float gradient, float BlendColor, float BlendAlpha) /*mode:ColorAndAlpha
       ColorComposition:Blend AlphaComposition:Blend */\n\t\t\t{\n\t\t\t    \n\t\t\t   
@@ -4924,9 +4924,8 @@ VisualEffectResource:
       = (float)1;\n\t\t\t\t\t\tattributes.age = asfloat(attributeBuffer.Load((index
       * 0x8 + 0x16E384) << 2));\n\t\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\n\t\t\t\t\t\t//
       Initialize built-in needed attributes\n\t\t\t\t\t\t#if HAS_STRIPS\n\t\t\t\t\t\tInitStripAttributes(index,
-      attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\tOrient_4(
-      /*inout */attributes.axisX,  /*inout */attributes.axisY,  /*inout */attributes.axisZ);\n\t\t\t\tAttributeFromCurve_45ABB909(
-      /*inout */attributes.size, attributes.age, attributes.lifetime, Size_b);\n\t\t\t\t{\n\t\t\t\t   
+      attributes, stripData);\n\t\t\t\t\t\t#endif\n\t\t\t\t\t\t\t\n\t\t\t\tAttributeFromCurve_45ABB909(
+      /*inout */attributes.size, attributes.age, attributes.lifetime, Size_a);\n\t\t\t\t{\n\t\t\t\t   
       float3 tmp_bm = uniform_a - attributes.position;\n\t\t\t\t    float3 tmp_bn
       = tmp_bm * tmp_bm;\n\t\t\t\t    float tmp_bo = tmp_bn[2];\n\t\t\t\t    float
       tmp_bp = tmp_bn[1];\n\t\t\t\t    float tmp_bq = tmp_bo + tmp_bp;\n\t\t\t\t   
@@ -4941,7 +4940,8 @@ VisualEffectResource:
       float tmp_bs = tmp_br * uniform_f;\n\t\t\t\t    float3 tmp_bt = float3(tmp_bo,
       tmp_bq, tmp_bs);\n\t\t\t\t    float3 tmp_bu = tmp_bt * uniform_g;\n\t\t\t\t   
       float3 tmp_bv = tmp_bu * uniform_h;\n\t\t\t\t    SetAttribute_C707D62A( /*inout
-      */attributes.position, tmp_bv);\n\t\t\t\t}\n\t\t\t\tSetAttribute_39EE3455(
+      */attributes.position, tmp_bv);\n\t\t\t\t}\n\t\t\t\tOrient_4( /*inout */attributes.axisX, 
+      /*inout */attributes.axisY,  /*inout */attributes.axisZ);\n\t\t\t\tSetAttribute_39EE3455(
       /*inout */attributes.size, Size_e);\n\t\t\t\tColorOverLife_73257(attributes.age,
       attributes.lifetime,  /*inout */attributes.color,  /*inout */attributes.alpha,
       gradient_f, BlendColor_f, BlendAlpha_f);\n\t\t\t\tSetAttribute_C707D62A( /*inout
@@ -16596,7 +16596,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 52
           m_Value: 5
         - m_ExpressionIndex: 59
-          m_Value: -2
+          m_Value: 5
         - m_ExpressionIndex: 61
           m_Value: 10
         - m_ExpressionIndex: 71
@@ -16626,7 +16626,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 151
           m_Value: 0.001
         - m_ExpressionIndex: 183
-          m_Value: 0.6
+          m_Value: 1
         - m_ExpressionIndex: 185
           m_Value: 0
         - m_ExpressionIndex: 188
@@ -16634,13 +16634,13 @@ VisualEffectResource:
         - m_ExpressionIndex: 189
           m_Value: 1
         - m_ExpressionIndex: 190
-          m_Value: 0.2
+          m_Value: 0.1
         - m_ExpressionIndex: 192
           m_Value: 1
         - m_ExpressionIndex: 201
           m_Value: 0
         - m_ExpressionIndex: 211
-          m_Value: 3
+          m_Value: 2.5
         - m_ExpressionIndex: 212
           m_Value: 0.5
         - m_ExpressionIndex: 221
@@ -16650,7 +16650,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 234
           m_Value: 1.706833
         - m_ExpressionIndex: 266
-          m_Value: 0.6
+          m_Value: 1
         - m_ExpressionIndex: 271
           m_Value: 0
         - m_ExpressionIndex: 275
@@ -16658,9 +16658,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 277
           m_Value: 1
         - m_ExpressionIndex: 280
-          m_Value: 0.2
+          m_Value: 1
         - m_ExpressionIndex: 281
-          m_Value: 0.2
+          m_Value: 0.1
         - m_ExpressionIndex: 304
           m_Value: 0
         - m_ExpressionIndex: 332
@@ -17168,9 +17168,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 1537
           m_Value: 3.833333
         - m_ExpressionIndex: 1538
-          m_Value: 0.2
+          m_Value: 0.4
         - m_ExpressionIndex: 1545
-          m_Value: 2
+          m_Value: 0.1
         - m_ExpressionIndex: 1550
           m_Value: 1.17
         - m_ExpressionIndex: 1555
@@ -17246,7 +17246,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 1601
           m_Value: 0
         - m_ExpressionIndex: 1602
-          m_Value: 5
+          m_Value: 20
         - m_ExpressionIndex: 1604
           m_Value: 0.1
         - m_ExpressionIndex: 1605
@@ -17706,7 +17706,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 1553
           m_Value: 0
         - m_ExpressionIndex: 1554
-          m_Value: 0
+          m_Value: 1
         - m_ExpressionIndex: 1578
           m_Value: 1
     m_ExposedExpressions:
@@ -18813,7 +18813,7 @@ VisualEffectResource:
         index: 0
       temporaryBuffers: []
       values:
-      - nameId: Size_b
+      - nameId: Size_a
         index: 1754
       - nameId: uniform_a
         index: 1509
@@ -71053,7 +71053,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.2
+      m_SerializableObject: 0.1
     m_Space: 2147483647
   m_Property:
     name: cellX
@@ -71087,7 +71087,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.2
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: cellY
@@ -71121,7 +71121,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.2
+      m_SerializableObject: 0.1
     m_Space: 2147483647
   m_Property:
     name: cellZ
@@ -71155,7 +71155,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: False
+      m_SerializableObject: True
     m_Space: 2147483647
   m_Property:
     name: chillMode
@@ -71189,7 +71189,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2
+      m_SerializableObject: 0.1
     m_Space: 2147483647
   m_Property:
     name: transportIntensity
@@ -73960,7 +73960,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 5
+      m_SerializableObject: 20
     m_Space: 2147483647
   m_Property:
     name: b
@@ -74503,7 +74503,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.6
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: cellX
@@ -74572,7 +74572,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.6
+      m_SerializableObject: 1
     m_Space: 2147483647
   m_Property:
     name: cellZ
@@ -74640,7 +74640,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.2
+      m_SerializableObject: 0.4
     m_Space: 2147483647
   m_Property:
     name: transportIntensity
@@ -77082,7 +77082,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -2
+      m_SerializableObject: 5
     m_Space: 2147483647
   m_Property:
     name: 
@@ -105195,7 +105195,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 3
+      m_SerializableObject: 2.5
     m_Space: 2147483647
   m_Property:
     name: newRangeMax
