@@ -770,19 +770,19 @@ VisualEffect:
       - m_Value: 0.6
         m_Name: camvariableParticleSize
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 16.258484
         m_Name: expansionRadius
         m_Overridden: 1
-      - m_Value: 9
+      - m_Value: 15
         m_Name: spawnSize
         m_Overridden: 1
-      - m_Value: 15
+      - m_Value: 7.483032
         m_Name: gridForceCellIntensity
         m_Overridden: 1
-      - m_Value: 1.7
+      - m_Value: 2
         m_Name: gridForceCellSize
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: gridEvaporationFadeIn
         m_Overridden: 1
       - m_Value: 0
@@ -791,28 +791,28 @@ VisualEffect:
       - m_Value: 0.045263115
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.7987776
         m_Name: gridForceFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: shapeToLineFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: spawnScatterFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: scanToConstantFadeIn
         m_Overridden: 1
       - m_Value: 10
         m_Name: evaporationUpSpeed
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.49300092
         m_Name: cascadeFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0.9780181
         m_Name: spawnFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.9
         m_Name: tubeR0
         m_Overridden: 1
       - m_Value: 0
@@ -820,6 +820,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 0
         m_Name: limbSlicesFadeIn
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: vortexFadeIn
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -1083,7 +1086,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888183861}
-  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
+  m_LocalRotation: {x: 0.08185574, y: -0.023812415, z: 0.0019563083, w: 0.9963578}
   m_LocalPosition: {x: 5.0803256, y: 8.149835, z: 9.344703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5674,8 +5677,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035534996775112}
-  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
-  m_LocalPosition: {x: 3.28, y: 13.099681, z: -17.95}
+  m_LocalRotation: {x: 0.08185574, y: -0.023812415, z: 0.0019563083, w: 0.9963578}
+  m_LocalPosition: {x: 4.1578846, y: -3.0203493, z: -18.579384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4621035533066322262}
