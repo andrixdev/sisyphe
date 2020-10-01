@@ -788,11 +788,17 @@ VisualEffect:
       - m_Value: 0
         m_Name: warpFadeIn
         m_Overridden: 1
-      - m_Value: 0.045263115
+      - m_Value: 0.00012636167
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 0.33374912
+      - m_Value: 0.0011383559
         m_Name: gridForceFadeIn
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: shapeToLineFadeIn
+        m_Overridden: 1
+      - m_Value: 0.3402066
+        m_Name: spawnScatterFadeIn
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -1056,7 +1062,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888183861}
-  m_LocalRotation: {x: 0.26663417, y: -0.2390509, z: 0.068450674, w: 0.93116885}
+  m_LocalRotation: {x: 0.003446558, y: 0.414013, z: -0.0015675874, w: 0.9102631}
   m_LocalPosition: {x: 5.0803256, y: 8.149835, z: 9.344703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5647,8 +5653,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035534996775112}
-  m_LocalRotation: {x: 0.26663417, y: -0.2390509, z: 0.068450674, w: 0.93116885}
-  m_LocalPosition: {x: 3.28, y: 13.099681, z: -17.95}
+  m_LocalRotation: {x: 0.003446558, y: 0.414013, z: -0.0015675874, w: 0.9102631}
+  m_LocalPosition: {x: -2.737389, y: 4.2360697, z: -19.645288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4621035533066322262}
