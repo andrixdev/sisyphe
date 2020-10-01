@@ -779,7 +779,7 @@ VisualEffect:
       - m_Value: 15
         m_Name: gridForceCellIntensity
         m_Overridden: 1
-      - m_Value: 1.706833
+      - m_Value: 1.7
         m_Name: gridForceCellSize
         m_Overridden: 1
       - m_Value: 0
@@ -791,29 +791,35 @@ VisualEffect:
       - m_Value: 0.045263115
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: gridForceFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: shapeToLineFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: spawnScatterFadeIn
         m_Overridden: 1
-      - m_Value: 0.28599298
+      - m_Value: 0
         m_Name: scanToConstantFadeIn
         m_Overridden: 1
       - m_Value: 10
         m_Name: evaporationUpSpeed
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.1
         m_Name: cascadeFadeIn
         m_Overridden: 1
       - m_Value: 1
         m_Name: spawnFadeIn
         m_Overridden: 1
-      - m_Value: 0.9
+      - m_Value: 0
         m_Name: tubeR0
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: limbStrokesFadeIn
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: limbSlicesFadeIn
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -1077,7 +1083,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888183861}
-  m_LocalRotation: {x: 0.078695446, y: -0.024010897, z: 0.0018959801, w: 0.9966077}
+  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
   m_LocalPosition: {x: 5.0803256, y: 8.149835, z: 9.344703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5668,8 +5674,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621035534996775112}
-  m_LocalRotation: {x: 0.078695446, y: -0.024010897, z: 0.0018959801, w: 0.9966077}
-  m_LocalPosition: {x: 4.167312, y: -3.0898817, z: -18.671257}
+  m_LocalRotation: {x: 0.26663417, y: -0.23905084, z: 0.06845066, w: 0.93116885}
+  m_LocalPosition: {x: 3.28, y: 13.099681, z: -17.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4621035533066322262}
