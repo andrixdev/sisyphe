@@ -1105,40 +1105,40 @@ VisualEffect:
       - m_Value: 0
         m_Name: gridEvaporationFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: warpFadeIn
         m_Overridden: 1
       - m_Value: 0.045263115
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.45556286
         m_Name: gridForceFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: shapeToLineFadeIn
         m_Overridden: 1
       - m_Value: 1
         m_Name: spawnScatterFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.56615734
         m_Name: scanToConstantFadeIn
         m_Overridden: 1
       - m_Value: 10
         m_Name: evaporationUpSpeed
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.4938047
         m_Name: cascadeFadeIn
         m_Overridden: 1
       - m_Value: 1
         m_Name: spawnFadeIn
         m_Overridden: 1
-      - m_Value: 0.97165936
+      - m_Value: 0.8
         m_Name: tubeR0
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: limbSlicesFadeIn
         m_Overridden: 1
-      - m_Value: 0.96701044
+      - m_Value: 0
         m_Name: limbStrokesFadeIn
         m_Overridden: 1
       - m_Value: 0
@@ -1147,17 +1147,29 @@ VisualEffect:
       - m_Value: 0
         m_Name: mirageExpansionRadius
         m_Overridden: 1
-      - m_Value: 7.1067986
+      - m_Value: 5.419488
         m_Name: mirageSpawnSize
         m_Overridden: 1
-      - m_Value: 8.841276
+      - m_Value: 3.3609476
         m_Name: mirageGridForceCellIntensity
         m_Overridden: 1
-      - m_Value: 1.7525924
+      - m_Value: 1.9982116
         m_Name: mirageGridForceCellSize
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 8
         m_Name: sisyphBaseLimbStickingForce
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: gridceptionForceFadeIn
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: gridceptionTransport1
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: gridceptionTransport2
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: turbulenceIntensity
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -1710,6 +1722,8 @@ PlayableDirector:
   - key: {fileID: 2015878877735477870, guid: 1ce67c71dd968464da8e246e2bac1879, type: 2}
     value: {fileID: 0}
   - key: {fileID: -6594848163303446431, guid: 1ce67c71dd968464da8e246e2bac1879, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7859474390369188581, guid: af1c896581d9ce44aa86d4858976faf5, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
