@@ -1015,21 +1015,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
   m_Bindings:
+  - {fileID: 414245296}
+  - {fileID: 414245295}
+  - {fileID: 414245294}
+  - {fileID: 414245293}
+  - {fileID: 414245292}
+  - {fileID: 414245290}
+  - {fileID: 414245289}
+  - {fileID: 414245288}
+  - {fileID: 414245287}
+  - {fileID: 414245286}
+  - {fileID: 414245285}
+  - {fileID: 414245284}
+  - {fileID: 414245283}
   - {fileID: 414245282}
   - {fileID: 414245281}
-  - {fileID: 414245284}
-  - {fileID: 414245290}
-  - {fileID: 414245287}
-  - {fileID: 414245296}
-  - {fileID: 414245289}
-  - {fileID: 414245295}
-  - {fileID: 414245283}
-  - {fileID: 414245285}
-  - {fileID: 414245292}
-  - {fileID: 414245293}
-  - {fileID: 414245286}
-  - {fileID: 414245294}
-  - {fileID: 414245288}
   - {fileID: 414245280}
   m_VisualEffect: {fileID: 414245299}
 --- !u!73398921 &414245298
@@ -1050,6 +1050,7 @@ VFXRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1102,7 +1103,7 @@ VisualEffect:
       - m_Value: 1.8474842
         m_Name: gridForceCellSize
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: gridEvaporationFadeIn
         m_Overridden: 1
       - m_Value: 1
@@ -1111,7 +1112,7 @@ VisualEffect:
       - m_Value: 0.045263115
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 0.45556286
+      - m_Value: 1
         m_Name: gridForceFadeIn
         m_Overridden: 1
       - m_Value: 0
@@ -1120,16 +1121,16 @@ VisualEffect:
       - m_Value: 1
         m_Name: spawnScatterFadeIn
         m_Overridden: 1
-      - m_Value: 0.56615734
+      - m_Value: 1
         m_Name: scanToConstantFadeIn
         m_Overridden: 1
       - m_Value: 10
         m_Name: evaporationUpSpeed
         m_Overridden: 1
-      - m_Value: 0.4938047
+      - m_Value: 0
         m_Name: cascadeFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: spawnFadeIn
         m_Overridden: 1
       - m_Value: 0.8
@@ -1144,16 +1145,16 @@ VisualEffect:
       - m_Value: 0
         m_Name: vortexFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 20
         m_Name: mirageExpansionRadius
         m_Overridden: 1
-      - m_Value: 5.419488
+      - m_Value: 15
         m_Name: mirageSpawnSize
         m_Overridden: 1
-      - m_Value: 3.3609476
+      - m_Value: 0
         m_Name: mirageGridForceCellIntensity
         m_Overridden: 1
-      - m_Value: 1.9982116
+      - m_Value: 2
         m_Name: mirageGridForceCellSize
         m_Overridden: 1
       - m_Value: 8
@@ -1170,6 +1171,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 0
         m_Name: turbulenceIntensity
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: mirageSpawnFadeIn
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
