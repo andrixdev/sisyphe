@@ -18291,7 +18291,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 1595
           m_Value: 0
         - m_ExpressionIndex: 1596
-          m_Value: 2.86
+          m_Value: 2
         - m_ExpressionIndex: 1603
           m_Value: -1
         - m_ExpressionIndex: 1605
@@ -23247,7 +23247,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614857}
   m_ExposedName: tubeR0
   m_Exposed: 1
-  m_Order: 21
+  m_Order: 32
   m_Category: Exal tubes
   m_Min:
     m_Type:
@@ -24343,7 +24343,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615062}
   m_ExposedName: rightHand
   m_Exposed: 1
-  m_Order: 17
+  m_Order: 30
   m_Category: Joints
   m_Min:
     m_Type:
@@ -24862,7 +24862,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615093}
   m_ExposedName: rightElbow
   m_Exposed: 1
-  m_Order: 25
+  m_Order: 34
   m_Category: Joints
   m_Min:
     m_Type:
@@ -25399,7 +25399,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615107}
   m_ExposedName: rightShoulder
   m_Exposed: 1
-  m_Order: 27
+  m_Order: 35
   m_Category: Joints
   m_Min:
     m_Type:
@@ -26462,7 +26462,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615408}
   m_ExposedName: codisSigma
   m_Exposed: 0
-  m_Order: 31
+  m_Order: 37
   m_Category: Exal tubes
   m_Min:
     m_Type:
@@ -26643,7 +26643,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615410}
   m_ExposedName: codisExtraR0
   m_Exposed: 0
-  m_Order: 29
+  m_Order: 36
   m_Category: Exal tubes
   m_Min:
     m_Type:
@@ -27650,7 +27650,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615448}
   m_ExposedName: spineShoulder
   m_Exposed: 1
-  m_Order: 33
+  m_Order: 38
   m_Category: Joints
   m_Min:
     m_Type:
@@ -28229,7 +28229,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615462}
   m_ExposedName: spineMid
   m_Exposed: 1
-  m_Order: 34
+  m_Order: 39
   m_Category: Joints
   m_Min:
     m_Type:
@@ -29022,7 +29022,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615930}
   m_ExposedName: head
   m_Exposed: 1
-  m_Order: 35
+  m_Order: 40
   m_Category: Joints
   m_Min:
     m_Type:
@@ -29713,7 +29713,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616262}
   m_ExposedName: leftHand
   m_Exposed: 1
-  m_Order: 36
+  m_Order: 41
   m_Category: Joints
   m_Min:
     m_Type:
@@ -30231,7 +30231,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616276}
   m_ExposedName: leftElbow
   m_Exposed: 1
-  m_Order: 37
+  m_Order: 42
   m_Category: Joints
   m_Min:
     m_Type:
@@ -30766,7 +30766,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616290}
   m_ExposedName: leftShoulder
   m_Exposed: 1
-  m_Order: 38
+  m_Order: 43
   m_Category: Joints
   m_Min:
     m_Type:
@@ -31327,7 +31327,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616304}
   m_ExposedName: rightHip
   m_Exposed: 1
-  m_Order: 39
+  m_Order: 44
   m_Category: Joints
   m_Min:
     m_Type:
@@ -31862,7 +31862,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616318}
   m_ExposedName: rightKnee
   m_Exposed: 1
-  m_Order: 40
+  m_Order: 45
   m_Category: Joints
   m_Min:
     m_Type:
@@ -32397,7 +32397,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616332}
   m_ExposedName: rightFoot
   m_Exposed: 1
-  m_Order: 41
+  m_Order: 46
   m_Category: Joints
   m_Min:
     m_Type:
@@ -32915,7 +32915,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616346}
   m_ExposedName: leftHip
   m_Exposed: 1
-  m_Order: 42
+  m_Order: 47
   m_Category: Joints
   m_Min:
     m_Type:
@@ -33450,7 +33450,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616360}
   m_ExposedName: leftKnee
   m_Exposed: 1
-  m_Order: 43
+  m_Order: 48
   m_Category: Joints
   m_Min:
     m_Type:
@@ -33985,7 +33985,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616374}
   m_ExposedName: leftFoot
   m_Exposed: 1
-  m_Order: 44
+  m_Order: 49
   m_Category: Joints
   m_Min:
     m_Type:
@@ -72229,7 +72229,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 2.86
+      m_SerializableObject: 2
     m_Space: 2147483647
   m_Property:
     name: transportIntensity
@@ -73826,7 +73826,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621189}
   m_ExposedName: camPos
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 27
   m_Category: Cam stuff
   m_Min:
     m_Type:
@@ -74013,7 +74013,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621194}
   m_ExposedName: camvariableExponent
   m_Exposed: 0
-  m_Order: 23
+  m_Order: 33
   m_Category: Cam stuff
   m_Min:
     m_Type:
@@ -74098,7 +74098,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621196}
   m_ExposedName: camvariableParticleSize
   m_Exposed: 1
-  m_Order: 19
+  m_Order: 31
   m_Category: Cam stuff
   m_Min:
     m_Type:
@@ -89138,7 +89138,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621838}
   m_ExposedName: mirageCellX
   m_Exposed: 0
-  m_Order: 10
+  m_Order: 21
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89218,7 +89218,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621840}
   m_ExposedName: mirageCellY
   m_Exposed: 0
-  m_Order: 9
+  m_Order: 19
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89298,7 +89298,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621842}
   m_ExposedName: mirageGridForceCellSize
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 17
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89383,7 +89383,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621844}
   m_ExposedName: mirageGridForceCellIntensity
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 15
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89462,7 +89462,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621846}
   m_ExposedName: mirageSpawnSize
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 13
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89544,7 +89544,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621848}
   m_ExposedName: mirageTurbulenceIntensity
   m_Exposed: 0
-  m_Order: 5
+  m_Order: 11
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89623,7 +89623,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621850}
   m_ExposedName: mirageTurbulenceScale
   m_Exposed: 0
-  m_Order: 4
+  m_Order: 9
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89702,7 +89702,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621852}
   m_ExposedName: mirageBaseForceIntensity
   m_Exposed: 0
-  m_Order: 3
+  m_Order: 7
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89782,7 +89782,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621854}
   m_ExposedName: mirageCellZ
   m_Exposed: 0
-  m_Order: 11
+  m_Order: 23
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89862,7 +89862,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621865}
   m_ExposedName: mirageExpansionRadius
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 5
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -89941,7 +89941,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621867}
   m_ExposedName: mirageHearbeatAmplitude
   m_Exposed: 0
-  m_Order: 1
+  m_Order: 3
   m_Category: Mirage params
   m_Min:
     m_Type:
@@ -91317,7 +91317,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621916}
   m_ExposedName: miragePos
   m_Exposed: 1
-  m_Order: 45
+  m_Order: 50
   m_Category: 
   m_Min:
     m_Type:
@@ -91705,7 +91705,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621927}
   m_ExposedName: exalPos
   m_Exposed: 0
-  m_Order: 46
+  m_Order: 51
   m_Category: 
   m_Min:
     m_Type:
@@ -91884,7 +91884,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621935}
   m_ExposedName: gridEvaporationFadeIn
   m_Exposed: 1
-  m_Order: 11
+  m_Order: 24
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -91963,7 +91963,7 @@ MonoBehaviour:
   - {fileID: 8926484042661621937}
   m_ExposedName: gridForceFadeIn
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 10
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -103758,7 +103758,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622399}
   m_ExposedName: shapeToLineFadeIn
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 6
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -103837,7 +103837,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622406}
   m_ExposedName: spawnScatterFadeIn
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 25
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -105502,7 +105502,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622513}
   m_ExposedName: scanToConstantFadeIn
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 8
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -105956,7 +105956,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622525}
   m_ExposedName: cascadeFadeIn
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 22
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -106308,7 +106308,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622537}
   m_ExposedName: spawnFadeIn
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 4
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -106561,7 +106561,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622544}
   m_ExposedName: warpFadeIn
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 18
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -107277,7 +107277,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622574}
   m_ExposedName: limbSlicesFadeIn
   m_Exposed: 1
-  m_Order: 15
+  m_Order: 29
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -108810,7 +108810,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622619}
   m_ExposedName: limbStrokesFadeIn
   m_Exposed: 1
-  m_Order: 13
+  m_Order: 26
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -111176,7 +111176,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622693}
   m_ExposedName: vortexFadeIn
   m_Exposed: 1
-  m_Order: 14
+  m_Order: 28
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -111290,7 +111290,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622696}
   m_ExposedName: sisyphBaseLimbStickingForce
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -111345,30 +111345,6 @@ MonoBehaviour:
   m_Direction: 1
   m_LinkedSlots:
   - {fileID: 8926484042661615045}
---- !u!114 &8926484042661622697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78581a96eae8bf4398c282eb0b098bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Parent: {fileID: 0}
-  m_Children: []
-  m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
-  m_UISuperCollapsed: 0
-  title: 
-  m_Owners: []
-  dataType: 0
-  capacity: 128
-  stripCapacity: 16
-  particlePerStripCount: 16
-  m_Space: 0
 --- !u!114 &8926484042661622717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113135,7 +113111,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622776}
   m_ExposedName: gridceptionForceFadeIn
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 12
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -113249,7 +113225,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622779}
   m_ExposedName: gridceptionTransport1
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 14
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -113326,7 +113302,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622781}
   m_ExposedName: gridceptionTransport2
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 16
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -113571,7 +113547,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622788}
   m_ExposedName: turbulenceIntensity
   m_Exposed: 1
-  m_Order: 9
+  m_Order: 20
   m_Category: Sisyphe params
   m_Min:
     m_Type:
@@ -113648,7 +113624,7 @@ MonoBehaviour:
   - {fileID: 8926484042661622790}
   m_ExposedName: mirageSpawnFadeIn
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 2
   m_Category: Mirage params
   m_Min:
     m_Type:

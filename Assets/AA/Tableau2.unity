@@ -1103,61 +1103,61 @@ VisualEffect:
       - m_Value: 1.8474842
         m_Name: gridForceCellSize
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: gridEvaporationFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: warpFadeIn
         m_Overridden: 1
       - m_Value: 0.045263115
         m_Name: evaporationFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: gridForceFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: shapeToLineFadeIn
         m_Overridden: 1
       - m_Value: 1
         m_Name: spawnScatterFadeIn
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: scanToConstantFadeIn
         m_Overridden: 1
       - m_Value: 10
         m_Name: evaporationUpSpeed
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.1
         m_Name: cascadeFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: spawnFadeIn
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 0.97165936
         m_Name: tubeR0
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: limbSlicesFadeIn
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 0.96701044
         m_Name: limbStrokesFadeIn
         m_Overridden: 1
       - m_Value: 0
         m_Name: vortexFadeIn
         m_Overridden: 1
-      - m_Value: 20
+      - m_Value: 0
         m_Name: mirageExpansionRadius
         m_Overridden: 1
-      - m_Value: 15
+      - m_Value: 7.1067986
         m_Name: mirageSpawnSize
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 8.841276
         m_Name: mirageGridForceCellIntensity
         m_Overridden: 1
-      - m_Value: 2
+      - m_Value: 1.7525924
         m_Name: mirageGridForceCellSize
         m_Overridden: 1
-      - m_Value: 8
+      - m_Value: 0
         m_Name: sisyphBaseLimbStickingForce
         m_Overridden: 1
       - m_Value: 0
